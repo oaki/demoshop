@@ -1,0 +1,4 @@
+- replace filemanager to SqlLiteManage for chaching
+- move to PHP 7
+- activate composer and grunt
+- upload to bitbucket
