@@ -1,0 +1,23 @@
+{block content}
+
+{include '../submenu.latte'}
+
+<div class="submenu">
+     <a href="{link default}">spať</a>
+
+     <h2>Editácia spôsobu doručenia</h2>
+    <div class="clear"></div>
+</div>
+
+
+<div class="padding_10">
+	
+	{control form}
+
+</div>
+<script type="text/javascript">
+	$(function(){
+		$("tr:nth-child(odd)").addClass("odd");
+		$('table').highlight(); 
+	});
+</script>

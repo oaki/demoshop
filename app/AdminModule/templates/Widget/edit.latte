@@ -1,0 +1,59 @@
+
+{block content}
+<div class="padding_10">
+	
+	<div class="submenu">
+		<a href="{link default}">spať</a>
+
+		<h2>Editácia widget </h2>
+		<div class="clear"></div>
+	</div>
+	{snippet form}
+	{form widgetForm class=>ajax}
+		<fieldset>
+			<label>Popis</label>
+			<table class="standard">
+				<tr>
+					<th>{label identifier/}</th>
+					<td>{input identifier}</td>
+				</tr>
+				<tr>
+					<th>{label name/}</th>
+					<td>{input name}</td>
+				</tr>
+				<tr>
+					<th>{label template/}</th>
+					<td>{input template style=>"width:830px;"}</td>
+				</tr>
+			</table>
+			
+			
+		</fieldset>
+
+		<fieldset n:if="count($values['params'])>0">
+			<label>Parametre</label>
+
+			<table class="standard">
+				{formContainer params}
+					{foreach $_form->getControls() as $k=>$c}
+						{if $iterator->isOdd()}<tr>{/if}
+							<td>
+								{$c->getControl()} 
+								{if $iterator->isEven()}<a class="ajax" href="{link removeParam! $c->parent->name}">zmazať{dump $c->parent->name}</a>{/if}
+							</td>							
+						{if $iterator->isEven()}</tr>{/if}
+					{/foreach}
+				{/formContainer}
+			</table>
+		</fieldset>
+		{input save}
+		{input addNewParam}
+	
+		
+	{/form}
+	
+		
+	{/snippet}
+	
+	{!$fileNode->render()}
+</div>

@@ -1,0 +1,47 @@
+.MultiuploadGalleryHolder{
+	padding: 20px 0px;
+}
+#formGallery{
+	width:250px;
+}
+#galleryImagesHolder table, #galleryAtributesHolder table{
+	border:0px none;
+}
+#galleryAtributesHolder{
+  float:right;
+  width:250px;
+}
+
+#galleryImagesHolder{
+  width:465px;
+  float:left;
+}
+
+#galleryImagesHolder ul{
+  border:1px solid silver;
+}
+#galleryImagesHolder li{	
+	text-align:left;
+	border-top:0px;
+	text-decoration:none;
+	display:block;
+	padding: 2px 5px 2px 5px;
+	margin:2px 0px;
+	background-color: #efefef;
+}
+#galleryImagesHolder .image{
+  float:left;
+  padding:2px;
+  border:1px solid silver;
+}
+
+#galleryImagesHolder .holder{
+  float:left;
+  padding:17px 15px 0px 15px;
+}
+
+#galleryImagesHolder span{cursor: move;}
+
+fieldset{
+	border:1px solid silver;
+}

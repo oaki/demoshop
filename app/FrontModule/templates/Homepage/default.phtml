@@ -1,0 +1,49 @@
+
+{block content}
+
+{block promo}	
+
+	{if count($node_list) > 0}
+		{foreach $node_list as $l}
+			{if $l['visible'] == 1}
+				{if count($node_list)>1}
+					{control $l['dir'], $l['id_node'], $id_menu_item}
+				{else}
+					{control $l['dir'], $l['id_node'], $id_menu_item, true}
+				{/if}
+			{/if}
+		{/foreach}
+	{/if}
+
+{/block promo}
+
+
+{include '../default-top.latte' 
+	
+	name=>_('Vybrané novinky z ponuky')
+}
+
+
+
+<div class="c-product">
+
+
+	<ul class="product-list">
+		{foreach $products as $p}
+		<!-- produkt -->
+		<li>
+			{include '../Product/product_annotation.latte' 'p'=>$p, 'iterator'=>$iterator}
+		</li>
+		<!-- / produkt -->   
+		{/foreach}   
+	</ul>
+
+	<div class="product-bottom type-{? echo count($products)%4}"></div><!-- shadow bottom on boxs -->
+
+</div><!-- produkty -->
+
+
+
+{control paginator}
+
+{control productNewsSaleAvaiableTable}

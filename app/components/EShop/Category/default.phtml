@@ -1,0 +1,68 @@
+{if count($langs)>1}
+	<div class="lang-container">
+		<div class="lang-position">
+		{foreach $langs as $k=>$lang}
+			<a href="#" class="lang" rel="{$k}"><img src="/images/admin/flag-{$lang['iso']}.png" alt="{$lang['name']}" /></a>
+		{/foreach}
+		</div>
+	</div>
+{/if}
+
+{control baseForm}
+
+<script type="text/javascript">
+    /*
+     * ak pises do sk, pise do vsetkych prázdnych
+     */
+
+    $('#frmbaseForm-btn').click( function(){
+
+	{foreach $langs as $k=>$lang}
+	    {if $lang['iso']!='sk'}
+		var el = $('#frmbaseForm-name{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmbaseForm-name_lang_sk').val() );
+		}
+
+		var el = $('#frmbaseForm-description{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmbaseForm-description_lang_sk').val() );
+		}
+
+		var el = $('#frmbaseForm-meta_title{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmbaseForm-meta_title_lang_sk').val() );
+		}
+
+		var el = $('#frmbaseForm-meta_keywords{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmbaseForm-meta_keywords_lang_sk').val() );
+		}
+
+		var el = $('#frmbaseForm-meta_description{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmbaseForm-meta_description_lang_sk').val() );
+		}
+	    {/if}
+	{/foreach}
+    
+    });
+
+   
+
+
+    function hideAll(){
+	$('.lang_fieldset').hide();
+    }
+
+    $('.lang').click( function(e){
+	e.preventDefault();
+	hideAll();
+	$('#lang_' + $(this).attr('rel') ).show();
+    });
+
+    hideAll();
+    $('#lang_sk' ).show();
+
+
+</script>

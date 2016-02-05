@@ -1,0 +1,25 @@
+{ifset $link}
+<div id="admin-bar">
+	<a target="_blank" href="{$link}">Editovať</a>
+	
+	
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		var offset = $("#admin-bar").offset();
+		var topPadding = 250;
+		$(window).scroll(function() {
+			if ($(window).scrollTop() > offset.top) {
+				$("#admin-bar").stop().animate({
+					marginTop: $(window).scrollTop() - offset.top + topPadding
+				});
+			} else {
+				$("#admin-bar").stop().animate({
+					marginTop: 20
+				});
+			};
+		});
+	});
+</script>
+{/ifset}

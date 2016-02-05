@@ -1,0 +1,131 @@
+{block content}
+
+{if (isset($show_breadcrumb) AND $show_breadcrumb == true) OR !isset($show_breadcrumb)}
+	{include '../default-top.latte' 
+		breadcrumb=>array( array('name'=>_('Vaša objednávka')) ), 
+		name=>_('Objednávka č.').$o['id_order'],
+		backlink=>array('name'=>_('Späť na históriu objednávok'),'link'=>$presenter->link('Profil:orderList'))
+	}
+{/if}
+<div class="content">
+	<div class="order-container">
+	
+		<div>
+			<div style="width:300px;float:left;">
+				<h3>{!_('Fakturačné údaje')}</h3>
+
+				{if $o['type'] == 1}
+					{$o['company_name']}
+				{/if}
+				{$o['name']} {$o['surname']}<br />
+				{$o['address']}<br />
+				{$o['zip']}, {$o['city']}<br />
+				{$o['iso']}<br />
+
+				{if $o['type'] == 1}{$o['company_name']}
+					<br />
+					{!_('IČO')}: {$o['ico']}<br />
+					{!_('DIČ')}: {$o['dic']}<br />
+				{/if}
+
+			</div>
+
+			<div style="width:300px;float:left;">
+				<h3>{!_('Dodacia adresa')}</h3>
+				{if $o['use_delivery_address'] == 1}
+					{if $o['type'] == 1}{$o['delivery_company_name']}{/if}
+					{$o['delivery_name']} {$o['delivery_surname']}<br />
+					{$o['delivery_address']}<br />
+					{$o['delivery_zip']}, {$o['delivery_city']}<br />
+					{$o['delivery_iso']}<br />
+				{else}
+					{if $o['type'] == 1}{$o['company_name']}{/if}
+					{$o['name']} {$o['surname']}<br />
+					{$o['address']}<br />
+					{$o['zip']}, {$o['city']}<br />
+					{$o['iso']}<br />
+				{/if}
+				
+
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+
+		<h3 style="padding-top:20px;">{!_('Kontakt')}</h3>
+
+		<b>{!_('Tel.')}:</b> {$o['phone']}<br />
+		<b>{!_('E-mail')}:</b> {$o['email']}
+
+
+		{if $o['text']!=''}
+		<h3 style="padding-top:20px;">{!_('Poznámka zákazníka k objednávke')}</h3>
+		{$o['text']}
+		{/if}
+
+		<div>
+			<h3 style="padding-top:20px;">Spôsob platby</h3>
+			<p>
+				{$o['payment_title']}
+			</p>
+
+		</div>
+
+	<div class="detail-kosika">
+		<h3 style="padding-top:20px;">{!_('Tovar')}</h3>
+		{*{if $o['need_available_to_48_hour']==1}<p style="color:red;"> Vybraný tovar bude dodaný do 48 hod.</p>{/if}*}
+		<style type="text/css">
+			.order-table td,.order-table th{ padding:10px; border-bottom:1px solid #303030;}
+		</style>
+		<table class="order-table">
+			<tr>
+				<th>Názov tovaru</th>
+				<th>Množstvo</th>
+				<th>Jedn. cena</th>
+				<th>Celkom</th>
+			</tr>
+
+
+			{foreach $o['products'] as $p}
+			  <tr class="tr {if $iterator->isOdd()}neparne{/if}">
+				<td>{$p['name']}
+					{var $a = dibi::fetchSingle("SELECT available FROM [product] WHERE id_product = %i",$p['id_product'])}
+					{if $a == 1}<span style="color:orange;font-size:10px;">Tovar dostupný do 48 hodín</span>{/if}	
+				</td>
+				<td>{$p['count']}</td>
+				<td class="price" style="width:70px;">{$p['price']|money:$presenter->id_lang}</td>
+				<td class="price">{$p['count']*$p['price']|money:$presenter->id_lang}</td>
+			  </tr>
+			{/foreach}
+
+			{if isset($discount) AND $discount}
+			<tr class="delivery tr neparne">
+				<td>Zľava {$discount}%</td>
+				<td></td>
+				<td style="width:70px;"></td>
+				<td class="price">{$discount|money:$presenter->id_lang}</td>
+			</tr>
+			{/if}
+			
+			
+			<tr class="delivery tr neparne">
+				<td>{$o['delivery_title']}</td>
+				<td></td>
+				
+				<td style="width:70px;"></td>
+				<td class="price">{$o['delivery_price']|money:$presenter->id_lang}</td>
+			</tr>
+
+			<tr class="payment tr ">
+				<td>{$o['payment_title']}</td>
+				<td></td>
+				
+				<td style="width:70px;"></td>
+				<td class="price">{$o['payment_price']|money:$presenter->id_lang}</td>
+			</tr>
+
+		</table><!-- end table -->
+		<h3 style="padding-top:20px;">{!_('SPOLU')}: {$o['total_price_with_tax']|money:$presenter->id_lang} s DPH ( {$o['total_price']|money:$presenter->id_lang} bez DPH )</h3>
+	</div>
+
+</div>
+</div>

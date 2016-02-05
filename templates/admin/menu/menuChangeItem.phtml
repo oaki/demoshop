@@ -1,0 +1,68 @@
+<form id="formChangeItem" method="post" action="" style="margin: 0px; padding: 0px;" enctype="multipart/form-data">
+<table id="highlight">
+	<thead>
+		<tr>
+			<td style="width: 150px;"><b>Úprava položky:</b></td>
+			<td></td>
+		</tr>
+
+	</thead>
+	<tbody>
+		<tr>
+			<td>Názov:</td>
+			<td><input class="text" type="text" name="name" value="{$l ['name']}" /></td>
+		</tr>
+		<tr>
+			<td>Rodič:</td>
+			<td>
+               <select name="parent" class="select">
+				<option value="0">root</option>
+    			{!$doTreeSelect}
+              </select></td>
+		</tr>
+
+		<tr>
+			<td>URL:</td>
+			<td>
+				<input class="text" type="text" name="slug" value="{$l['slug']}" /><br />
+				
+				<p>Automaticky zmeniť podľa nazvu: <input type="checkbox" name="autoChangeUrl" value="1" style="width: 20px;" /></p>
+				<p>Celá URL: <a href="http://{? echo($_SERVER['HTTP_HOST'])}/{$l['url_identifier']}" target="_blank">http://{? echo($_SERVER['HTTP_HOST'])}/{$l['url_identifier']}</a></p>
+			</td>
+		</tr>
+	
+		<tr>
+			<td style="width: 150px;">Meta nadpis:</td>
+			<td><input class="text" type="text" name="meta_title" value="{$l['meta_title']}" /></td>
+		</tr>
+		
+		<tr>
+			<td>Meta Popis:</td>
+			<td><textarea name="meta_description" class="text medium">{$l ['meta_description']}</textarea></td>
+		</tr>
+
+		<tr>
+			<td>Viditeľnosť:</td>
+			<td><select name="visible">
+				<option value="0">viditelné</option>
+				<option value="1"{if $l ['visible'] == 1} selected="selected"{/if}>skryté - ale funguje URL</option>
+				<option value="2"{if $l ['visible'] == 2} selected="selected"{/if}>skryté - nefunguje URL</option>
+			</select></td>
+		</tr>
+		
+		<tr>
+			<td>Je táto podstránka úvodná?:</td>
+			<td><input style="width: 20px;" type="checkbox" value="1" name="home" {if $l ['home'] == 1} checked="checked" {/if} /></td>
+		</tr>
+		
+	</tbody>
+
+</table>
+
+	<input type="submit" class="submit" name="changeMenuItem" value="Ulož" />
+
+</form>
+
+<script type="text/javascript">	
+      var th = new tableHighlighter( 'highlight' );	
+</script>

@@ -1,0 +1,44 @@
+<div style="padding:10px;">
+
+<h1><a name="comments"></a>Komentáre</h1><br />
+<table id="highlight">
+<thead>
+	<tr>
+		<th style="width: 111px"></th>
+		<th></th>
+		<th style="width: 111px"></th>
+	</tr>
+</thead>
+<tbody>
+{if $comments_buffer != ''}
+	{*{foreach $list as $l}
+	<tr>
+		<td>
+			{$l['adddate_formated']}
+		</td>
+		<td>
+			<b>Meno:</b> {$l['name']}<br />
+			<b>Text: </b>{$l['text']}
+		</td>
+		<td>
+			{if $l['status']==0}<a href="/admin.php?id_menu_item={$_GET['id_menu_item']}&id_type_modul={$_GET['id_type_modul']}&id_modul={$_GET['id_modul']}&id_comment={$l['id_comment']}&action=allow#comments">Povoliť</a> |{/if}
+			<a href="/admin.php?id_menu_item={$_GET['id_menu_item']}&id_type_modul={$_GET['id_type_modul']}&id_modul={$_GET['id_modul']}&id_comment={$l['id_comment']}&action=delete#comments">Zmazať</a> |
+			<a target="_blank" href="/{$l['menu_url_identifier']}/{$l['url_identifier']}.html">Link</a>
+		</td>
+	</tr>
+	{/foreach}*}
+	{!$comments_buffer}
+	
+{else}
+	<tr>
+		<th colspan="3" style="padding:10px;">
+			Žiadne nové komentáre.
+		</th>
+	</tr>
+{/if}
+</tbody>
+</table>
+<script type="text/javascript">	
+	var th = new tableHighlighter( 'highlight' );	
+</script>
+</div>

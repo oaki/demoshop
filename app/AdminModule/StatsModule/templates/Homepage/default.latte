@@ -1,0 +1,32 @@
+
+{block content}{*
+<a href="{link :Admin:Stats:GoogleAnalytics:default}">google</a>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("visualization", "1", { packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	 function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Den');
+        data.addColumn('number', 'Pocet');
+        
+        data.addRows([
+			{foreach $visitors as $day=>$count}
+				['{!$day}',{!$count}],				
+			{/foreach}
+          
+        ]);
+
+        var options = {
+          width: 1000, height: 500,
+          title: 'Přehled návštěvníků'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+</script>
+
+<div id="chart_div"></div>
+*}

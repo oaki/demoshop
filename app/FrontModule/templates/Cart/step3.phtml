@@ -1,0 +1,89 @@
+{block #content}
+
+
+{include '../default-top.latte' 
+	breadcrumb=>array( array('name'=>'Platba a doručenie') ), 
+	name=>_('Platba a doručenie')
+}
+
+
+
+<div class="content bottom-padding">
+
+	{include 'order-indicator.latte'}
+
+	
+	{*<div class="order-info-text">
+		Vyberte si spôsob doručenia a platby tovaru. Na základe zvolenej možnosti sa k cene objednaného tovaru prírata uvedená cena za poštovné a balné. V prípade, že zvolená možnosť je označená slovom zadarmo, cenu za poštovné a balné Vam nebudeme účtovať.
+
+	</div>
+*}
+
+
+
+
+
+	{form paymentAndDelivetyForm}
+
+		<div class="delivery-form">
+			{*<div class="formTitle">Platba a doručenie</div>*}
+			<div class="sectionTitle">Doručenie</div>
+			<div class="deliveryPaymentSection">
+				{foreach $delivery as $d}
+					<div class="item">			 
+						<div class="name">
+							{$form['id_delivery']->getControl($d['id_delivery'])}
+							<span class="price">(+ {$d['price']|money:$presenter->id_lang})</span>
+						</div>
+						<div class="info">					
+							<p>{$d['description']}</p>
+						</div>
+						<div class="clean"></div>			
+					</div> 
+				{/foreach}        
+			</div>
+
+			
+			<div class="sectionTitle">Platba</div>
+			
+			<div class="deliveryPaymentSection">
+				{foreach $payment as $d}
+					<div class="item">			 
+						<div class="name">
+							{$form['id_payment']->getControl($d['id_payment'])}
+							<span class="price">(+ {$d['price']|money:$presenter->id_lang})</span>
+						</div>
+						<div class="info">					
+							<p>{$d['description']}</p>
+						</div>
+						<div class="clean"></div>			
+					</div> 
+				{/foreach}        
+			</div>
+		</div>
+	
+	
+	
+	<a class="classic-btn border-radius-2" href="{link step2}">Späť</a>
+	{input btn class=>'classic-btn border-radius-2 right'}
+	{/form paymentAndDelivetyForm}
+
+	<div class="clear"></div>
+
+	<script type="text/javascript">
+		function clearDeliveryForm(){
+			$('.delivery-form .item').removeClass('selected');
+		}
+		
+		function selectDeliveryForm(){ 
+			clearDeliveryForm();
+			$(".delivery-form input[type=radio]:checked").each( function(el){
+				$(this).parent().parent().addClass('selected');				
+			});
+		}
+		
+		selectDeliveryForm();
+		$(".delivery-form input[type=radio], .delivery-form label").click( function(){ selectDeliveryForm(); });
+		
+	</script>
+</div>

@@ -1,0 +1,165 @@
+{ifset $ajax}
+
+		{block #TreeView}
+		{ifset $run}
+		{ifset $data[$node]}
+		{foreach $data[$node] as $item}
+		{if !$firstRun && $iterator->isFirst()}<ul>{/if}
+			<li id="node_{$item->$keyColumn}" class="{if $openAll}{ifset $data[$item->$keyColumn]}jstree-open {/if}{/if}{if $enableCheckbox}{if $item->$checkboxColumn}jstree-checked{else}jstree-unchecked{/if}{/if}"><a href="javaScript:;">{!$item->$titleColumn}</a>
+				{ifset $data[$item->$keyColumn]}{include #TreeView, 'node' => $item->$keyColumn, 'isRootNode'=>false, 'firstRun' => false, 'run' => true}{/if}
+			</li>
+		{if !$firstRun && $iterator->isLast()}</ul>{/if}
+		{/foreach}
+		{/if}
+		{/if}
+		{/block}
+
+	{if $showRoot}
+		<li id="node_0" rel="root"><a href="javaScript:;">{$rootTitle}</a>
+		<ul>
+	{/if}
+	{include #TreeView, 'node' => NULL, 'firstRun' => true, 'run' => true}
+	{if $showRoot}
+		</ul>
+		</li>
+	{/if}
+		
+{else}
+<div id="{!$name}-demo" class="">
+	<ul>
+
+	</ul>
+</div>
+
+<script type="text/javascript" class="source">
+$(function () {
+    $.jstree._themes = '/css/jsTree/themes/';
+    
+	$("#{!$name}-demo").jstree({
+		"plugins" : [ 
+		    "themes",
+		    "html_data"{if $enableDragDrop}, "crrm", "dnd"{/if}
+		    {if $enableContextmenu}, "contextmenu"{/if}
+		    {if $enableCheckbox}, "checkbox"{/if}
+		],
+		"core" : {
+				"initially_open" : [ "node_0" ],
+				"set_theme": "apple",
+				"strings": {
+				    loading		: "Nahrávam ...",
+					new_node	: "Nová kategória"
+				}
+			},
+		"html_data" : {
+            "ajax" : {
+                "url" : "?do={!$name}-getData",
+                "data" : function (n) {
+                    return { id : n.attr ? n.attr("id") : 0 };
+                }
+            }
+        },
+		"types" : {
+			"types" : {
+				"root" : {
+					"icon" : {
+						"image" : "/static/v.1.0rc2/_demo/root.png"
+					},
+					"start_drag" : false,
+					"move_node" : false,
+					"delete_node" : false,
+					"remove" : false
+				}
+			}
+		},
+		"contextmenu" : {
+			
+		}
+	})
+	{if $enableContextmenu}
+	.bind("create.jstree", function (e, data) {
+			$.get(
+				"?do={!$name}-createData",
+				{
+					"{!$name}-id" : data.rslt.parent.attr("id").replace("node_",""),
+					"{!$name}-position" : data.rslt.position,
+					"{!$name}-title" : data.rslt.name,
+					"{!$name}-type" : data.rslt.obj.attr("rel")
+				},
+				function (r) {
+					if(r) {
+						$(data.rslt.obj).attr("id", "node_" + r);
+					}
+					else {
+						$.jstree.rollback(data.rlbk);
+					}
+				}
+			);
+	})
+	.bind("remove.jstree", function (e, data) {
+		data.rslt.obj.each(function () {
+			$.ajax({
+				async : false,
+				type: 'GET',
+				url: "?do={!$name}-deleteData",
+				data : {
+					"{!$name}-id" : $(this).attr("id").replace("node_","")
+				},
+				success : function (r) {
+					if(!r) {
+						data.inst.refresh();
+					}
+				}
+			});
+		});
+	})
+	.bind("rename.jstree", function (e, data) {
+		$.get(
+			"?do={!$name}-updateData",
+			{
+				"{!$name}-id" : data.rslt.obj.attr("id").replace("node_",""),
+				"{!$name}-title" : data.rslt.new_name
+			},
+			function (r) {
+				if(!r) {
+					$.jstree.rollback(data.rlbk);
+				}
+			}
+		);
+	})
+	{/if}
+	{if $enableDragDrop}
+	.bind("move_node.jstree", function (e, data) {
+		data.rslt.o.each(function (i) {
+			$.ajax({
+				async : false,
+				type: 'GET',
+				url: "?do={!$name}-saveData",
+				data : {
+					"{!$name}-id" : $(this).attr("id").replace("node_",""),
+					"{!$name}-ref" : data.rslt.np.attr("id").replace("node_",""),
+					"{!$name}-position" : data.rslt.o.index()
+				},
+				success : function (r) {
+					if(!r) {
+						$.jstree.rollback(data.rlbk);
+					}
+					else {
+						//$(data.rslt.oc).attr("id", "node_" + r.id);
+						if(data.rslt.cy && $(data.rslt.oc).children("UL").length) {
+							data.inst.refresh(data.inst._get_parent(data.rslt.oc));
+						}
+					}
+				}
+			});
+		});
+	})
+	{/if}
+	;
+	$("#{!$name}-demo a").live("click",function(){
+		if($(this).parent().hasClass("jstree-checked")) var type = "check";
+		if($(this).parent().hasClass("jstree-unchecked")) var type = "uncheck";
+		$.get("?do={!$name}-click&{!$name}-id="+$(this).parent().attr("id").replace("node_","")+"&{!$name}-type="+type);
+	});
+});
+</script>
+{/if}

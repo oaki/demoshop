@@ -1,0 +1,120 @@
+@{block content}
+<script type="text/javascript" src="/jscripts/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="/jscripts/setting_eshop_product_tiny_mce.js"></script>
+
+<div class="submenu">
+    <a href="{link Eshop:default}">spať</a>
+    <h2>{!_('Pridanie produktu')} </h2>
+    <div class="clear"></div>
+</div>
+
+<div>
+    <div class="category-form-container">
+
+{*
+	<div class="lang-container">
+	    <div class="lang-position">
+		{foreach $langs as $k=>$lang}
+		    <a href="#" class="lang" rel="{$k}"><img src="/images-system/admin/flag-{$lang['iso']}.png" alt="{$lang['name']}" /></a>
+		{/foreach}
+	    </div>
+	</div>
+*}
+
+	{control addForm}
+
+
+    </div>
+
+
+
+    <div class="files-container">
+		<h1>Súborový manažér</h1>
+		{$fileNode->render()}
+    </div>
+
+    <div class="clear"></div>
+
+	<div class="params">
+		<fieldset>
+			<legend>Parametre</legend>
+			{snippet productparams}
+				{control productParams}
+			{/snippet}
+		</fieldset>
+	</div>
+
+	
+</div>
+
+<script type="text/javascript">
+    $("tr:nth-child(odd)").addClass("odd");
+    $('table').highlight();
+	
+	$('select[name="id_product_template_group"]').change( function(){ 
+		$.get({link saveTemplateGroup!} + '&id_product_template_group='+$(this).val());
+	});
+	
+</script>
+
+   
+<script type="text/javascript">
+    /*
+     * ak pises do sk, pise do vsetkych prázdnych
+     */
+
+    $('#frmaddForm-btn').click( function(){
+	{foreach $langs as $k=>$lang}
+	    {if $lang['iso']!='sk'}
+		var el = $('#frmaddForm-name{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmaddForm-name_lang_sk').val() );
+		}
+
+		var el = $('#frmaddForm-description{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmaddForm-description_lang_sk').val() );
+		}
+
+		var el = $('#frmaddForm-link_rewrite{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmaddForm-link_rewrite_lang_sk').val() );
+		}
+
+		var el = $('#frmaddForm-meta_title{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmaddForm-meta_title_lang_sk').val() );
+		}
+
+		var el = $('#frmaddForm-meta_keywords{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmaddForm-meta_keywords_lang_sk').val() );
+		}
+
+		var el = $('#frmaddForm-meta_description{? echo CategoryFormControl::$_separator}{!$lang['iso']}');
+		if(el.val() == ''){
+		    el.val(  $('#frmaddForm-meta_description_lang_sk').val() );
+		}
+	    {/if}
+	{/foreach}
+
+    });
+
+
+
+
+    function hideAll(){
+	$('.lang_fieldset').hide();
+    }
+
+    $('.lang').click( function(e){
+	e.preventDefault();
+	hideAll();
+	$('#lang_' + $(this).attr('rel') ).show();
+    });
+
+    hideAll();
+    $('#lang_sk' ).show();
+
+
+</script>

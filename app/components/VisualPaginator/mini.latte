@@ -1,0 +1,7 @@
+
+{if $paginator->pageCount > 1}
+
+     <a {if $paginator->isLast()}class="inactive"{/if} href="{if $paginator->isLast()}{link this, 'page' => $paginator->page}{else}{link this, 'page' => $paginator->page + 1}{/if}" id="quick-paginator-next" title="Nasledujúca stránka"></a>
+	 <a {if $paginator->isFirst()}class="inactive"{/if} href="{if $paginator->isFirst()}{link this, 'page' => $paginator->page}{else}{link this, 'page' => $paginator->page - 1}{/if}" id="quick-paginator-back" title="Predchádzajúca stránka"></a>
+	 
+{/if}

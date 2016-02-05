@@ -1,0 +1,23 @@
+{snippet tabella}
+  <script type="text/javascript">
+  <!--
+    var {!$name}Params = eval( {!$tabellaParams} );
+  -->
+  </script>
+  
+  <div class="tabella" name="{$name}" data-submit-url="{$control->link( "submit!", $params )}">
+    <table>
+      {$header}
+      {$body}
+    </table>
+  {$footer}
+  </div>
+  
+   {*<script type="text/javascript">
+  <!--
+     $(".tabella .deleteIcon").easyconfirm({ locale: { title: 'Upozornenie', button: ['No','Yes']}});
+  -->
+  </script>
+ *}
+{/snippet}
+<br style="clear:both;">

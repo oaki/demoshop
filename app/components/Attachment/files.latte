@@ -1,0 +1,8 @@
+
+<div n:if="count($files)>0" class="c-atachment">
+	<h3>{!_'Súbory na stiahnutie'}</h3>
+	
+	<div n:foreach="$files as $f" class="atachment">
+		<img src="{$control->icon_dir}{if !is_file( $control->abs_icon_dir.$f['ext'].'.gif')}unknow{else}{$f['ext']}{/if}.gif" />
+		<a href="{? echo Files::getFileUrl($f['src'],$f['ext']);}">{if $f['alt']!=''}{$f['alt']}{else}{$f['src']}.{$f['ext']}{/if}</a></div>
+</div>

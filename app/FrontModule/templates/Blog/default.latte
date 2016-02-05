@@ -1,0 +1,35 @@
+{block #content}
+<h1>Blog</h1>
+{foreach $blog_box as $box}
+{if isset($box->data[0])}
+<div class="blog-box">
+{dump $box}
+	<div class="blog-box-1">
+		<h2>Kategória: <a n:href="Blog:list $box->url_identifier">{$box->name}</a></h2>
+		<div class="blog-box-1-1">
+			<a href="{$box->data[0]->url}">
+				{if isset($box->data[0]->image_url)}
+					<img src="{$box->data[0]->image_url}">
+				{/if}
+			</a>
+		</div>
+		<div class="blog-box-1-2">
+			<small>Najnovší článok:</small>
+			<h3><a href="{$box->data[0]->url}">{$box->data[0]->title}</a></h3>
+			<p>
+				<a href="{$box->data[0]->url}">{$box->data[0]->text|striptags|truncate:500}</a>
+			</p>
+		</div>
+	</div>
+	<div class="blog-box-2">
+		<small>Najnovšie články:</small>
+		{if isset($box->data[1])}
+			{foreach $box->data as $data}
+				<h3><a href="{$data->url}">{$data->title}</a></h3>
+			{/foreach}
+		{/if}
+	</div>
+	<div class="blog-box-3" style="">&nbsp;</div>
+</div>
+{/if}
+{/foreach}

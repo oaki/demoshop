@@ -1,0 +1,88 @@
+<div id="wrapper"></div>
+<div id="wrapper-2"></div>
+<div id="LogInHolder">
+	
+	{*<h1 id="logo"></h1>*}
+    <h2>Prihlásenie</h2>
+     
+     {$loginForm}
+    <div n:ifset="$error_msg" id="error">{$error_msg}</div>
+    <div id="spinner"></div> 
+</div>   
+
+<div id="copyright">
+	Copyrights <a href="http://{? echo NEnvironment::getConfig('variable')->copyright_url}" title="{? echo NEnvironment::getConfig('variable')->copyright}" style="color: orange;">{? echo NEnvironment::getConfig('variable')->copyright}</a>. All rights reserved. 
+</div>
+
+<div id="mylogo">
+	<!-- <img src="/templates/global_img/q7.png" /> --> 
+</div>
+		
+		 
+<script type="text/javascript">
+<!--
+window.addEvent('domready', function() {
+
+	var hiddenSpinner = function(){ 
+		$('spinner').setStyle('display','none'); 
+	};
+
+	
+	
+	$('LoginForm').addEvent('submit', function(e){
+			
+			$('spinner').setStyle('display','block');			
+			hiddenSpinner.periodical(5000);
+	})
+	
+	if( $('frmLoginForm-login').get('value') != ''){
+		$('loginLabel').setStyle('opacity', '0');	
+	}
+
+	if( $('frmLoginForm-password').get('value') != ''){
+		$('passwordLabel').setStyle('opacity', '0');	
+	}
+
+	
+	$('frmLoginForm-login').addEvents({
+		'focus': function(){
+			if(this.get('value') == '')
+				$('loginLabel').setStyle('opacity', '0.42');
+		},
+	
+		'blur': function(){		
+			if( this.get('value') == ''){
+				$('loginLabel').setStyle('opacity', '1');
+			}	
+		},
+	
+		'keydown': function(){
+			$('loginLabel').setStyle('opacity', '0');
+		} 
+		
+	});
+	
+	$('frmLoginForm-password').addEvents({
+		'focus': function(){
+			if(this.get('value') == '')
+				$('passwordLabel').setStyle('opacity', '0.42');
+		},
+	
+		'blur': function(){
+			if( this.get('value') == ''){
+				$('passwordLabel').setStyle('opacity', '1');
+			}		 
+		},
+	
+		'keydown': function(){
+			if(this.get('value') == '')
+				$('passwordLabel').setStyle('opacity', '0');
+		} 
+		
+	});
+
+});
+//-->
+</script>
+</body>
+</html>

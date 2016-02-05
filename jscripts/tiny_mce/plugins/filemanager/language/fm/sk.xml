@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<language-pack>
+	<header>
+		<author>Moxiecode Systems AB</author>
+		<version minor="2" major="0" releasedate="2005-10-28" />
+		<description>
+			Slovensky jazyk 
+		</description>
+	</header>
+
+	<language code="sk" title="Slovensky" dir="ltr">
+		<group target="error">
+			<item name="tofile_exists">Súbor už existuje</item>
+			<item name="no_from_file">Súbor neexistuje</item>
+			<item name="demo">demo</item>
+			<item name="invalid_filename">Názov súboru nie je správny.</item>
+			<item name="no_read_access">Nemáte právo čítať súbory/adresár.</item>
+			<item name="no_write_access">Nemáte práva na zápis súboru.</item>
+			<item name="copy_failed">Kopírovanie zlyhalo.</item>
+			<item name="move_failed">Pohyb/akcia zlyhala.</item>
+			<item name="template_missing">Položka nebola nájdená.</item>
+			<item name="createdoc_failed">Vybraný dokument zlyhal.</item>
+			<item name="no_access">Nemáte právo na vykonanie operácie.</item>
+			<item name="file_exists">Súbor už existuje.</item>
+			<item name="upload_failed">Nahrávanie zlyhalo, adresár nemá práva.</item>
+			<item name="error_to_large">Maximálna veľkosť súboru dosiahnutá.</item>
+			<item name="file_not_exists">Súbor neexistuje.</item>
+			<item name="delete_failed">Vymazanie zlyhalo.</item>
+			<item name="folder_exists">Záložka už existuje.</item>
+			<item name="no_filesystem">Nebol nájdený žiadny súborový systém.</item>
+			<item name="createdir_failed">Vybraná záložka zlyhala.</item>
+			<item name="createzip_failed">Vybraný archív zip zlyhal.</item>
+			<item name="rename_failed">Premenovanie zlyhalo.</item>
+			<item name="savecontent_failed">Uloženie obsahu zlyhalo.</item>
+		</group>
+
+		<group target="message">
+			<item name="zip_success">Archív zip bol úspešný.</item>
+			<item name="copy_success">Kopírovanie bolo úspešné.</item>
+			<item name="move_success">Pohyb/akcia bola úspešná.</item>
+			<item name="createdoc_success">Dokument bol vytvorený úspešné.</item>
+			<item name="delete_success">Vymazanie úspešné.</item>
+			<item name="directory_ok">Vytvorenie záložky úspešné.</item>
+			<item name="keepalive">Zachovanie</item>
+			<item name="upload_ok">Nahrávanie úspešné.</item>
+			<item name="confirm_cut">Naozaj chceš vystrihnúť vybrané súbory?</item>
+			<item name="confirm_copy">Naozaj chceš kopírovať vybrané súbory?</item>
+			<item name="confirm_paste">Naozaj tu chceš prilepiť vystrihnutý súbor?</item>
+			<item name="confirm_delete">Naozaj chceš vymazať vybrané súbory?</item>
+			<item name="insert">Vkladá sa súbor, prosím čakajte...</item>
+			<item name="paste_in_progress">Prosím čakajte...</item>
+		</group>
+
+		<group target="common">
+			<item name="createdir">Vytvoriť adresár</item>
+			<item name="createfile">Nový súbor</item>
+			<item name="help">Pomoc</item>
+			<item name="refresh">Obnoviť</item>
+			<item name="upload">Nahrať</item>
+			<item name="directory">Vyber adresár</item>
+			<item name="imagemanager">Správca obrázkov</item>
+			<item name="title">Súborový Manažer</item>
+			<item name="alert_ok">Ok</item>
+			<item name="confirm_yes">áno</item>
+			<item name="confirm_no">nie</item>
+		</group>
+
+		<group target="button">
+			<item name="create">Vytvoriť</item>
+			<item name="cancel">Zrušiť</item>
+			<item name="save">Ulož</item>
+		</group>
+
+		<group target="panel">
+			<item name="categories">Kategórie</item>
+			<item name="preview">Náhľad</item>
+
+			<!-- Legacy items -->
+			<item name="favorites">Obľúbené</item>
+			<item name="history">História</item>
+		</group>
+
+		<group target="edit">
+			<item name="title">upraviť súbor</item>
+			<item name="description">Upraviť obsah v súbore.</item>
+			<item name="loading_wait">Nahrávanie obsahu, prosím čakajte.</item>
+			<item name="saving_wait">Ukladanie obsahu, prosím čakajte.</item>
+			<item name="file_path">Cesta k súboru:</item>
+		</group>
+
+		<group target="actions">
+			<item name="insert">Vložiť</item>
+			<item name="download">Stiahnuť</item>
+			<item name="rename">Premenovať</item>
+			<item name="cut">Orezať</item>
+			<item name="copy">Kopírovať</item>
+			<item name="paste">Vložiť</item>
+			<item name="deleteit">Zmazať</item>
+			<item name="edit">Upraviť</item>
+			<item name="zip">Zip</item>
+			<item name="view">Náhľad</item>
+			<item name="select_all">Označ všetko</item>
+			<item name="unselect_all">Odznač všetko</item>
+
+			<!-- Legacy items -->
+			<item name="addfavorites">Pridať obľúbené</item>
+			<item name="removefavorites">Odstániť obľúbené</item>
+		</group>
+
+		<group target="filelist">
+			<item name="filename">Názov súboru</item>
+			<item name="size">Veľkosť</item>
+			<item name="type">Typ</item>
+			<item name="modified">Dátum zmeny</item>
+			<item name="with_selected">S vybranými:</item>
+			<item name="info_dirs">Adresár:</item>
+			<item name="info_files">Súbory:</item>
+			<item name="info_size">Úplná veľkosť súboru:</item>
+			<item name="info_access">Prístup:</item>
+			<item name="loading">Náčítavanie...</item>
+		</group>
+
+		<group target="createdir">
+			<item name="title">Vytvoriť adresár</item>
+			<item name="description">Praješ si vybrať vytvorený názov záložky.</item>
+			<item name="template">Položka:</item>
+			<item name="select_template">-- Vybrať položku --</item>
+			<item name="directory_name">Názov záložky:</item>
+			<item name="create_in">Vytvoriť v:</item>
+			<item name="progress">Vytváranie záložky, prosím čakajte...</item>
+		</group>
+
+		<group target="createdoc">
+			<item name="title">Vytvoriť dokument</item>
+			<item name="description">Vyplňte formulár pre vytvorenie nového dokumentu.</item>
+			<item name="template">Položka:</item>
+			<item name="select_template">-- Vybrať položku --</item>
+			<item name="name">Názov</item>
+			<item name="path">Cesta</item>
+			<item name="preview">Náhľad</item>
+			<item name="preview_title">Náhľad zo: {súboru}</item>
+		</group>
+
+		<group target="upload">
+			<item name="title">Nahrať</item>
+			<item name="description">Použi formulár pre nahranie súborov .</item>
+			<item name="valid_extensions">Povolené typy súborov:</item>
+			<item name="max_upload_size">Maximálna veľkosť súboru:</item>
+			<item name="file_to_upload">Nahrať súbor:</item>
+			<item name="as_file_name">Ako názov súboru:</item>
+			<item name="path">Path: </item>
+			<item name="button_upload">Nahrať</item>
+			<item name="browse">Pridať súbor/y</item>
+			<item name="progress">Nahrávanie...</item>
+			<item name="upload_warn">Súbory sa sťahujú,naozaj chceš ukončiť sťahovanie?</item>
+			<item name="statusrow">Máte {files} súborov (celkom {size}) horlivo čakajú na nahratie.</item>
+			<item name="progressinfo">{loaded} z {total} nahraté {speed}/s.</item>
+			<item name="abort">Nahrávanie prerušené</item>
+			<item name="add_more">Pridať viac?</item>
+			<item name="upload_to_server">Nahrávanie k serveru</item>
+			<item name="cancelled">Nahrávanie bolo zrušené</item>
+			<item name="choose_files">Vybrať súbory</item>
+			<item name="basic_upload">Ak máte problémy pri nahrávaní, môžete použiť základný nahrávač.</item>
+			<item name="remove">Odstrániť</item>
+			<item name="file">Súbor</item>
+			<item name="size">Veľkosť</item>
+			<item name="status">Status</item>
+			<item name="no_valid_files">Vybratý súbor nie je podporovaný.</item>
+		</group>
+
+		<group target="createzip">
+			<item name="title">Vybrať zip</item>
+			<item name="description">Praješ si vybrať vytvorený názov v zip súbore.</item>
+			<item name="name">Názov:</item>
+			<item name="path">Cesta</item>
+		</group>
+
+		<group target="tinymce">
+			<item name="insertfile_desc">Vložiť súbor</item>	
+		</group>
+
+		<group target="favorites">
+			<item name="special_folder_title">Obľúbené</item>
+			<item name="addfavorites">Pridať obľúbené</item>
+			<item name="removefavorites">Odstániť obľúbené</item>
+			<item name="confirm_remove_favorite">Naozaj si to želáš odstrániť z tvojej obľúbenej položky ?</item>
+			<item name="remove_favorite_failed">Zlyhalo odstránenie vybraného z tvojej obľúbenej zložky.</item>
+		</group>
+
+		<group target="history">
+			<item name="special_folder_title">História</item>
+		</group>
+	</language>
+</language-pack>

@@ -1,0 +1,274 @@
+{control header}
+
+
+<body id="top">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/sk_SK/all.js#xfbml=1&appId=343659542349793";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="container">
+	<div id="msg-container"></div>
+	<div class="mainpage">
+
+		<div class="c-top">
+
+			<div class="logo">
+				<h1 class="title"><a title="Demoshop" href="/"></a></h1>
+			</div>
+			
+			
+			
+			<div class="c-search">
+				{form searchform}
+					{label q/}
+					{input q class=>"query"}
+					{input btn class=>"btn"}
+				{/form searchform}
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$(".c-search label").inFieldLabels();
+				});
+
+			</script>
+
+			
+			{control userProfil:topLink}
+			
+			{control userProfil}
+			
+		</div><!-- c top -->
+
+		
+		
+
+		<div class="c-menu">
+
+		<div class="menu">
+
+			{assign parent => 0}
+			{block #mainmenu}
+				<ul n:ifset="$mainmenu[$parent]" {if $parent==0}class="sf-menu"{/if}>
+
+					{foreach $mainmenu[$parent] as $m}
+						<li n:if="$m['visible'] == 0 AND $m['id_menu'] == 0" class="{if $iterator->isFirst()} first{/if}">
+							<a class="{if isset($id_menu_item) AND $m['id_menu_item'] == $id_menu_item}active{/if}" href="{plink Page:default id=>$m['id_menu_item']}" title="{$m['name']}">{$m['name']}</a>
+							{include #this parent => $m['id_menu_item']}
+						</li>
+					{/foreach}
+				</ul>
+			{/block}
+
+			<script> 
+				$(document).ready(function() { 
+					$('ul.sf-menu').superfish({ 
+						delay:       2000,                            // one second delay on mouseout 
+						
+						speed:       'fast',                          // faster animation speed 
+						autoArrows:  false,                           // disable generation of arrow mark-up 
+						dropShadows: false                            // disable drop shadows 
+					}); 
+				}); 
+
+			</script>
+		</div><!-- menu -->
+
+
+		<div class="basket">
+
+			{control cartsmall}
+
+
+		</div><!--  basket -->
+
+
+
+
+		</div><!-- c menu -->
+		
+		
+
+	
+		<div class="c-content">
+
+			
+			
+			
+			<div class="c-content-l">
+
+				
+				<div class="sale-new-top">
+					<ul>
+						<li><a {ifCurrent :Front:Search:default q=>null,sale=>1,news=>null, top=>null}class="active"{/ifCurrent} href="{plink :Front:Search:default q=>null,sale=>1, news=>null, top=>null}">AKCIA</a></li>
+						<li><a {ifCurrent :Front:Search:default q=>null,sale=>null,news=>1, top=>null}class="active"{/ifCurrent} href="{plink :Front:Search:default q=>null,sale=>null, news=>1, top=>null }">NOVINKY</a></li>
+						<li><a {ifCurrent :Front:Search:default q=>null,sale=>null,news=>null, top=>1}class="active"{/ifCurrent} href="{plink :Front:Search:default q=>null,sale=>null, news=>null, top=>1 }">TOP</a></li>
+					</ul>
+				</div>
+
+				{foreach $eshop_category[NULL] as $main_category}
+					<div class="submenu">			
+						{assign parent => $main_category['id_category']}
+						<div class="main-category{if $iterator->isFirst()} first{/if}"><a href="{plink Eshop:default id=>$main_category['id_category']}">{$main_category['name']}</a></div>
+						{var $name_of_block = 'category_'.$main_category['id_category']}
+						{block #test}
+							<ul n:ifset="$eshop_category[$parent]">
+								<li n:if="$m['active']" n:foreach="$eshop_category[$parent] as $m" class="{if $iterator->isLast()}last{/if}">
+									<span></span>
+									<a class="{if isset($category_parents) AND  in_array($m['id_category'], $category_parents)} active{/if}" href="{plink Eshop:default id=>$m['id_category']}" title="{$m['description']|truncate:150}">
+									{$m['name']}
+									</a>
+									{if isset($category_parents) AND in_array($m['id_category'], $category_parents)}{include #this parent => $m['id_category']}{/if}
+								</li>
+							</ul>
+						{/block}
+					</div><!-- submenu -->
+				{/foreach}
+				
+				{control newsletter}
+				
+				{*
+				<div class="facebook-like-box">
+					
+					<div class="fb-like-box" data-href="https://www.facebook.com/krbypece" data-width="204" data-height="300" data-show-faces="true" data-stream="true" data-header="true"></div>
+				</div>
+*}
+
+			</div><!-- c content l -->
+			
+			
+			
+			<div class="c-content-r">
+				
+				{foreach $flashes as $flash}<div class="flash {$flash->type}">{$flash->message}</div>{/foreach}
+
+				{include #content}
+				
+				
+
+			</div><!-- c content r -->
+			
+			{*
+			
+			{block sharepost}
+				<div id="sharepost">
+					<div class="facebook-like">
+
+						<div class="fb-like" data-href="http://www.krbymilo.sk" data-send="false" data-layout="box_count" data-width="50" data-show-faces="false" data-font="arial"></div>
+						
+					</div>
+
+					<div class="google-plus">
+
+						<!-- Place this tag in your head or just before your close body tag -->
+						<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+						{ lang: 'sk'}
+						</script>
+						<!-- Place this tag where you want the +1 button to render -->
+						<g:plusone size="tall"></g:plusone>
+					</div>
+
+
+					<script type="text/javascript">
+						$(function() {
+							var offset = $("#sharepost").offset();
+							var topPadding = 250;
+							$(window).scroll(function() {
+								if ($(window).scrollTop() > offset.top) {
+									$("#sharepost").stop().animate({
+										marginTop: $(window).scrollTop() - offset.top + topPadding
+									});
+								} else {
+									$("#sharepost").stop().animate({
+										marginTop: 20
+									});
+								};
+							});
+						});
+					</script>
+
+				</div>
+			{/block sharepost}
+			
+			*}
+			{* administracne pomocky na editovanie - zobrazi sa bar, kde ak je prihlaseny uzivatel ako admin, vie sa dostat priamo do konkretneho produktu *}
+			{control adminBar}
+		</div><!-- c contetn -->
+
+
+		
+		
+
+			<div class="footer">
+
+			<div class="footer-info">
+				<h6>INFORMÁCIE</h6>
+					{assign parent => 0}
+					
+					<ul n:ifset="$mainmenu[$parent]">
+
+						{foreach $mainmenu[$parent] as $m}
+							<li n:if="$m['visible'] == 0 AND $m['id_menu'] == 1" class="{if $iterator->isFirst()} first{/if}">
+								<a class="{if isset($id_menu_item) AND $m['id_menu_item'] == $id_menu_item}active{/if}" href="{plink Page:default id=>$m['id_menu_item']}" title="{$m['name']}">{$m['name']}</a>
+							</li>
+						{/foreach}
+					</ul>					
+				
+			</div><!-- footer info -->
+
+			<div class="footer-category">
+
+			<h6>KATEGÓRIE VÝROBKOV</h6>
+
+			
+				{assign parent => NULL}
+				{block #bottom_category_menu}
+					<ul n:ifset="$eshop_category[$parent]">
+						<li n:if="$m['active']" n:foreach="$eshop_category[$parent] as $m" class="{if $iterator->isLast()}last{/if}">							
+							<a class="{if isset($category_parents) AND  in_array($m['id_category'], $category_parents)} active{/if}" href="{plink Eshop:default id=>$m['id_category']}" title="{$m['description']}">
+							{$m['name']}
+							</a>							
+						</li>
+					</ul>
+				{/block}
+					
+
+
+
+
+
+			</div><!-- footer cat -->
+
+
+
+
+
+			</div><!-- footer -->
+
+			<div class="copyright">
+
+				<div class="copyright-adress">
+					Demoshop
+				
+				</div>
+
+
+				<div class="copyright-made">
+					 Copyright © 2014 Demoshop
+				</div>
+
+			</div>
+
+
+	</div>
+	
+	
+</div>
+
+
+</body>
+</html>

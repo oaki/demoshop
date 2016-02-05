@@ -1,0 +1,104 @@
+{snippet}
+<div class="c-seo-container">
+	<h1>Keywords manažér</h1>
+	
+	{form requestBtn}
+		<div>{input keywords}</div>
+		<div>{input google_num_result} {input btn}</div>
+	{/form requestBtn}
+
+
+
+	
+	{if isset($result)}
+
+		<div class="c-keyword">
+		{foreach $result as $keyword=>$r}
+
+			<div class="keyword" title="Klúčové slovo:{$keyword}">{$keyword}</div>
+			<div n:ifset="$r['links']" class="links">
+				{foreach $r['links'] as $link=>$info}
+					<a target="_blank" class="link" title="{$link}" href="{$link}">{$link|truncate:70}</a>
+					<div class="info">
+						<div class="title" n:if="count($info['title'])>0">
+							{foreach $info['title'] as $title}
+								{$title}{if !$iterator->isLast()},{/if}
+							{/foreach}							
+
+						</div>
+						<div class="description" n:if="count($info['description'])>0">
+							{foreach $info['description'] as $description}
+								{$description}{if !$iterator->isLast()},{/if}
+							{/foreach}
+						</div>
+						<div class="h1" n:if="count($info['h1'])>0">
+							{foreach $info['h1'] as $h1}
+								{foreach $h1 as $word}
+									{$word}{if !$iterator->isLast()},{/if}
+								{/foreach}
+							{/foreach}
+						</div>
+
+						{*
+						<div class="title">
+							<input id="title_{$iterator->getCounter()}" type="text" class="tags" name="" value="{foreach $info['title'] as $title}{$title}{if !$iterator->isLast()},{/if}{/foreach}" />	
+							<div class="clear"></div>
+						</div>
+
+						<div class="description">
+							<input id="description_{$iterator->getCounter()}" type="text" class=" tags" name="" value="{foreach $info['description'] as $description}{$description}{if !$iterator->isLast()},{/if}{/foreach}" />	
+							<div class="clear"></div>
+						</div>
+
+						<div class="h1">
+							<input id="h1_{$iterator->getCounter()}" type="text" class="tags" name="" value="{foreach $info['h1'] as $h1}
+								{foreach $h1 as $word}
+									{$word}{if !$iterator->isLast()},{/if}
+								{/foreach}
+							{/foreach}" />
+							<div class="clear"></div>
+						</div>
+
+						<script type="text/javascript">
+							$(function() {
+								$('#title_{$iterator->getCounter()}').tagsInput({
+									'interactive':false,
+									'defaultText':'',
+									'removeWithBackspace' : false,
+									'height':'auto',
+									'width':'415px',
+								});
+
+								$('#description_{$iterator->getCounter()}').tagsInput({
+									'interactive':false,
+									'defaultText':'',
+									'removeWithBackspace' : false,
+									'height':'auto',
+									'width':'415px',
+								});
+
+								$('#h1_{$iterator->getCounter()}').tagsInput({
+									'interactive':false,
+									'defaultText':'',
+									'removeWithBackspace' : false,
+									'height':'auto',
+									'width':'415px',
+								});
+							});
+						</script>
+
+						*}
+
+
+					</div>
+				{/foreach}
+			</div>
+		{/foreach}
+		</div>
+
+
+	{/if}
+	
+
+</div>
+{/snippet}

@@ -1,0 +1,64 @@
+{*
+vstupy
+$product_alternative = array();
+$product_sale = array();
+$product_news = array();
+*}
+
+
+<div class="c-small-product">
+
+	<a n:if="isset($product_alternative) AND count($product_alternative)>0" href="#alternative-products" class="ul-alternative-href small-product-btn border-radius-2 active">PRÍSLUŠENSTVO</a>
+	<a n:if="count($product_sale)>0" href="#sale-products" class="ul-alternative-href small-product-btn border-radius-2">AKCIOVÁ PONUKA</a>
+	{*<a href="#" class="small-product-btn border-radius-2">TOP PONUKA</a>*}
+	<a n:if="count($product_news)>0" href="#news-products" class="ul-alternative-href small-product-btn border-radius-2">NOVINKY</a>
+
+	<div class="clear"></div>
+	<div class="c-alternative">
+
+		<ul class="ul-alternative" id="alternative-products" n:if="isset($product_alternative) AND count($product_alternative)>0">
+			<li n:foreach="$product_alternative as $p">
+				{include '../../FrontModule/templates/Product/product_mini.latte' 'p'=>$p}
+			</li>
+		</ul>
+
+		<ul class="ul-alternative" id="sale-products" n:if="count($product_sale)>0">
+			<li n:foreach="$product_sale as $p">
+				{include '../../FrontModule/templates/Product/product_mini.latte' 'p'=>$p}
+			</li>
+		</ul>
+
+		<ul class="ul-alternative" id="news-products" n:if="count($product_news)>0">
+			<li n:foreach="$product_news as $p">
+				{include '../../FrontModule/templates/Product/product_mini.latte' 'p'=>$p}
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+
+		$('.ul-alternative').hide();
+
+		if( window.location.hash == '#sale-products'
+			||
+			window.location.hash == '#news-products'
+		){
+			$(window.location.hash).fadeIn();
+		}else{
+
+			$('.ul-alternative:first-child').show();
+		}
+
+		$('.ul-alternative-href').click( function(event){
+			event.preventDefault();
+			$('.ul-alternative-href').removeClass('active');
+			$('.ul-alternative').hide();
+
+			var href = $(this).attr('href');
+			$(this).addClass('active');
+
+			$(href).fadeIn();
+		})
+
+	</script>
+</div>

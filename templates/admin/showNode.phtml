@@ -1,0 +1,93 @@
+
+<div id="node_log"></div>
+<script type="text/javascript">
+        function changePosition(id_node,position){         	
+           var req = new Request.HTML({  
+                 method: 'get',  
+                 url: "admin.php",  
+                 data: {'ajax_change_modul_position' : '1', 'id_node_ajax' : id_node, 'position' : position },
+                 update: $('node_log')
+             }).send();  
+        }
+        
+        function changeVisible(id_node,modul_visible){
+         	var req = new Request.HTML({  
+                 method: 'get',  
+                 url: "admin.php",  
+                 data: {'ajax_change_modul_visible' : '1', 'id_node_ajax' : id_node, 'modul_visible' : modul_visible },
+                 update: $('node_log')
+             }).send(); 
+        }
+</script>
+
+<table>
+{foreach $array_list as $l}
+	<tr>
+		<td style="width: 45px;">
+			<img src="require_modules/cms/modules/{$l['dir']}/icon.gif" alt="{$l['name']}" />
+		</td>
+		<td style="width: 350px;">
+            {!$l['title']}
+        </td>
+		<td>
+			<a href="#" onclick="show_site_map{!$l['id_node']}({$_GET['id_menu_item']});return false;">
+				<img src="/templates/admin/images/sitemap.gif" alt="" />
+			</a>
+                            
+				{if $iterator->isFirst()}
+                  <img style="" src="/require_modules/menu/images/up_disabled.gif" alt="Hore" />
+                {else}
+                <a href="?id_menu_item={$_GET['id_menu_item']}&amp;showModulsOnPage=1&amp;modul_id_up={$l['id_node']}" title="Posunúť hore"> 
+                	<img style="" src="/require_modules/menu/images/up.gif" alt="Hore" />
+                </a>
+				{/if}
+                
+				{if $iterator->isLast()}
+                  <img style="" src="/require_modules/menu/images/down_disabled.gif"	alt="Hore" />
+                {else}
+                  <a href="?id_menu_item={$_GET['id_menu_item']}&amp;showModulsOnPage=1&amp;modul_id_down={$l['id_node']}" title="Posunúť dole">
+                  <img style="" src="/require_modules/menu/images/down.gif" alt="Dole" /></a>
+                {/if}
+               
+                
+              {if count($var['ADMIN_POSITION']) > 1}
+	              <select name="position" onchange="changePosition({$l['id_node']},this.options[this.selectedIndex].value);">
+					{foreach $var['ADMIN_POSITION'] as $k=>$v}
+						<option value="{$k}" {if $k==$l['position']} selected="selected"{/if}>{$v}</option>
+					{/foreach}                
+	              </select> 
+	          {/if}
+              
+             {dump $var}
+              <select name="modul_visible" onchange="changeVisible({$l['id_node']},this.options[this.selectedIndex].value);">
+               {foreach $var['ADMIN_MODUL_VISIBLE'] as $k=>$v}
+					<option value="{$k}" {if $k==$l['visible']} selected="selected"{/if}>{$v}</option>
+				{/foreach}   
+              </select> 
+             
+              <a href="javascript:confl('Naozaj chcete odstrániť modul ','?id_menu_item={$l['id_menu_item']}&amp;id_type_modul={$l['id_type_modul']}&amp;id_modul_del={$l['id_node']}');">
+              	<img src="/templates/global_img/delete.gif" alt="" />
+              </a>
+
+		<div id="site_map_holder{!$l['id_node']}"></div>
+		
+		<script type="text/javascript" language="JavaScript">
+              function show_site_map{!$l['id_node']}(id_menu_item){  
+                  var log = $('site_map_holder{!$l['id_node']}').empty().addClass('ajax-loading');       	
+                   var req = new Request.HTML({  
+                         method: 'get',  
+                         url: "admin.php",
+                         data: {
+                          'ajax_show_site_map_for_modul' : '1',
+                          'id_menu_item' : id_menu_item,
+                          'id_node' : {$l['id_node']},
+                          'id_type_modul': {$l['id_type_modul']}
+                          },
+                         onComplete: log.removeClass('ajax-loading'),
+                         update: log
+                     }).send();  
+                }
+        </script></td>
+	</tr>
+{/foreach}
+</table>

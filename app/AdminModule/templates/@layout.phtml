@@ -1,0 +1,51 @@
+{control header}
+<body>
+
+	
+	<div id="allHolder">
+		<div id="adminTools">
+		   <a id="menuDashboard" href="/admin.php?section=cms" title="Obsah">Obsah</a>
+		   <a id="menuEshop" href="{plink :Admin:eshop:default id_category=>NULL}" title="E-shop">E-shop</a>
+		   <a id="menuOrder" href="{plink :Admin:order:default}" title="Objednávka">Objednávka</a>
+		   {*<a id="menuFile" href="/admin.php?section=file_manager" title="Správa súborov">Správa súborov</a>*}
+		   {*<a id="menuTranslate" href="/admin/translate/" title="Preklady">Preklady</a>*}
+		   <a id="menuNewsletter" href="{plink :Admin:Newsletter:default}" title="Newsletter">Newsletter</a>
+		   <a id="menuUsers" href="{plink :Admin:user:default}" title="Uživatelia">Uživatelia</a>
+		   {*<a id="menuPromo" href="{plink :Admin:Weight:default}" title="Cena poštovného ">Cena poštovného </a>*}
+		   {*<a id="menuComment" href="{plink :Admin:Pictogram:default}" title="Piktogramy">Piktogramy</a>*}
+		    
+		   <a id="menuGroups" href="{plink :Admin:ProductTemplateGroup:default}" title="Šablóna parametrov pre jednotlivé produkty">Parametre</a>
+		    {*<a id="menuAdminModules" href="/admin.php?section=admin_modules" title="Moduly">Moduly</a>*}
+		   <a id="menuAdminLog" href="http://www.google.com/analytics/" target="_blank" title="Statistiky">Statistiky</a>
+
+		    <a id="menuSetting" href="{plink :Admin:Setting:Homepage:default}" title="Nastavenia">Nastavenia</a>
+		    
+			
+		    
+		   <a id="menuSetting" href="{plink :Admin:Widget:default}" title="Widget">Widget</a>
+			<a id="menuLogoff" href="{plink Login:out}" title="Odhlásenie"></a>
+			
+		</div>
+
+	    <div id="content">
+	        {if count($flashes)}
+	        <div class="flash {ifset $flash->type} {$flash->type}{/ifset}">
+	            {foreach $flashes as $flash}{$flash->message}{/foreach}
+	        </div>
+	        {/if}
+		{include #content}
+
+	    </div>
+	    <div class="clear"></div>
+	    <div id="bottom">
+		<div id="copyright">
+		    QUIS - copyrights
+		    <a href="" title="{? echo $presenter->getContext()->parameters['project_name']}" style="color:orange;">
+			{? echo $presenter->getContext()->parameters['project_name']}
+		    </a>
+		    , v. {? echo $presenter->getContext()->parameters['QUIS_VERSION']}
+		</div>
+	    </div>
+	</div>
+</body>
+</html>

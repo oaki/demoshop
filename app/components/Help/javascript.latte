@@ -1,0 +1,39 @@
+<div class="result"></div>
+<script type="text/javascript">
+//zisti legendu
+	var labels = {};
+	$('label').each( function( el ){		
+		var html = $(this).html();
+		labels[html] = html;
+	})
+	
+	function getElement( name ){
+		var r = false
+		$('label').each( function( el ){		
+			var html = $(this).html();
+			if( name == html ){
+				r = $(this);
+			};
+			
+		})
+		return r;
+	}
+	
+	$.ajax({
+		type: 'POST',
+		url:  {link getHelps!},
+		data: { data:labels},
+		success: function(data) {
+			$.each(data, function(key, val) {
+				var tmp = getElement(key);
+				if(tmp!=false){
+					tmp.after('<span class="help"><img src="/images-system/admin/question_blue.png" /><div class="c-help-text"><div class="help-text">'+val+'</div></div></span');
+				}
+			});			
+		},
+		dataType: 'json'
+	});
+
+	
+	
+</script>

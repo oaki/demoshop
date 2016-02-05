@@ -1,0 +1,58 @@
+php_flag magic_quotes_gpc off
+
+php_value memory_limit 260M
+
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^chcemeshop\.sk$
+RewriteRule ^(.*)$ http://www.chcemeshop.sk/$1 [R=301,L]
+
+
+RewriteCond %{REQUEST_URI} ^/uploaded/system_files/temp/(.*)\.(jpg|png|gif)$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*) /preview.php?file=%1.%2 [NE,L]
+
+# mod_rewrite
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	# RewriteBase /
+
+	# front controller
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip|tar\.gz)$ index.php [L]
+</IfModule>
+
+
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+SetOutputFilter DEFLATE
+SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+SetEnvIfNoCase Request_URI \.pdf$ no-gzip dont-vary
+
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault A18000
+
+  ExpiresByType image/gif A2592000
+  ExpiresByType image/jpg A2592000
+  ExpiresByType image/jpeg A2592000
+  ExpiresByType image/png A2592000
+
+  ExpiresByType text/css A259200
+  ExpiresByType text/javascript A259200
+
+  ExpiresByType text/html A1
+</IfModule>

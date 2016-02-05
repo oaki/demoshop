@@ -1,0 +1,10 @@
+{block content}
+<h1>{block #title}Přihlašovací stránka{/block}</h1>
+
+{if $user->isLoggedIn()}
+
+{else}
+
+{control login}
+
+{/if}

@@ -1,0 +1,57 @@
+{block #content}
+
+{include '../default-top.latte' 
+	breadcrumb=>array( array('name'=>'Košík') ), 
+	name=>_('Nákupný košík')
+}
+
+
+
+
+	<div class="content">
+	{include 'order-indicator.latte'}
+
+
+	{control cart}
+
+	{if !empty($products)}
+		{if !NEnvironment::getUser()->isLoggedIn()}
+			
+			{control cartLogin}
+			
+		{else}
+			<div class="btn-objednat"><a class="classic-btn border-radius-2 right" href="{plink Cart:step2}">Pokračovať</a></div>
+		{/if}
+	{/if}
+
+	{*
+
+	*}
+
+	</div>
+
+{*
+
+<div class="cart">
+	{control cart}
+
+	{if !NEnvironment::getUser()->isLoggedIn()}
+
+		<div class="registered">
+			<div class="cart-login">
+			<h1>{!_('Ste už zaregistrovaný? Prosím, prihláste sa.')}</h1>
+			{control LoginForm}
+
+			</div>
+		</div>
+		<div class="no-registered">
+			<h1>{!_('Nákup <br />bez registrácie')}</h1>
+				{!_('V našom internetovom obchode môžte nakupovať aj bez registrácie. V prípade, že nemáte záujem o výhody poskytované registrovaných používateľov kliknite na tlačítko Pokračovat.')}
+
+			<a class="next" style="margin-top: 80px;" href="{plink Cart:step2}">{!_('Pokračovať')}</a>
+		</div>
+
+	{/if}
+
+</div>
+*}

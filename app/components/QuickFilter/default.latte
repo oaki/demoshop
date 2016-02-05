@@ -1,0 +1,28 @@
+<div id="quickFilter">
+	<div id="orderByHolder">	
+		{form order id=>'quickFilter-order'}
+			{input order_select}
+		{/form}
+		
+	</div>
+
+	<script>
+		$('#frmorder-order_select').change( function(){
+			$('#quickFilter-order').submit();
+		});
+	</script>
+	
+	{form numOnPage id=>'quickFilter-numOnPage'}
+		{input num_on_page}
+	{/form}
+
+
+	<script>
+		$('#frmnumOnPage-num_on_page').change( function(){
+			$('#quickFilter-numOnPage').submit();
+		});
+	</script>
+
+	{$params['paginator']->renderMini()}
+
+</div><!-- quick filter -->

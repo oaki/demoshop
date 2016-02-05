@@ -1,0 +1,38 @@
+ul.settingMenu li a {
+	
+	display: block;
+}
+
+ul.settingMenu li img{
+	
+	vertical-align:middle;
+	padding-right:10px;
+}
+
+input.lang_name{
+	background: transparent;
+	border:0px solid;
+	width:400px;
+}
+
+input.lang_rate{
+	background: transparent;
+	border:0px solid;
+	width:80px;
+}
+
+input.lang_currency{
+	background: transparent;
+	border:0px solid;
+	width:80px;
+}
+
+
+
+input.active{
+	border:1px solid black;
+}
+
+
+.addLangHolder{padding:10px;}
+.addLangHolder label{ vertical-align: text-top; padding-left: 20px;}

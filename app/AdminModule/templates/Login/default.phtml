@@ -1,0 +1,31 @@
+{control header}
+<div id="wrapper"></div>
+<div id="wrapper-2"></div>
+<div id="LogInHolder">
+	
+	{*<h1 id="logo"></h1>*}
+    <h2>Prihlásenie</h2>
+     
+     {control loginForm}
+    <div n:ifset="$error_msg" id="error">{$error_msg}</div>
+    <div id="spinner"></div> 
+</div>   
+
+<div id="copyright">
+	Copyrights <a href="http://{? echo $presenter->getContext()->parameters['copyright_url']}" title="{? echo $presenter->getContext()->parameters['copyright']}" style="color: orange;">{? echo $presenter->getContext()->parameters['copyright']}</a>. All rights reserved. 
+</div>
+
+<div id="mylogo">
+	<!-- <img src="/templates/global_img/q7.png" /> --> 
+</div>
+		
+		 
+<script type="text/javascript">
+$(document).ready(function(){
+	  $("label").inFieldLabels();
+	});
+
+</script>
+
+</body>
+</html>

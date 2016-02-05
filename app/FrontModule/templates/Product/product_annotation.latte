@@ -1,0 +1,23 @@
+{var $id_category = $p['main_category']}
+
+{var $link = $presenter->link(':Front:Product:default', array('id'=>$p['id_product'], 'id_category' => $id_category))}
+
+<div n:if="$p['news'] == 1" class="sticker new"></div>
+<div n:if="$p['our_tip'] == 1" class="sticker top"></div>
+<div n:if="$p['sale'] == 1" class="sticker sale">-{(int)$p['sale_percent']}%</div>
+
+<div class="product-pic">
+	<a href="{$link}">
+		<img src="{$p['first_file']|img:140:140:6}" title="{$p['name']}" alt="{$p['name']}" />
+	</a>
+</div>
+
+<div class="availability">{if $p['max_stock']>0}na sklade{else}na sklade{/if}</div>
+
+<h3><a href="{$link}" title="{$p['name']}">{$p['name']|truncate:60}</a></h3>
+
+<div class="price">{$p['min_price']['price_showed']|money:$presenter->id_lang}</div>
+<a href="{$link}" class="border-radius-2 add-to-basket" title="vložiť do košíka">
+	<img src="/images/basket.gif" alt="vložiť do košíka" title="vložiť do košíka" />
+</a>
+{dump $p}

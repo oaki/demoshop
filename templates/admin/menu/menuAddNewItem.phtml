@@ -1,0 +1,90 @@
+<form id="formAddItem" method="post" action="?section=addMenuItem"	style="margin: 0px; padding: 0px;">
+<table id="highlight">
+	<thead>
+		<tr>
+			<td style="width: 150px;"><b>Nová položka:</b></td>
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Názov:</td>
+			<td><input class="text" type="text" name="name" value="" /></td>
+		</tr>
+		<tr>
+			<td>Rodič:</td>
+			<td><select name="parent" class="select">
+				<option value="">root</option>
+				{!$treeSelect}
+			</select></td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="modul">
+<ul>
+	{foreach $type_modul as $l}
+	<li>
+		<img src="/require_modules/cms/modules/{$l['dir']}/icon.gif" alt="{$l['name']}" /><br />
+		{$l['name']}<br />
+		<input id="id_modul{$l['id_type_modul']}" type="radio" name="id_type_modul" value="{$l['id_type_modul']}" class="radiobutton" />
+	</li>
+	{/foreach}
+</ul>
+
+<div class="clear"></div>
+</div>
+
+<script type="text/javascript">	
+  	var th = new tableHighlighter( 'highlight' );	
+</script> 
+
+<a id="menuAdvanceHref" style="display: block; padding: 5px;" href="">Rozšírené vlastnosti</a>
+
+<div id="menuAdvance">
+<table id="highlight2">
+	<thead>
+		<tr>
+			<td colspan="2"><b>Rozšírené vlastnosti:</b></td>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<tr>
+			<td>URL:</td>
+			<td><input class="text" type="text" name="slug" value="" /></td>
+		</tr>
+		<tr>
+			<td style="width: 150px;">Meta nadpis:</td>
+			<td><input class="text" type="text" name="meta_title" value="" /></td>
+		</tr>
+		<tr>
+			<td>Meta popis:</td>
+			<td><textarea name="meta_description"  class="text medium"></textarea></td>
+		</tr>
+		<tr>
+			<td>Viditeľnosť:</td>
+			<td><select name="visible">
+				<option value="0">viditelné</option>
+				<option value="1">skryté - ale funguje URL</option>
+				<option value="2">skryté - nefunguje URL</option>
+			</select></td>
+		</tr>
+	
+	</tbody>
+</table>
+</div>
+<input type="submit" class="submit" name="addMenuItem" value="Pridaj" /> <script
+	type="text/javascript" language="JavaScript">
+           window.addEvent('domready',function(){
+              var th = new tableHighlighter( 'highlight2' );	
+              var slidemenuAdvance = new Fx.Slide('menuAdvance');
+                $('menuAdvanceHref').addEvent('click', function(e){
+                	e = new Event(e);
+                	slidemenuAdvance.toggle();
+                	e.stop();
+                });
+                slidemenuAdvance.hide();
+                
+          });
+          </script></form>

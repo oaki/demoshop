@@ -1,0 +1,59 @@
+{block content}
+
+<div id="leftHolder">
+   {control MyTree}
+</div>
+<div id="contentHolder">
+
+	{*<a href="#" style="display: block; float:right;padding:5px;" id="changePriceHref">Prepočitať ceny</a>
+	<div class="clear"></div>
+	<div id="changePriceHolder">
+		{control changePrice}
+	</div>
+
+	<script>
+		$('#changePriceHolder').hide();
+		$('#changePriceHref').toggle( function(){ $('#changePriceHolder').show();}, function(){ $('#changePriceHolder').hide();});
+
+	</script>
+*}
+	
+	
+	
+{snippet productTabella}
+	{control productTabella}
+{/snippet}
+	
+	
+	
+	
+	
+<script>
+
+$(".tabella-body").sortable({
+	opacity: 0.6,
+    cursor: 'move',
+	handle: 'a.moveIcon',
+	update: function(ev, ui) {
+      
+      var index = 0;
+	  var sequence = new Array();
+	  
+      $('.tabella-body tr td a.moveIcon').each(function(i, el){
+		
+        
+		sequence[index] = $(this).attr('id');
+		index = index + 1;
+      })
+	
+	$.post({link saveSequence!}, {'data':sequence});
+		
+  }
+}).disableSelection();
+
+</script>
+
+	</div>
+
+<div class="clear"></div>
+

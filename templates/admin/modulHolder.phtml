@@ -1,0 +1,44 @@
+<div id="modulHolder">
+
+<div id="way">
+	<div id="wayIcon">
+		<a href="#" id="addModul">Pridať modul</a> | 
+		<a href="?id_menu_item={@$_GET['id_menu_item']}&amp;showModulsOnPage=1">Moduly na stránke</a>
+	   
+	   {* | <a href="?changeMenuItem=1&amp;id_menu_item={$_GET['id_menu_item']}">Vlastnosti stránky</a>*}
+	      
+	</div>
+	
+	{? echo dibi::fetchSingle("SELECT name FROM menu_item WHERE id_menu_item=%i", @$_GET['id_menu_item'] ) }
+	<div class="clear"></div>
+</div>
+
+<div id="addModulHolder" class="modul">
+<form action="admin.php?id_menu_item={ifset $_GET['id_menu_item']}{$_GET['id_menu_item']}{/ifset}" method="post">
+	<ul>
+		{foreach $type_modul as $l}
+			<li>
+				<img src="/require_modules/cms/modules/{$l['dir']}/icon.gif" alt="{$l['name']}" /><br />{$l['name']}<br />
+				<input id="id_modul{$l['id_type_modul']}" type="radio" name="id_type_modul" value="{$l['id_type_modul']}" class="radiobutton" />
+			</li>
+		{/foreach}
+	</ul>
+
+	<div class="clear"></div>
+	<input type="submit" name="addModulToMenu" class="sub" value="Pridať" />
+</form>
+</div>
+
+<script type="text/javascript" language="JavaScript">
+	window.addEvent('domready',function(){
+		var slideaddModulHolder = new Fx.Slide('addModulHolder');
+		$('addModul').addEvent('click', function(e){
+			e = new Event(e);
+			slideaddModulHolder.toggle();
+			e.stop();
+		});
+	slideaddModulHolder.hide();                
+	});
+</script>
+</div>
+<!-- modulHodler-->

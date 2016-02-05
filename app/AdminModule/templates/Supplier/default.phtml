@@ -1,0 +1,22 @@
+@{block content}
+<div class="submenu">
+    <a href="{link Eshop:default}">spať</a>
+    <a id="addSupplierHref" href="{link Eshop:default}">{!_('Pridať dodávateľa')}</a>
+    <h2>{!_('Dodávatelia')} </h2>
+    <div class="clear"></div>
+</div>
+
+<div id="addSupplierContainer" title="{!_('Pridať dodávateľa')}">
+    {control addSupplierForm}
+</div>
+
+<script type="text/javascript">
+    $('#addSupplierContainer').hide();
+    
+    $('#addSupplierHref').click( function(e){
+	e.preventDefault();
+	$('#addSupplierContainer').dialog();
+    })
+</script>
+
+@{control supplierTabella}

@@ -1,0 +1,9 @@
+
+/* galley */
+
+.c-gallery { clear:both; padding:15px 0 45px 0; overflow:auto;}
+	.gallery { width:150px; height:120px; margin:0 34px 20px 0; padding-bottom:20px; float:left; background:url(../images/hr.png) bottom no-repeat;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+	
+	.gallery img {-moz-box-shadow: 0 0 3px 3px #e4e0db; -webkit-box-shadow: 0 0 3px 3px#e4e0db; box-shadow: 0 0 3px 3px #e4e0db;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+
+		.gallery a { width:150px; height:120px; display:block;}

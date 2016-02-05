@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SHOP>
+  {foreach $items as $item}
+	{dump $item}
+  <SHOPITEM>
+	<ITEM_ID>{$item['id_product']}</ITEM_ID>
+    <PRODUCTNAME>{$item['name']}</PRODUCTNAME>
+    <PRODUCT>{$item['name']}</PRODUCT>
+    <DESCRIPTION>{$item['meta_description']}</DESCRIPTION>
+    <URL>{$baseUri.$item['url']}</URL>
+    <IMGURL>{$baseUri}{$item['first_file']|img:800:600}</IMGURL>
+    <PRICE>{$item['min_price']['price']}</PRICE>
+    <PRICE_VAT>{$item['min_price']['price_with_tax']}</PRICE_VAT>
+    <VAT>{$item['min_price']['tax']}</VAT>    
+    <ITEM_TYPE>new</ITEM_TYPE>
+    <CATEGORYTEXT>{$item['categories_name']}</CATEGORYTEXT>
+    <EAN></EAN>
+    <DELIVERY_DATE>7</DELIVERY_DATE>
+  </SHOPITEM>
+  {/foreach}
+</SHOP>

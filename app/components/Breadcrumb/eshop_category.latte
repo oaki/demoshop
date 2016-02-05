@@ -1,0 +1,17 @@
+<div class="breadcrumb">
+	<ul>
+		<li><a href="/"><img src="/images/breadcrumb-home.gif" alt="prejsť na úvod" title="prejsť na úvod" /></a></li>
+		
+		<li n:foreach="$parents as $p">
+			{if $iterator->isLast()}
+				{$p['name']}
+			{else}
+				<a href="{plink :Front:Eshop:default id=>$p['id_category']}" title="">{$p['name']}</a>
+			{/if}
+			
+		</li>		
+	</ul>
+</div><!-- bread crumb -->
+
+
+  

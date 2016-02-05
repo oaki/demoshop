@@ -1,0 +1,24 @@
+{contentType application/xml; charset=utf-8}
+<?xml version="1.0" encoding="utf-8"?>
+
+<SHOP>
+	 {foreach $items as $item}
+    <SHOPITEM>
+
+        <PRODUCT>{$item->name}</PRODUCT>
+
+        <DESCRIPTION>{$item->description|striptags}</DESCRIPTION>
+
+        <URL>{$baseUri.$item->url}</URL>
+
+        <IMGURL>{$baseUri.$item->image->big}</IMGURL>
+
+        <PRICE>{$item->price}</PRICE>
+        
+		<PRICE_VAT>{$item->price_vat}</PRICE_VAT>
+
+        <VAT>20</VAT>
+
+    </SHOPITEM>
+	{/foreach}
+</SHOP>

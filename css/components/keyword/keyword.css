@@ -1,0 +1,11 @@
+.c-seo-container{  padding:10px;width:442px;}
+.c-seo-container h1{ padding-bottom:10px;}
+.c-seo-container input[type="text"]{ width:430px; margin-bottom: 10px;}
+.c-keyword{  padding:10px; max-height: 300px; overflow-y: auto; }
+.c-keyword .keyword{ font-size:13px; font-weight: bold;color:#2C4865;padding: 10px 0 5px;}
+.c-keyword .links{ padding-left:10px;}
+.c-keyword .link{ display: block;}
+.c-keyword .info{ padding-left:0px;}
+.c-keyword .title{ background-color:#ebffff; padding:5px; }
+.c-keyword .description{ background-color:#fffeeb; padding:5px; }
+.c-keyword .h1{ background-color:#ecffeb; padding:5px; }

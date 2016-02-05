@@ -1,0 +1,6 @@
+{snippet smallcart}
+	{if $products_count > 0}
+	<div class="holder-count-product">{$products_count}</div>
+	{/if}
+	{$total_sum|money:$presenter->id_lang}
+{/snippet}

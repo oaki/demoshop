@@ -1,0 +1,47 @@
+<div class="module-content">{dump $l}
+	<form action="" method="post">
+		<h2>Článok</h2>
+		<label for="title" class="first">Nadpis</label><input class="text long" type="text" name="title" value="{$l['title']}"/><br />
+		<label>Text</label>
+		<textarea name="text" class="text long" >{$l['text']}</textarea><br />
+	{*
+		  <div style="float:right;">
+			  Šablóna: <select name="template">
+				  <option value="1">default</option>
+				  <option value="2" {if $l['template'] == 2}selected="selected"{/if}>Referencia</option>
+			  </select>
+		  </div>*}
+		  
+		  <h2 id="roll" style="cursor:pointer;">SEO</h2>
+		  <div id="seo-container">
+			  <label for="url_identifier" class="first">URL</label>
+			  <input class="text long" type="text" name="url_identifier" value="{$l['url_identifier']}"/><br />
+
+			  <label for="meta_title">Meta nadpis</label>
+			  <input class="text long" type="text" name="meta_title" value="{$l['meta_title']}"/><br />
+
+			  <label for="meta_description">Meta popis</label>
+			  <input class="text long" type="text" name="meta_description" value="{$l['meta_description']}"/><br />
+
+			  
+		  </div>
+		  <script>
+			  var mySlide = new Fx.Slide('seo-container');
+			  //mySlide.hide();
+			  $('roll').addEvent('click', function(e){
+					e = new Event(e);
+					mySlide.toggle();
+					e.stop();
+				});
+			</script>
+			
+			<input class="submit" type="submit" name="saveArticle" value="Uložiť" />
+			 <input type="hidden" name="id_node" value="{$l['id_node']}" />
+			  
+		</form>
+	
+	<h2>Nahrávanie súborov</h2>  
+	{$showMultiupload}
+	
+	<div class="clear"></div>
+</div> 

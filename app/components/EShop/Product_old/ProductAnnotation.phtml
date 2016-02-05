@@ -1,0 +1,40 @@
+<div class="produkt-box">
+
+<div class="produkt-box-pic">{*dump $l*}
+	<a href="{$l['url']}">
+		{if $l['our_tip'] == 1}<div class="produkt-box-pic-top"></div>{/if}
+		{if $l['sale'] == 1}<div class="produkt-box-pic-sale"></div>{/if}
+		{if $l['available'] == 1}<div class="produkt-box-pic-48hod"></div>{/if}
+
+
+		<img src="{$image['thumb']}" title="{$l['name']|truncate:40}" alt="{$l['name']|truncate:40}" /></a></div>
+
+<div class="produkt-box-content">
+	<h3><a href="{$l['url']}">{$l['name']|truncate:40}</a></h3>
+
+    <div class="produkt-box-par01">
+		<a href="{$l['url']}">{$l['description']|striptags|truncate:65}<br>
+		{if !empty($l['size'])}
+			{_('Veľkosť')}: {$l['size']}<br>
+		{elseif !empty($l['color'])}
+			{_('Farba')}: {$l['color']}<br>
+		{elseif !empty($l['material'])}
+			{_('Materiál')}: {$l['material']}<br>
+		{/if}
+		{if !empty($l['stock'])}
+			{_('Na sklade')}: {$l['stock']}
+		{/if}
+		{*dump($l['info'])*}
+		</a></div>
+
+    <div class="produkt-box-cena">od {$l['price_array']['price']|money:'1'}</div>
+
+    <div class="produkt-box-bottom">
+		<span><div class="btn-pokracuj"><a href="{$l['url']}">Pokračuj</a></div></span>
+    </div>
+
+
+
+	</div><!-- produkt box content -->
+
+	</div><!-- produkt box -->

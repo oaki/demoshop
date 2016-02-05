@@ -1,0 +1,27 @@
+{!$header}
+
+<div id="message">Performing Request...</div>
+
+<div id="allHolder">
+
+
+	{!$topMenu}
+	
+	
+	{ifset $leftHolder}{!$leftHolder}{/ifset}
+	
+	<div id="contentHolder">
+		{ifset $flashes}
+			{foreach $flashes as $flash}
+				<div class="flash {$flash->type}">{$flash->message}</div>
+			{/foreach}
+		{/ifset}
+		
+		{!$contentHolder}
+	</div>
+
+	{!$footer}
+</div> <!-- allHolder -->
+
+</body>
+</html>

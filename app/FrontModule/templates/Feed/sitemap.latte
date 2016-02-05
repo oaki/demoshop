@@ -1,0 +1,25 @@
+{contentType application/xml; charset=utf-8}
+{? echo '<'}?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{if isset($categories)}
+{foreach $categories as $m}
+	<url>
+	<loc>http://{? echo $_SERVER['HTTP_HOST']}{plink Eshop:default id=>$m['id_category']}</loc>
+	<lastmod>{? echo date('Y-m-d');}</lastmod>
+	<changefreq>daily</changefreq>
+	<priority>0.8</priority>
+	</url>
+{/foreach}
+{/if}
+	
+{if isset($pages)}
+{foreach $pages as $p}
+	<url>
+	<loc>http://{? echo $_SERVER['HTTP_HOST']}{plink Page:default id=>$p['id_menu_item']}</loc>
+	<lastmod>{? echo date('Y-m-d');}</lastmod>
+	<changefreq>daily</changefreq>
+	<priority>0.8</priority>
+	</url>
+{/foreach}
+{/if}
+</urlset>

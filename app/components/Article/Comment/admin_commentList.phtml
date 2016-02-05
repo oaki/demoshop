@@ -1,0 +1,40 @@
+<h1>Nové výstavy</h1><br />
+<table id="highlight" style="width: 989px;">
+<thead>
+	<tr>
+		<th style="width: 111px"></th>
+		<th></th>
+		<th style="width: 111px"></th>
+	</tr>
+</thead>
+<tbody>
+{if count($list)>0}
+	{foreach $list as $l}
+	<tr>
+		<td>
+			{$l['adddate_formated']}
+		</td>
+		<td>
+			<b>Článok: </b>{$l['article_title']}<br />
+			<b>Meno:</b> {$l['name']}<br />
+			<b>Text: </b>{$l['text']}
+		</td>
+		<td>
+			<a href="?id_comment={$l['id_comment']}&action=allow">Povoliť</a> |
+			<a href="?id_comment={$l['id_comment']}&action=delete">Zmazať</a> |
+			<a target="_blank" href="/{$l['menu_url_identifier']}/{$l['url_identifier']}.html">Link</a>
+		</td>
+	</tr>
+	{/foreach}
+{else}
+	<tr>
+		<th colspan="3" style="padding:10px;">
+			Žiadne nové výstavy.
+		</th>
+	</tr>
+{/if}
+</tbody>
+</table>
+<script type="text/javascript">	
+	var th = new tableHighlighter( 'highlight' );	
+</script>

@@ -1,0 +1,68 @@
+{block #content}
+
+
+{snippet productList}
+<div class="c-content-top">
+
+	{control breadcrumb:category $id_category, $presenter->id_lang, 'white'}
+    
+    {ifset $products}
+		{control quickFilter paginator=>$presenter->getComponent('paginator')}
+	{/ifset}
+
+	
+
+</div><!-- c content top -->
+
+
+<div class="category-title">
+	<h2>{$category['name']} <span>({$product_count} {$product_count|decline:'produkt'})</span></h2>
+	
+	<div class="" n:if="$category['description']!=''">
+		{!$category['description']}
+	</div>
+</div>
+
+
+{ifset $categories}
+{dump $categories}
+<div class="categories-list">
+	<ul>
+		<li n:foreach="$categories as $c">
+			<a class="{if $iterator->isFirst(4)}first{/if}" href="{plink Eshop:default id=>$c['id_category']}" title="{$c->name}">
+				<img src="{$c['first_file']|img:130:100:6}" alt="{$c->name}" />
+				
+				<span class="title">{$c->name}</span>
+				<span class="product-count">{$c['product_count']} {$c['product_count']|decline:'produkt'}</span>
+			</a>
+		</li>
+	</ul>
+	<div class="clear"></div>
+</div>
+{/ifset}
+
+
+
+{ifset $products}
+	<div class="c-product">
+
+		<ul class="product-list">
+			{foreach $products as $p}
+				<!-- produkt -->
+				<li>
+					{include '../Product/product_annotation.latte' 'p'=>$p, 'iterator'=>$iterator}
+				</li>
+				<!-- / produkt -->   
+			{/foreach}
+
+		</ul>
+
+	</div><!-- c product -->
+
+	{control paginator}
+{/ifset}
+
+{/snippet productList}
+
+
+

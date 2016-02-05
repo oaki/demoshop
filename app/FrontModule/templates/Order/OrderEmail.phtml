@@ -1,0 +1,131 @@
+{!_('Vážený')} <b>{$o['name']} {$o['surname']}</b>,<br /><br />
+
+{!_('ďakujeme Vám za nákup. Veríme, že so zakúpeným produktom budete spokojný.')}<br /><br />
+
+<h2>{!_('OBJEDNÁVKA č.')} {$o['id_order']}</h2>
+
+<div>
+	<div style="width:300px;float:left;">
+		<h3>{!_('Fakturačné údaje')}</h3>
+
+		{if $o['type'] == 1}
+			{$o['company_name']}
+		{/if}
+		{$o['name']} {$o['surname']}<br />
+		{$o['address']}<br />
+		{$o['zip']}, {$o['city']}<br />
+		{$o['iso']}<br />
+
+		{if $o['type'] == 1}{$o['company_name']}
+			<br />
+			{!_('IČO')}: {$o['ico']}<br />
+			{!_('DIČ')}: {$o['dic']}<br />
+		{/if}
+
+	</div>
+
+	<div style="width:300px;float:left;">
+		<h3>{!_('Dodacia adresa')}</h3>
+
+		{if $o['use_delivery_address'] == 1}
+			{if $o['type'] == 1}{$o['delivery_company_name']}{/if}
+			{$o['delivery_name']} {$o['delivery_surname']}<br />
+			{$o['delivery_address']}<br />
+			{$o['delivery_zip']}, {$o['delivery_city']}<br />
+			{$o['delivery_iso']}<br />
+		{else}
+			{if $o['type'] == 1}
+				{$o['company_name']}
+			{/if}
+			{$o['name']} {$o['surname']}<br />
+			{$o['address']}<br />
+			{$o['zip']}, {$o['city']}<br />
+			{$o['iso']}<br />
+		{/if}
+
+	</div>
+	<div style="clear:both;"></div>
+</div>
+<h3>{!_('Kontakt')}</h3>
+
+<b>{!_('Tel.')}:</b> {$o['phone']}<br />
+<b>{!_('E-mail')}:</b> {$o['email']}
+
+
+<h3>{!_('Spôsob platby')}</h3>
+
+{? echo OrderModel::getPaymentMethod($o['payment_method'])}
+
+{*<h3>{!_('Spôsob dopravy')}</h3>
+
+{? echo OrderModel::getDeliveryMethod($o['delivery_method'])}
+*}
+{if $o['text']!=''}
+<h3>{!_('Poznámka zákazníka k objednávke')}</h3>
+{$o['text']}
+{/if}
+
+<h3>{!_('Tovar')}</h3>
+<style>
+	table{  border-collapse:collapse;text-align: left;}
+	table td,table th{ border-top: 1px solid silver;padding:5px;}
+</style>
+
+<table>
+	<tr>
+		<th>Kód</th>
+		<th>{!_('Názov tovaru')}</th>		
+		<th style="text-align:center;">{!_('Množ.')}</th>
+		<th style="text-align:right;">{!_('Jedn. cena')}</th>
+		<th style="text-align:right;">{!_('Celkom')}</th>
+	</tr>
+
+	{foreach $o['products'] as $p}
+
+	<tr>
+		<td>{$p['code']}</td>
+		<td>{$p['name']}</td>		
+		<td style="text-align:center;">{$p['count']}</td>
+		<td style="text-align:right;">{$p['price']|money:$presenter->id_lang}</td>
+		<td style="text-align:right;">{$p['count']*$p['price']|money:$presenter->id_lang}</td>
+	</tr>
+	{/foreach}
+
+	{*
+	<tr>
+		<td></td>
+		<td>Doprava</td>
+		<td></td>
+		<td></td>
+		<td style="text-align:right;">{$o['delivery_price']|money:$presenter->id_lang}</td>		
+	</tr>
+*}
+	
+	<tr class="delivery tr neparne">
+		<td>{$o['delivery_title']}</td>
+		<td></td>
+		<td></td>
+		<td style="width:70px;"></td>
+		<td class="price">{$o['delivery_price']|money:$presenter->id_lang}</td>
+	</tr>
+
+	<tr class="payment tr ">
+		<td>{$o['payment_title']}</td>
+		<td></td>
+		<td></td>
+		<td style="width:70px;"></td>
+		<td class="price">{$o['payment_price']|money:$presenter->id_lang}</td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			<h3>{!_('SPOLU')}: {$o['total_price_with_tax']|money:$presenter->id_lang} s DPH ( {$o['total_price']|money:$presenter->id_lang} bez DPH ) </h3>
+			
+		</td>
+	</tr>
+
+</table>
+
+
+
+<br />
+{? echo $presenter->context->params['footer_for_emails']}

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{#common.title}</title>
+<script type="text/javascript" src="js/fixpng.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="css/imagemanager.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/window_clearlooks2.css" />
+<script type="text/javascript" src="../../js/index.php"></script>
+<script type="text/javascript" src="../../language/index.php?type=im"></script>
+<script type="text/javascript" src="js/im_theme.js"></script>
+</head>
+<body>
+<div id="center">
+	<div id="topnav">
+		<div id="topwrap">
+			<div id="toolbar" class="toolbar caption">
+				<div class="navigation filter">
+					<div class="desc">{#common.filter}</div>
+					<div><input type="text" id="filter" name="filter" value="" /></div>
+				</div>
+
+				<div class="navigation">
+					<div class="desc">{#common.directory}</div>
+					<div id="curpath" class="path">&nbsp;</div>
+				</div>
+
+				<div id="tools" class="icons">
+					<div id="createdir" class="icon"><a href="javascript:ImageManagerTheme.createDir();" title="{#common.createdir}"><img src="img/icons/newfolder.png" alt="" height="16" width="16" /><span class="caption">{#common.createdir}</span></a></div>
+					<div id="upload" class="icon"><a href="javascript:ImageManagerTheme.upload();" title="{#common.upload}"><img src="img/icons/add.png" alt="" height="16" width="16" /><span class="caption">{#common.upload}</span></a></div>
+					<div id="refresh" class="icon"><a href="javascript:ImageManagerTheme.refresh();" title="{#common.refresh}"><img src="img/icons/reload.png" alt="" height="16" width="16" /><span class="caption">{#common.refresh}</span></a></div>
+					<div id="filemanager" class="icon hidden"><a href="javascript:ImageManagerTheme.openFileManager();" title="{#common.filemanager}"><img src="img/icons/filemanager.png" alt="" height="16" width="16" /><span class="caption">{#common.filemanager}</span></a></div>
+				</div>
+			</div>
+
+			<br style="clear:both;" /><br />
+		</div>
+	</div>
+
+	<div id="listcontainer">
+		<div id="folders">
+			<div>
+				<h2>{#panel.categories}</h2>
+				<ul class="categories" id="category_list">
+					<!-- This will be filled with categories -->
+				</ul>
+
+				<ul class="special">
+				<li><a href="javascript:ImageManagerTheme.open('favorite:///','folder');" class="favorites">{#panel.favorites}</a></li>
+				<li><a href="javascript:ImageManagerTheme.open('history:///','folder');" class="history">{#panel.history}</a></li>
+				</ul>
+
+				<h3>{#panel.folders}</h3>
+				<ul id="folder_list" class="folders">
+					<!-- This will be filled with folders -->
+					<li class="progress">{#common.loading}</li>
+				</ul>
+			</div>
+		</div>
+	
+		<div id="viewcontainer">
+			<div id="pages" class="pagenav">
+				<!-- Gets filled with a list file occurs -->
+			</div>
+
+			<div id="progress" class="pagenav">{#common.loading}</div>
+
+			<div class="viewmode">
+				<form action="#" name="listOptions">
+				{#view.mode}
+					<select name="selectView" id="selectView" onchange="ImageManagerTheme.switchView(this.options[this.selectedIndex].value);">
+						<option value="text">{#view.textlist}</option>
+						<option value="thumbs" selected="selected">{#view.thumbnail}</option>
+					</select>, <select name="setPages" id="setPages" onchange="ImageManagerTheme.setPageSize(this.options[this.selectedIndex].value);">
+									<option value="25">25</option>
+									<option value="50">50</option>
+									<option value="100">100</option>
+								</select> {#view.images_per_page}
+				</form>
+			</div>
+
+			<br style="clear:both" />
+
+			<div id="textlists">
+				<!-- This will be filled by the textlists_template -->
+			</div>
+
+			<div id="thumbs">
+				<!-- This will be filled by the thumbs_template -->
+			</div>
+			
+		</div>
+	</div>
+
+	<script id="folders_template" type="text/moxiecode-template">
+		<![CDATA[
+			<li class="{$type}"><a href="javascript:ImageManagerTheme.open('{$path}','{$type}');">{$name}</a></li>
+		]]>
+	</script>
+
+	<script id="textlists_template" type="text/moxiecode-template">
+		<![CDATA[
+			<div class="listview {$type}">
+				<div class="wrap"></div>
+				<div class="details">
+					<div class="wrap2">
+						<div class="name" style="width: {$x|size_name}px;"><a href="javascript:ImageManagerTheme.open('{$path}','{$type}');" title="{$name}">{$name}</a></div>
+						<div class="act" onclick="ImageManagerTheme.showEdit(this,'{$path}','{$type}','{$custom.editable}','{$attribs}');"><img src="img/act.gif" width="16" height="16" alt="" /></div>
+					</div>
+				</div>
+			</div>
+		]]>
+	</script>
+
+	<script id="thumbs_template" type="text/moxiecode-template">
+		<![CDATA[
+			<div class="{$type} thumbnail" style="width: {$x|size_thumbnail}px;">
+				<div class="wrap">
+				<div class="pic" style="height: {$x|size_pic}px;">
+					<div class="mid"><a href="javascript:ImageManagerTheme.open('{$path}','{$type}');" title="{$name}"><img src="{$path|thumbloadurl}" alt="{$path|thumburl}" width="{$custom.twidth}" height="{$custom.theight}" class="thumbnailimage" /></a></div>
+				</div>
+				</div>
+				<div class="details">
+					<div class="wrap2">
+						<div class="name" style="width: {$x|size_name}px;" title="{$name}">{$name}</div>
+						<div class="act" onclick="ImageManagerTheme.showEdit(this,'{$path}','{$type}','{$custom.editable}','{$attribs}');"><img src="img/act.gif" width="16" height="16" alt="" /></div>
+					</div>
+				</div>
+			</div>
+		]]>
+	</script>
+</div>
+
+<script type="text/javascript">translatePage();</script>
+
+</body>
+</html>

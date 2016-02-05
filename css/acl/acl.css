@@ -1,0 +1,76 @@
+/****************
+* Globalimages/acl/acl/
+****************/
+body { font-family:Arial, Helvetica, sans-serif; font-size:13px; color: black; background-color: #ACB2B5; margin: 0 auto; width: 960px; background:url(../../images-system/acl/bg.jpg) top center no-repeat #bdbdbd; box-shadow: 0 0 4px 4px #AAAAAA;}
+th label { display: inline-block; text-align: right; float: right;}
+table, fieldset { }
+td, th { padding:10px 15px 10px 15px; border-bottom:1px solid #dedede;}
+th { background:url(../../images-system/acl/td.gif) top repeat-x #dedede;}
+dl { padding: 0 25px; }
+dt { height: 30px; line-height: 30px; vertical-align: baseline; }
+dl dd { color: gray; }
+img { border: 0; margin: 0; padding: 0; }
+/****************
+* Layout
+****************/
+#content { margin: 0 auto; padding: 20px; text-align: left; background-color: white; }
+
+#menu { background-color: #94B1DE; height: 35px; line-height: 35px; font-size: 0;background:url(../../images-system/acl/menu.png) top repeat-x #2c3137; }
+#menu ul { list-style: none; text-align:left;}
+#menu ul li { font-size: 13px; padding: 0 10px; display: inline-block; border-right: 1px solid #282d33; }
+#menu ul li.hover { background-color: white; }
+#menu ul li.last { border: 0; }
+#menu a { text-decoration: none; font-weight: bold; color: #fff; }
+	li.hover a { color:#333 !important;}
+#footer { padding: 5px 0; background-color: #94B1DE; font-weight: bold; color: #4351E3; }
+/****************
+* User defined
+****************/
+.right { text-align: right; }
+.center { text-align: center; }
+.error { color: red; }
+ul.error { list-style: none; }
+ul.error li { text-align: center; color: red; }
+ul.error li.ok { color: green; }
+div.tree ul { list-style: none; padding: 0 0 0 0px; }
+div.tree ul li { list-style: none; margin: 0; padding:10px 0 10px 0; }
+div.tree ul ul li { padding-left:30px; background: url(../../images-system/acl/node.gif) left center no-repeat; }
+div.tree ul ul li.last { list-style-image: url(../../images-system/node_last.gif); }
+div.tree ul ul { margin: 0 0 15px 0px; }
+img.info { cursor: help; }
+select.roles { width: 200px; }
+tr.center label { float: none; width: 100%; text-align:left;  font-weight: bold; }
+/****************
+* Paginator
+****************/
+.paginator { margin: 1em 0; font-size: 90%; }
+.paginator a, .paginator span { margin-right: 0.1em; padding: 0.2em 0.5em; color: #999999; }
+.paginator a { border: 1px solid #9AAFE5; text-decoration: none; color: #105CB6; }
+.paginator span.button { border: 1px solid #DDDDDD; }
+.paginator .current { background: #2E6AB1; border: 1px solid #2E6AB1; color: white; font-weight: bold; }
+
+/**/
+input { padding:7px; margin-bottom:7px; background:url(../../images-system/acl/input.png) top repeat-x #fff;  border:1px solid #bababa;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+input:hover {-moz-box-shadow: inset 0 0 2px 2px #76c8ff;-webkit-box-shadow: inset 0 0 2px 2px#76c8ff;box-shadow: inset 0 0 2px 2px #76c8ff; border:1px solid #76c8ff;}
+
+textarea { padding:7px; margin-bottom:7px; background:url(../../images-system/acl/input.png) top repeat-x #fff;  border:1px solid #bababa;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+textarea:hover {-moz-box-shadow: inset 0 0 2px 2px #76c8ff;-webkit-box-shadow: inset 0 0 2px 2px#76c8ff;box-shadow: inset 0 0 2px 2px #76c8ff; border:1px solid #76c8ff;}
+
+#frmsearch-search {background:url(../../images-system/acl/btn-green.png) top; color:#FFF; border-color:#399800; }
+#frmaddEdit-edit{background:url(../../images-system/acl/btn-green.png) top; color:#FFF; border-color:#399800; }
+
+	#frm-search	th { background:#FFF;}
+	#frm-search table { margin: 0 auto;}
+	#frm-search td { padding:0 0 5px 0; border:none !important;}
+	#menu .last { background:url(../../images-system/acl/log-off.png) top repeat-x #fff;}
+	#menu .hover { background:#FFF !important;}
+	
+	
+#frmaddEdit-role_id { width:170px;}	
+#frmaddEdit-resource_id { width:170px;}
+#frmaddEdit-privilege_id { width:110px;}
+#frmaddEdit-assign {background:url(../../images-system/acl/btn-green.png) top; color:#FFF; border-color:#399800;}
+
+#frm-addEdit table { width:100%;}
+dd { padding-bottom:10px; padding:0 0 10px 0;}
+h1 { font-weight:normal;}

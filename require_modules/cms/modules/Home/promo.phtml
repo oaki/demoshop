@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="/css/promo.css" type="text/css" />
+<script type="text/javascript" src="/jscripts/Mutliupload/fileuploader.js"></script>
+<div class="multiupload">
+	<a class="deleteAllMultiuploadButton" href="javascript:confl('Naozaj chcete odstrániť obrázok?','{$parsed_url['url']}&amp;delete_all_images=1');">Zmazať všetky obrázky</a>
+
+	<div id="{$id}" class="upload_button_holder">
+		<noscript>
+			<p>Please enable JavaScript to use file uploader.</p>
+			<!-- or put a simple form for upload here -->
+		</noscript>
+	</div>
+
+
+	<script type="text/javascript">
+		function createUploader(){
+			var uploader = new qq.FileUploader({
+			element: document.getElementById({$id}),
+			action: '{!$parsed_url['path']}',
+			 params: {
+				{foreach $parsed_url['params'] as $k=>$p}
+					{$k}:{$p},
+				{/foreach}
+				}
+			});
+		}
+		// in your app create uploader as soon as the DOM is ready
+		// don't wait for the window to load
+		window.onload = createUploader;
+	</script>
+
+	<div class="galleryImagesHolder">
+
+	    <ul id="ImageList{$id}">
+		{foreach $list as $l}
+		  <li id="item_id_image_{$l['id_file']}">
+		    <form id="promo_form_{$l['id_file']}" action="" method="post">
+		      <div class="image">
+			{if $l['ext'] == 'jpg' OR $l['ext'] == 'gif' OR $l['ext'] == 'png'}
+			  <img src="{? echo Files::gURL($l['src'],$l['ext'],260,155,5)}" alt="" />
+			 {else}
+			 <img src="/images/icon_{$l['ext']}.jpg" alt="{$l['ext']}" />
+
+			{/if}
+		      </div>
+		      <div class="holder">
+
+				
+					Titulok:<br>
+					<textarea style="width:340px;margin-bottom:5px;" class="noeditor" name="title">{$l['title']}</textarea><br />
+					<!--<input style="width:340px;margin-bottom:5px;" type="text" name="title" value="{$l['title']}"/><br />-->
+
+				{*	Popis:<br>
+					<textarea style="width:340px;margin-bottom:5px;" class="noeditor" name="alt">{$l['alt']}</textarea><br />
+					<!--<input style="width:340px; margin-bottom:5px;" type="text" name="alt" value="{$l['alt']}"/><br />-->
+
+					Názov odkazu:<br>
+					<input style="width:340px;" type="text" name="link_name" value="{$l['link_name']}"/><br /><br />
+*}
+					Odkaz:<br>
+					<input style="width:340px;" type="text" name="link" value="{$l['link']}"/><br /><br />
+
+					<input class="saveDescriptionButton" type="submit" name="saveDescription" value="Ulož popis" />
+					<input type="hidden" name="id_file" value="{$l['id_file']}">
+				
+ 
+			  </div>
+			  <div style="float: right;width:50px;padding-top: 56px;">
+				<span><img src="/templates/global_img/up.gif" alt="" /><img src="/templates/global_img/down.gif" alt="" /></span>
+				<a href="javascript:confl('Naozaj chcete odstrániť obrázok?','{$parsed_url['url']}&amp;id_file_delete={$l['id_file']}');"><img src="/templates/global_img/delete.gif" alt="" /></a>
+			  </div>
+		      <div class="clear"></div>
+		    </form>
+			  <script>
+				$('promo_form_{!$l['id_file']}').addEvent('submit', function(e) {
+					/**
+					 * Prevent the submit event
+					 */
+					new Event(e).stop();
+
+					$_form = this;
+
+					/**
+					 * send takes care of encoding and returns the Ajax instance.
+					 * onComplete removes the spinner from the log.
+					 */
+					var req = new Request.HTML({
+					   method: 'post',
+					   data: $_form,
+					   url: {$parsed_url['url']} + '&ajax_save_promo=1',
+					   update: $('node_log' + {$id})
+					}).send();
+					
+				});
+				</script>
+		  </li>
+		{/foreach}
+	      </ul>
+
+	      <div id="node_log{$id}"></div>
+
+	      <script type="text/javascript">
+		  {if _NETTE_MODE}
+		  $( "#ImageList{!$id}" ).sortable({
+		      handle: 'span',
+		      update: function(event, ui) {
+			var list = $(this).sortable('toArray').toString();
+
+			$.get({$parsed_url['url']} + '&ajax_galler_image_order='+ list);
+		     }
+
+
+		    });
+		  {else}
+
+			window.addEvent('domready', function() {
+			  new Sortables($('ImageList'+{$id}), {
+			    cloneOpacity:.1,
+			    handle: 'span',
+			    onComplete: function() {
+				var req = new Request.HTML({
+				   method: 'get',
+				   url: {$parsed_url['url']} + '&ajax_galler_image_order='+this.serialize(function(el) { return el.id; }),
+				   update: $('node_log' + {$id})
+			       }).send();
+			    }
+			  });
+			});
+
+		{/if}
+	    </script>
+	</div>
+</div>

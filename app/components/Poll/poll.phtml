@@ -1,0 +1,23 @@
+<div class="poll">
+  <h1>{$l['title']}</h1>
+  <div class="padding">
+	{if $l['show_description'] == 1}
+		<p>{$l['description']}</p>
+	{/if}
+	<h2>{$l['question']}</h2>
+
+
+	{snippet pollanswer}
+    <table>
+		
+		{foreach $answer as $a}
+		<tr>
+			<td><a class="ajax" href="{link vote! $a['id_poll_answer'],$a['id_poll']}">{$a['answer']}</a></td>
+			<td style="text-align:right;width:40px;">{? echo round($a['c'] * 100 / $answer_count,1);} %</td>
+		</tr>
+		{/foreach}
+	</table>
+	{/snippet}
+	<div class="clear"></div>
+  </div>
+</div>

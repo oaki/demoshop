@@ -1,0 +1,46 @@
+<h1>Dopytový formulár <span style="font-size:10px;color:silver;">{? echo date('d.m.y H:i:s'); }</span></h1>
+
+<table>	
+	{foreach $form->getComponents() as $k=>$c}
+		{if $c->getName()!='btn'}
+		<tr>
+			<td>{$c->getLabel()} </td>
+			<td>{$values[$c->getName()]} </td>
+		</tr>
+		{/if}
+
+	{/foreach}
+	{*
+	<tr>
+		<td>kontakt: </td>
+		<td>{$values['contact']}</td>
+	</tr>	
+	<tr>
+		<td>miesto naloženia: </td>
+		<td>{$values['where']} </td>
+	</tr>
+	<tr>
+		<td>miesto vyloženia: </td>
+		<td>{$values['to']}</td>
+	</tr>	
+	<tr>
+		<td>počet paliet (ks): </td>
+		<td>{$values['number_of_pallets']}</td>
+	</tr>
+	<tr>
+		<td>váha (kg): </td>
+		<td>{$values['weight']}</td>
+	</tr>
+	<tr>
+		<td>dátum doručenia: </td>
+		<td>{$values['delivery_date']}</td>
+	</tr>
+	<tr>
+		<td>čas dodania: </td>
+		<td>{$values['time']}</td>
+	</tr>
+	*}
+</table>
+<div style="font-size: 10px; color:silver;padding-top: 15px;">
+Odoslané z {? echo $_SERVER['HTTP_HOST']}
+</div>

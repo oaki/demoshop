@@ -1,0 +1,62 @@
+<div id="leftHolder">
+	<div class="menuHeader">
+	 <a class="addMenuItem" href="?addMenuItem=1" title="Pridať novú stránku"></a>
+
+	 {if count($var)>0}
+	 
+		 <div id="menuTypeHolder">
+		 	{foreach $var as $k=>$m }
+		 		<a class="menuBtn" href="?id_menu={$k}"><span class="left"></span>{$m['name']} <span class="right"></span></a>
+		 	{/foreach} 
+		 </div>	 	
+	 {/if}
+	 <div class="clear"></div>
+	</div>
+	
+{if count($menu) > 0}	
+{assign parent => 0}
+
+{block #mainMenu}
+
+	<ul {if $parent == 0}class="menu"{/if}>
+		{foreach $menu[$parent] as $m}
+			<li{if $iterator->isLast()} class="last"{/if}>
+				<div class="menuIconHolder">
+					<a class="deleteIcon" href="javascript:confl('Naozaj chcete odstrániť položku {$m['name']}','?id_menu_item_del={$m['id_menu_item']}');" title="Zmazať položku"></a>
+					
+					{if $iterator->isFirst()}
+						<img style="float:right;" src="/require_modules/menu/images/up_disabled.gif" alt=""/>
+					{else}
+						<a class="menuUpIcon" href="?menu_id_up={$m['id_menu_item']}" title="Posunúť hore">
+							<img src="/require_modules/menu/images/up.gif" alt="Hore"/>
+						</a>
+					{/if}
+					
+					
+					{if $iterator->isLast()}
+						<img style="float:right;" src="/require_modules/menu/images/down_disabled.gif" alt=""/>
+					{else}
+						<a class="menuDownIcon" href="?menu_id_down={$m['id_menu_item']}" title="Posunúť dole">
+							<img src="/require_modules/menu/images/down.gif" alt="Dole"/>
+						</a>
+					{/if}
+						
+					<a class="editIcon" href="?changeMenuItem=1&amp;id_menu_item={$m['id_menu_item']}"></a>
+					
+				</div>	
+					
+				
+				<a class="menuNameHolder" href="?id_menu_item={$m->id_menu_item}">{$m->name}</a>										
+				
+				
+				{ifset $menu[$m->id_menu_item]}
+					{include #this parent => $m->id_menu_item}
+				{/ifset}
+			</li>
+		{/foreach}
+	</ul>
+
+{/block}
+{/if}
+
+</div>

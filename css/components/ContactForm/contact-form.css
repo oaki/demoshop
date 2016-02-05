@@ -1,0 +1,46 @@
+		
+/*
+* contact
+*/
+.c-contact{}
+
+
+.c-contact .gmap { float:left;padding-top:15px;}		
+.c-contact #gmapHolder{ width:680px; height:250px;}
+	/*
+	 * contact form
+	 */
+	 /*.c-contact .contact-r input,
+	 .c-contact .contact-r textarea{ 
+		 padding: 7px 10px; border: 1px solid silver;
+		 -webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		width: 300px;
+		
+	 }*/
+	 
+	 .c-contact input[type="text"]{
+		padding: 5px 15px 5px 70px;
+		width: 125px;		
+	 }
+	 
+	 .c-contact .contact-form{}
+	 .c-contact .contact-form h3 { padding-top: 30px; color: #323232;}
+	 .c-contact .contact-form label{ display: block; color:#5d7a88; position: absolute; top:7px; left:10px;}
+	 .c-contact .contact-form input.submit{ width:auto;background: url("/images/gradient-color-02.png") repeat scroll 0 0 transparent; color: white;}
+
+	 .c-contact .form-pairs{ height: 40px;}
+	 .c-contact .contact-input-holder{ float: left; width:230px; position: relative;}
+	 
+	 .c-contact .contact-textarea-holder {position: relative;}
+	 .c-contact .contact-textarea-holder label{ top:12px; left:12px;}
+	 .c-contact .contact-textarea-holder textArea{ width:655px; text-indent: 90px; }
+	 .c-contact .contact-submit-holder{ padding-top:15px; }
+	 
+/* pozicia paddingu */	 
+#frmform-name{ padding-left:45px; width:155px;}
+#frmform-company{ padding-left:45px; width:155px;}
+#frmform-email{ padding-left:45px; width:155px;}
+#frmform-tel{ padding-left:55px; width:145px;}
+/* contact end */

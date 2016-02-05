@@ -1,0 +1,45 @@
+{block #content}
+
+
+
+<div class="c-content-top">
+
+	{control breadcrumb:custom $breadcrumb, $presenter->id_lang, 'white'}
+    
+</div><!-- c content top -->
+
+
+<div class="category-title">
+	<h2>{$name} <span>({$count} {$count|decline:'produkt'})</span></h2>
+</div>
+
+
+{if $showForm}
+	{*<div class="c-searchform">
+		{control searchform}
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".c-searchform label").inFieldLabels();
+		});
+	</script>*}
+{/if}
+<div class="c-product">
+	
+
+	<ul class="product-list">
+		{foreach $products as $p}
+		<!-- produkt -->
+		<li>
+			{include '../Product/product_annotation.latte' 'p'=>$p, 'iterator'=>$iterator}
+		</li>
+		<!-- / produkt -->   
+		{/foreach}   
+	</ul>
+
+	
+
+</div><!-- produkty -->
+
+{control paginator}

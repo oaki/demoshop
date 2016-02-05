@@ -1,0 +1,16 @@
+<div class="breadcrumb">
+	<ul>
+		<li class="drobeckova-home"><a href="/" title="Úvod">
+				<img src="/images/breadcrumb-home.gif" title="Vrátiť spáť na úvod" alt="Vrátiť spáť na úvod"></a></li>
+		
+		<li n:foreach="$parents as $p">
+			{if $iterator->isLast()}
+				{$p['name']}
+			{else}
+				<a href="{$p['link']}" title="{$p['name']}">{$p['name']}</a>
+			{/if}
+		</li>
+			
+	</ul>
+</div><!-- bread crumb -->
+

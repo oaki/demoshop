@@ -1,0 +1,12 @@
+common:
+    parameters:
+        database:
+            driver: mysqli
+            socket: /tmp/mariadb55.sock
+            database: demo
+            username: demo
+            password: demo
+            charset: utf8
+            profiler: true
+
+production < common:

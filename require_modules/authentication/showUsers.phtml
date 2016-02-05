@@ -1,0 +1,43 @@
+<div id="way">
+<div id="wayIcon"><a href="" id="addUser">Pridať</a></div>
+Správa uživateľov</div>
+{$form}
+<script type="text/javascript" language="JavaScript">
+     var slideformAddUser = new Fx.Slide('formAddUser');
+       $('addUser').addEvent('click', function(e){
+            e = new Event(e);
+            slideformAddUser.toggle();
+            e.stop();
+            });
+           slideformAddUser.hide();
+        </script>
+
+<table id="highlight">
+	<thead>
+		<tr>
+			<th>Login</th>
+			<th>Meno</th>
+			<th>Priezvisko</th>
+			<th>Naposledy prihlásený</th>
+			<th>Uživateľská skupina</th>
+			<th>Upraviť</th>
+			<th>Zmazať</th>
+		</tr>
+	</thead>
+	<tbody>
+    	{foreach $list as $l}
+          <tr>
+			<td>{$l ['login']}</td>
+			<td>{$l ['name']}</td>
+			<td>{$l ['surname']}</td>
+			<td></td>
+			<td>{$l ['group_name']}</td>
+			<td><a href="?section={$_GET ['section']}&amp;id_auth_user={$l ['id_auth_user']}"><img src="/templates/global_img/change.png" alt="Upravit" /></a></td>
+			<td><a href="javascript:confl('Naozaj chcete odstrániť {$l ['name']}','?section=users&amp;id_delete_user={$l ['id_auth_user']}');"><img src="/templates/global_img/delete.gif" alt="Zmazat" /></a></td>
+		</tr>
+         {/foreach}
+        </tbody>
+</table>
+<script type="text/javascript">	
+	var th = new tableHighlighter( 'highlight' );	
+</script>

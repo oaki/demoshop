@@ -1,0 +1,73 @@
+{*{if NEnvironment::getUser()->isLoggedIn()}
+	{if $user['name']!=''}{$user['name']} {$user['surname']} <br />{/if}
+	{$user['login']}<br />
+	<a href="{plink Profil:default}">{!_('Profil')}</a>
+	<a href="{plink Profil:orderList}">Objednavky</a>
+	<a href="{plink Profil:logOut, $backlink}">{!_('Ohlásiť')}</a>
+{else}
+	<div>
+	    {control loginForm}
+
+	    <script type="text/javascript">
+	    $(document).ready(function(){
+			$("#frm-LoginForm-loginForm label").inFieldLabels();
+		});
+
+	    </script>
+	    <div class="clear"></div>
+
+	    <a href="{plink Profil:registration, backlink=>$presenter->application->storeRequest()}">{!_('Registrácia')}</a>
+	    <a href="{plink Profil:lostPassword}">{!_('Zabudli ste heslo?')}</a>
+
+	    
+	</div>
+{/if}*}
+
+	{if NEnvironment::getUser()->isLoggedIn()}
+		<div id="loginContainer" style="padding:0px;">
+			<a id="showLoginForm" href="{plink Profil:default}">{!_('Profil')}</a> |
+			<a href="{plink Profil:orderList}">Objednávky</a> |
+			<a href="{plink Profil:logOut, backlink=>'/'}">{!_('Odhlásiť')}</a>
+			
+			<div n:if="NEnvironment::getUser()->getIdentity()->data['discount']>0" id="user-discount">{!_'Vaša zľava'} -{? echo NEnvironment::getUser()->getIdentity()->data['discount']}%</div>
+			<div id="user-name-top"> {? echo NEnvironment::getUser()->getIdentity()->data['login']}</div>
+			
+		</div>
+		
+	{else}
+		<div id="loginContainer">
+
+			<a id="showLoginForm" href="{plink Profil:login, backlink=>$presenter->application->storeRequest()}">{!_('Prihlásiť')}</a> /
+			<a href="{plink Profil:registration, backlink=>$presenter->application->storeRequest()}">{!_('Registrovať')}</a>
+
+			<div id="loginFormContainer">
+
+				{snippet minilogin}
+					{control loginForm}
+
+					<script type="text/javascript">
+						$(document).ready(function(){
+							$("#loginFormContainer label").inFieldLabels();
+						});
+
+					</script>
+				{/snippet}
+
+				<a class="facebook-login" href="{plink :Front:Authentification:facebookRedirectToLogin}">Prihlás facebookom</a>
+				<a class="google-login" href="{plink :Front:Authentification:googleRedirectToLogin}">Prihlás Google</a>
+				
+				<div class="lostPasswordHolder">
+					<a class="lostPassword" href="{plink Profil:lostPassword}">{!_('Zabudli ste heslo?')}</a>
+				</div>
+			</div>
+		</div>
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var loginHolder = $('#loginFormContainer');
+			loginHolder.hide();
+			$("a#showLoginForm").toggle( function (){ loginHolder.show(); }, function(){ loginHolder.hide();  })
+		});
+	</script>
+	{/if}

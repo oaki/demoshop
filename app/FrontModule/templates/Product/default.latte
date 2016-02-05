@@ -1,0 +1,411 @@
+
+{block content}
+
+
+
+<div class="c-content-top">
+
+	{control breadcrumb:category $presenter->getParam('id_category'), $presenter->id_lang}
+    
+</div><!-- c content top -->
+
+
+<div class="c-product">
+
+	<div class="product-detail-l">
+
+		<div n:if="$product['news'] == 1" class="sticker new"></div>
+		<div n:if="$product['our_tip'] == 1" class="sticker top"></div>
+		<div n:if="$product['sale'] == 1" class="sticker sale"></div>
+
+		<div class="product-big">
+		<a href="{$product['first_file']|img:800:600:1}" rel="prettyPhoto[{$product['id_product']}]">
+				<img src="{$product['first_file']|img:300:300:6}" title="{$product['name']}" alt="{$product['name']}" />
+			</a>
+		</div>
+
+
+	
+		<div class="product-big-slider" n:if="count($product['files']) > 1">
+
+			<a href="#" title="späť" class="product-big-slider-l"></a>
+
+					<div class="c-product-big-slider-content">
+						<div class="product-big-slider-content">{dump $product['files']}
+							{foreach $product['files'] as $f}
+								{if !$iterator->isFirst()}
+									<a href="{$f|img:800:600:1}" title="{$f['alt']}" rel="prettyPhoto[{$product['id_product']}]">
+										<img src="{$f|img:75:75:5}" alt="{$f['alt']}"/>
+									</a>
+								{/if}
+							{/foreach}            		                                      
+						</div>        
+					</div>
+
+			<a href="#" title="ďalej" class="product-big-slider-r"></a>
+
+		</div>
+
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				var count_item = {? echo count($product['files'])};
+				var item_width = 77;
+				var container_width = 237;
+				var container = $('.product-big-slider-content');
+				var max_size = count_item * item_width - container_width;
+				
+				function moveNext(){
+					var actualLeft = parseInt(container.css('left'));
+					if(max_size > Math.abs(actualLeft) ){
+						var m = actualLeft - container_width + 'px';
+						container.animate({'left':m});
+					}
+				}
+				
+				function movePrev(){
+					var actualLeft = parseInt(container.css('left'));
+					if( (actualLeft + container_width) < 0){
+						var m = actualLeft + container_width + 'px';
+					}else{
+						var m = 0;
+					}
+					container.animate({'left':m});
+				}
+				
+				$('.product-big-slider-l').click( function(e){
+					e.preventDefault();
+					movePrev();
+				});
+				$('.product-big-slider-r').click( function(e){
+					e.preventDefault();
+					
+					moveNext();
+				});
+			}); 
+
+			/*$(document).ready(function(){
+				var slider = $('.product-big-slider-content');
+				$(".product-big-slider-r").click( function( e ){
+					e.preventDefault();
+					var actual_left = parseInt(slider.css('left'));
+					var new_left = actual_left - 200;
+					
+					slider.animate({ 'left': new_left})
+				});
+			});*/
+
+		</script>
+		
+
+	</div><!-- product detail l -->
+
+
+<div class="product-detail-r">
+	
+    <h2>{$product['name']}</h2>
+    {*<div class="c-detail-r-availability">skladom: <span class="availability">{if $product['max_stock']>0}{$product['max_stock']} ks{else}dostupnosť na dopyt{/if}</span></div>*}
+    <div class="c-detail-r-availability">na sklade</div>
+    
+    <div class="description">
+		{!$product['description']}
+	</div>
+	
+	
+	
+	
+        <div class="basket">
+        
+            <div class="basket-price">
+                od {$product['min_price']['price_showed']|money:$presenter->id_lang}
+            </div>
+        
+            <div class="basket-btn">
+                <a id="href-product-param-table" href="#product-param-table" class="border-radius-2">.. varianty</a>
+				
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$('#href-product-param-table').click( function(){
+							$('body,html').animate({
+								scrollTop: $('#product-param-table').offset().top
+
+							}, 1000);					
+						})
+					})
+					
+					     
+				</script>
+				
+            </div>
+            
+          {*  <div class="holder-count-product border-radius-10">
+                4
+            </div>*}
+        
+        
+        </div><!--  basket -->
+	
+	<div class="clear"></div>
+	<div class="position-relative">
+		<a href="#" id="href-question-to-seller">Otázka na predajcu</a>
+		<div class="c-question-to-seller">
+			{form questionToSeller}
+			<ul class="errors" n:if="$form->hasErrors()">
+					<li n:foreach="$form->errors as $error">{$error}</li>
+			</ul>
+			<div class="pair">{label name/}{input name}</div>
+			<div class="pair">{label email/}{input email}</div>
+			<div class="pair">{label phone/}{input phone}</div>
+			<div class="pair">{label text/}{input text}</div>
+			<div class="pair">{label number/}{input number}</div>
+			{input btn class=>submit}
+			{/form}
+		</div>
+	</div>
+	
+	
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $(".c-question-to-seller label").inFieldLabels();
+	  $('.c-question-to-seller').hide();
+		$('#href-question-to-seller').toggle( function(){ $('.c-question-to-seller').show();},function(){ $('.c-question-to-seller').hide();});
+	});	
+</script>
+	
+	
+
+</div><!-- product detail r -->
+{dump $product['params']}
+
+	<div class="clear"></div>
+	
+<div class="description">
+		{!$product['long_description']}
+		
+		{control attachment:files $product['files']}
+	</div>
+
+	<h3 n:if="count($product['params']) > 1 " style="font-size:18px; padding:15px 0 5px;">Varianty</h3>
+{dump $product}
+	<table id="product-param-table" cellspacing="0" cellpadding="0">
+	<thead>
+		<tr>
+			{foreach $product['product_template_group'] as $r}
+				{if $r->row_name !='code'}
+					{if $r->row_name == 'connection'}
+						<th n:if="$product['show_connection']">{!_$r['row_name']}</th>	
+					{else}
+						<th>{!_$r['row_name']}</th>	
+					{/if}
+				{/if}
+					
+			{/foreach}
+			<th class="price">Cena</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr n:foreach="$product['params'] as $param" {if $iterator->isOdd()} class="odd"{/if}>
+			{foreach $param as $key=>$row}
+				{if $key!='code'}
+					{if $r->row_name == 'connection'}
+						<td n:if="$product['show_connection']" class="{$key}" n:ifset="$product['product_template_group'][$key]">{$row}</td>
+					{else}
+						<td class="{$key}" n:ifset="$product['product_template_group'][$key]">{$row}</td>
+					{/if}
+				{/if}
+			{/foreach}
+
+			<td class="price">
+				{if $param['price_array']['sale'] == 1 
+					AND $param['price_array']['original_price']!=$param['price_array']['price']
+					AND $param['price_array']['sale_percent']>0}
+					<div class="original-price">{$param['price_array']['original_price_showed']|money:$presenter->id_lang}</div>
+				{/if}
+				{$param['price_array']['price_showed']|money:$presenter->id_lang}
+			
+			</td>
+			<td class="basket-inputs">
+				{var $id = $param['id_product_param']}
+				{form "addToCartForm-$param->id_product_param"}
+					{input count class=>count}
+					{input btn class=>'addToCart classic-btn border-radius-2'}
+				{/form}
+				
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<script type="text/javascript">
+	
+	
+	$('input.addToCart').click( function () {
+
+		$.get({link :Front:Ajax:addToCartMsg}, 
+			//{ 'test':1},
+			function(data) {				
+				$('#msg-container').html(data);				
+			}
+			,"html");
+	});
+</script>
+	
+
+</div><!-- c product -->
+
+
+{control productNewsSaleAvaiableTable}
+
+
+
+ 
+
+
+</div><!-- c bottom small product -->
+
+
+
+	
+	
+	
+	
+	
+	{*
+
+
+
+{dump $product}
+<div class="content">
+	<!-- detail produktu .. .. .. .. -->
+	<div class="c-detail-produktu">
+		<div n:if="$product['sale'] == 1" class="widget-akcia-big"></div>
+
+
+		<div class="detail-pic">
+			<a href="{$product['first_file']|img:800:600:1}" rel="prettyPhoto[{$product['id_product']}]">
+				<img src="{$product['first_file']|img:420:470:6}" title="{$product['name']}" alt="{$product['name']}" />
+			</a>
+		</div>
+		<div id="gallery-pic">
+			{foreach $product['files'] as $f}
+				{if !$iterator->isFirst()}<a href="{$f|img:800:600:1}" rel="prettyPhoto[{$product['id_product']}]"></a>{/if}
+			{/foreach}
+		</div>
+
+
+		<div class="detail-content">
+
+			<h1>{$product['name']}</h1>
+
+			{control breadcrumb:category $presenter->getParam('id_category'), $presenter->id_lang}
+
+			
+			<p n:if="$product['first_param']['code']!=''"><span>Kód tovaru: </span>{$product['first_param']['code']}</p>
+
+			<p n:if="$product['first_param']['weight']!=''"><span>Váha: </span>{$product['first_param']['weight']}</p>
+
+			<p n:if="$product['first_param']['packing']!=''"><span>Balenie:</span> {$product['first_param']['packing']}</p>
+
+			<p n:if="$product['first_param']['unit_of_measure']!=''"><span>Merná jednotka:</span> {$product['first_param']['unit_of_measure']}</p>
+
+
+			<form id="add_to_cart_form" action="" method="post" class="ajax">
+				<div class="c-price-big-add-to-cart">
+
+					<div id="price-big">
+						<span n:if="$product['first_param']['price_array']['original_price'] != $product['first_param']['price_array']['price']" id="sale" title="{!_'Pôvodná cena'}">
+							{$product['first_param']['price_array']['original_price']|money:$presenter->id_lang}
+						</span>
+						{$product['first_param']['price_array']['price']|money:$presenter->id_lang} 						
+						<small>( bez DPH )</small>
+					</div>
+
+					<input class="count" type="text" name="count" value="1"/> 
+					<div id="unit-of-measure">{$product['first_param']['unit_of_measure']}</div>
+
+					<a id="add_to_cart">Do košíka</a>
+					<input type="hidden" name="id_product_param" value="{$product['first_param']['id_product_param']}" />
+
+					
+				</div>
+				<div class="clear"></div>
+			</form>
+
+			<script type="text/javascript">
+				$(document).ready(function(){
+
+					$('#add_to_cart').click( function(event){
+						event.preventDefault();
+						$('html').animate({ scrollTop : '0'},'slow');
+						$('#add_to_cart_form').submit();	
+
+
+					});
+				});	
+
+			</script>			
+			
+			
+			<div class="c-product-description">
+				{!$product['description']}
+			</div>
+
+			{control attachment:files $product['files']}
+			
+			
+			
+			<table class="product-param-table">
+				<thead>
+					<tr>
+						<th n:foreach="$product['product_template_group'] as $r">{!_$r['row_name']}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr n:foreach="$product['params'] as $param">
+						{foreach $param as $key=>$row}
+							<td n:ifset="$product['product_template_group'][$key]">{$row}</td>
+						{/foreach}
+							
+						<td class="price">{$param['price_array']['price']|money:$presenter->id_lang}</td>
+						<td class="basket">
+							{var $id = $param['id_product_param']}
+							{form "addToCartForm-$param->id_product_param"}
+								{input count}
+								{input btn}
+							{/form}
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+			<br />
+			<br />
+			
+		</div><!-- detail content -->    
+		
+		
+		
+	</div><!-- c detail produktu -->
+	
+	
+	
+</div><!-- content -->
+
+
+
+<div n:if="count($product_alternative)>0" class="c-suvisiace-s-produktom">
+
+	<h6>vyberte si zo súvisiacich produktov<img src="/images/li-down-white.gif" /></h6>
+
+	<ul>
+		<li n:foreach="$product_alternative as $p">
+			{include '../Product/product_annotation.latte' 'p'=>$p}
+		</li>
+	</ul>
+
+</div>
+*}

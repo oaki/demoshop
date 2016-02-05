@@ -1,0 +1,8 @@
+{if !isset($id_category)} {var $id_category = $p['main_category']}{/if}
+
+{var $link = $presenter->link(':Front:Product:default', array('id'=>$p['id_product'], 'id_category' => $id_category))}
+
+<div class="product-pic"><a href="{$link}"><img src="{$p['first_file']|img:70:70:6}" title="{$p['name']}" alt="{$p['name']}" /></a></div>
+<div class="availability">{if $p['max_stock']>0}skladom{else}skladom{/if}</div>
+<h3><a href="{$link}">{$p['name']|truncate:40}</a></h3>
+<div class="price">{$p['min_price']['price_showed']|money:$presenter->id_lang}</div>

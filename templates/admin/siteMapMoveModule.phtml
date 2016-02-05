@@ -1,0 +1,8 @@
+<form action="" method="post">
+	<select name="id_menu_item_for_change">
+		{$doTreeSelectMoveModul}      
+    </select> 
+    <input type="hidden" name="id_type_modul" value="{? echo $_GET ['id_type_modul']}" /> 
+	<input type="hidden" name="id_node" value="{? echo $_GET ['id_node']}" /> 
+	<input type="submit" name="changeModulParent" value="Ulož" />
+</form>

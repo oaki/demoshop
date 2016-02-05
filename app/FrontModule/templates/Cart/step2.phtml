@@ -1,0 +1,54 @@
+{block #content}
+
+{include '../default-top.latte' 
+	breadcrumb=>array( array('name'=>'Adresa dodania') ), 
+	name=>_('Adresa dodania')
+}
+
+
+
+
+	<div class="content">
+	{include 'order-indicator.latte'}
+
+	<div class="order-info-text">
+		Vyplňte a skontrolujte si fakturačné údaje a poštovú adresu. Ak si túto objednávku želáte fakturovať s inými údajmi ako ste uviedli, resp. zaslať na inú poštovú adresu, tak zmeňte potrebné údaje v nižšie uvedenom formulári.
+	</div>
+	<div class="profil-form-container">
+		{control fullOrderForm}
+	</div>
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#user-info').hide();
+
+			$('#company-form-container').hide();
+
+			$('#frmfullOrderForm-type-0').click( function(){
+				$('#company-form-container').hide();
+			});
+
+			$('#frmfullOrderForm-type-1').click( function(){
+				$('#company-form-container').show();
+			});
+
+			$('#delivery-address-container').hide();
+
+			$('#frmfullOrderForm-use_delivery_address-0').click( function(){
+				$('#delivery-address-container').hide();
+			});
+
+			$('#frmfullOrderForm-use_delivery_address-1').click( function(){
+				$('#delivery-address-container').show();
+			});
+
+			if( $('#frmfullOrderForm-use_delivery_address-1').is(':checked') ){
+				$('#delivery-address-container').show();
+			}
+
+		});
+	</script>
+
+
+	</div>

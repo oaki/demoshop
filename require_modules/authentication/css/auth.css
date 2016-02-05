@@ -1,0 +1,125 @@
+html,body {
+	font-family: Helvetica,arial, verdana, tahoma;
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #F7F9E2;
+	color: #4C5311;
+}
+
+#wrapper{
+	background: #31373C url(background_radial.jpg) repeat-x scroll 50% 50%;;
+	display:block;
+	height:100%;
+	margin:0;
+	min-height:592px;
+	min-width:914px;
+	padding:0;
+	position:absolute;
+	width:100%;
+}
+
+
+#LogInHolder{
+	color:#F3F3F3;
+	font-size:13px;
+	height:326px;
+	left:50%;
+	margin-top:-153px;
+	position:absolute;
+	text-shadow:0 1px 1px rgba(0, 0, 0, 0.4);
+	top:50%;
+	width:480px;
+}
+
+#LogInHolder div{
+	float:left;
+    position:relative;
+}
+
+#LogInHolder fieldset{
+	padding:0px;
+	border:0px;
+}
+#LogInHolder div label{
+	left:5px;
+	top:0px;
+	color: #808080;
+	font-size:13px;
+	line-height:16px;
+	opacity:1;
+	padding:5px;
+	position:absolute;
+	z-index:5;
+	opacity:1;
+	font-family: Helvetica,Arial,sans-serif;
+	text-shadow:none;
+}
+
+
+input.text{
+	line-height:17px;
+	font-size:13px;
+	margin:0 6px 0 0;
+	width:185px;
+	padding:4px 3px 2px;
+
+	border: 2px solid #7B8AAC;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+input.btnLogin{
+	background:transparent url(btn.png);
+	background-position: 175px 241px;
+	height:23px;
+	color:#292929;
+	border:0px none;
+	margin-top:10px;
+	width: 115px;
+	padding: 2px 5px;
+}
+
+#logo{
+	width:350px;
+	height:100px;
+	background: transparent url(logo_login.png) no-repeat 200px 0px;
+}
+
+#copyright {
+	font-weight: bold;
+	font-size: 10px;	
+	color: #999999;	
+	
+	text-align: left;
+	position:absolute;
+	bottom:10px;
+	left:20px;
+}
+
+#mylogo{
+	position:absolute;
+	right:20px;
+	bottom:10px;
+}
+
+#spinner{
+	width:20px;
+	height:20px;
+	background: transparent url(spinner_16px.gif) no-repeat 0px 0px;
+	position: absolute !important;
+	left:400px;
+	top:60px;
+	display:none;	
+}
+
+#error {
+	color:#C80000;
+	font-size:11px;
+	font-weight:bold;
+	margin-left:2px;
+	position:absolute !important;
+	text-shadow:0 0 3px rgba(0, 0, 0, 0.1);
+	top:30px;
+	right:-20px;
+	width:300px;
+}

@@ -1,0 +1,12 @@
+div.promo { background: url('/images/bg-promo.png') top center;}
+.oneByOne_item p.h { font-size: 37px;margin: 0px;}
+.oneByOne_item p.h2 { font-weight: 900;font-size: 14px;margin-bottom: 7px;}
+.oneByOne_item p.desc { margin: 11px 0px 10px 0px;font-size: 12px;}
+.oneByOne_item p.anot { font-size: 13px;color: #4B5868;margin-bottom: 9px;}
+.oneByOne_item p.min-desc { font-size: 11px;color: #4B5868;margin-top: 0px;}
+.oneByOne_item a.button { background-image: url(/images/btn-promo.png);padding: 18px 0px 18px 19px;color: white;height: 17px;width: 143px;display: inline-block;text-align: left;margin-top: 35px;font-weight: 900;font-size: 13px;text-decoration: none;}
+.oneByOne_item .col1 { float: left;width: 275px;margin-top: 65px;text-align: right;margin-left: 25px;}
+.oneByOne_item .col2 { float: left;}
+.oneByOne_item .col3 { float:right;width: 220px;padding-top: 86px;}
+.oneByOne_item .col3 a { font-size: 12px;color: #029A36;text-decoration: none;}
+.oneByOne_item .col3 .box { margin-bottom: 33px;width: 200px;}

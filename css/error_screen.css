@@ -1,0 +1,20 @@
+HTML { font-size:100.01%; height:100%;}
+BODY,DIV,SPAN,APPLET,OBJECT,IFRAME,H1,H2,H3,H4,H5,H6,BLOCKQUOTE,PRE,A,ABBR,ACRONYM,ADDRESS,BIG,CITE,CODE,DEL,DFN,EM,FONT,IMG,INS,KBD,Q,S,SAMP,SMALL,STRIKE,SUB,SUP,TT,VAR,DL,DT,DD,FIELDSET,FORM,LABEL,LEGEND,CAPTION,TFOOT,THEAD,TH { padding:0; margin:0; border:none; outline:none; vertical-align:baseline; font-family:inherit; }
+P { margin-top:0px;}
+DFN,I,CITE,VAR,ADDRESS,EM { font-style:normal; }
+TH,B,H1,H2,H3,H4,H5,H6 { font-weight:normal; }
+TEXTAREA,INPUT,SELECT { font-family:inherit; font-size:1em; }
+TABLE { border-collapse:collapse; border-spacing:0; }
+CAPTION,TH,TD { text-align:left; }
+:focus { outline:none; }
+a { color:#0099ff; text-decoration:none;}
+.container-content a:hover { text-decoration:underline;}
+
+/* main */
+body { font-family:Arial, Helvetica, sans-serif; font-size:13px;height:100%; color:#fff; background:url(../images/error_bg.jpg) top left no-repeat #000;}
+
+#content { padding:110px 0 0 50px;}
+a { color:#fb0096; text-decoration:underline;}
+h1 { font-size:35px;}
+h5 { font-size:23px; padding:0 0 30px 0;}
+

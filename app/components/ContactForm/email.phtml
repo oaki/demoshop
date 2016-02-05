@@ -1,0 +1,29 @@
+<h1>Kontaktný formulár <span style="font-size:10px;color:silver;">{? echo date('d.m.y H:i:s'); }</span></h1>
+
+<table>	
+	<tr>
+		<td>Meno a priezvisko: </td>
+		<td>{$values['name']} {$values['surname']}</td>
+	</tr>
+	<tr>
+		<td>Spoločnosť: </td>
+		<td>{$values['company']}</td>
+	</tr>
+	
+	<tr>
+		<td>Telefón: </td>
+		<td>{$values['tel']}</td>
+	</tr>
+	<tr>
+		<td>Email: </td>
+		<td>{$values['email']}</td>
+	</tr>
+	<tr>
+		<td>Správa: </td>
+		<td>{$values['text']}</td>
+	</tr>
+	
+</table>
+<div style="font-size: 10px; color:silver;padding-top: 15px;">
+Odoslané z {? echo $_SERVER['HTTP_HOST']}
+</div>

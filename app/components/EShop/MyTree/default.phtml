@@ -1,0 +1,55 @@
+
+<div class="menuHeader">
+	 <a title="Pridať novú kategoriu" href="{plink EShop:addCategory id_category=>NULL}" class="addMenuItem"></a>
+	 <a title="Pridať nový produky" href="{plink Product:add}" class="addNewProduct">Nový produkt</a>
+	 <a href="{plink Eshop:default id_category=>NULL}" title="Všetky produkty"  class="addNewProduct" style="width:100px;">Všetky produkty</a>
+{*	 <a title="Dodávatelia" href="{plink Supplier:default}" class="addNewProduct">Dodávatelia</a>*}
+	 <div class="clear"></div>
+</div>
+
+	{cache 'catebory', tags=>array('category')}
+    	{assign parent => NULL }
+		{block #category}
+			<ul n:ifset="$tree[$parent]" {if $parent == NULL}class="menu"{/if}>
+				<li n:foreach="$tree[$parent] as $m">
+					<div class="menuIconHolder">
+						<a class="deleteIcon" href="{link deleteCategory!, id_category=>$m['id_category']}" title="Naozaj chcete zmazať položku?"></a>
+
+						{if $iterator->isFirst()}
+							<a class="menuUpIcon" href="#" title="Posunúť hore">
+							<img src="/require_modules/menu/images/up_disabled.gif" alt="Hore" />
+							</a>
+
+						{else}
+							<a class="menuUpIcon" href="{link moveCategoryUp!, id_category=>$m['id_category']}" title="Posunúť hore">
+								<img src="/require_modules/menu/images/up.gif" alt="Hore" />
+							</a>
+
+						{/if}
+
+						{if $iterator->isLast()}
+						   <a class="menuDownIcon" href="#" title="Posunúť dole">
+							<img src="/require_modules/menu/images/down_disabled.gif" alt="Dole" />
+						</a>
+
+						{else}
+						   <a class="menuDownIcon" href="{link moveCategoryDown!, id_category=>$m['id_category']}" title="Posunúť dole">
+							<img src="/require_modules/menu/images/down.gif" alt="Dole" />
+						</a>
+
+						{/if}
+
+
+						<a class="editIcon" href="{plink Eshop:editCategory id_category=>$m['id_category']}" title="Editovat">
+
+						</a>
+					</div>
+
+					<a class="menuNameHolder" href="{plink Eshop:default id_category=>$m['id_category']}" title="{$m['name']}">{$m['name']}</a>
+
+					{include #this parent => $m['id_category']}
+				</li>
+			</ul>
+		{/block}
+
+{/cache}

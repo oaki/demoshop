@@ -1,0 +1,46 @@
+{block content}
+
+
+{include '../default-top.latte' 
+	breadcrumb=>array( array('name'=>_('História objednávok')) ), 
+	name=>_('História objednávok')
+}
+
+<div class="content">
+
+	<div class="detail-kosika">
+
+	{if count($list) > 0}
+		{dump $list}
+		<div class="table">
+			  <div class="tr">
+				<div class="th">{!_('Číslo ob.')}</div>
+				<div class="th price">{!_('Cena')}</div>
+				
+				<div class="th">{!_('Stav')}</div>
+			  </div>
+
+
+			{foreach $list as $l}
+			  <div class="tr {if $iterator->isOdd()}neparne{/if}">
+				<div class="td" style="width:70px;">{$l['id_order']}</div>
+				<div class="td price">{$l['total_price']|money:$presenter->id_lang}</div>
+				<div class="td">{? echo OrderModel::getStatus($l['order_status'])}</div>
+				<div class="td" style="width:70px;"><a href="{plink Profil:order id=>$l['id_order']}">detail</a></div>
+			  </div>
+			{/foreach}
+		</div><!-- end table -->
+
+	{else}
+		<div class="content-msg">
+			<div class="content-msg-btn error"></div>
+			<p>
+				<strong>{!_'Momentálne nemáte žiadne objednávky.'}</strong>
+			</p>
+			<div class="clear"></div>
+		</div>
+		
+	{/if}
+	</div>
+
+</div>

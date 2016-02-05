@@ -1,0 +1,49 @@
+{block #content}
+
+{include '../default-top.latte' 
+	breadcrumb=>array( array('name'=>'Registrácia') ), 
+	name=>_('Registrácia nového použivateľa')
+}
+
+
+	
+<div class="content">
+	<div class="profil-form-container">
+		{control registrationForm}
+	</div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		
+		$('#company-form-container').hide();
+
+		$('#frmregistrationForm-type-0').click( function(){
+			$('#company-form-container').hide();
+		});
+
+		$('#frmregistrationForm-type-1').click( function(){
+			$('#company-form-container').show();
+		});
+
+
+		$('#delivery-address-container').hide();
+
+		$('#frmregistrationForm-use_delivery_address-0').click( function(){
+			$('#delivery-address-container').hide();
+		});
+
+		$('#frmregistrationForm-use_delivery_address-1').click( function(){
+			$('#delivery-address-container').show();
+		});
+
+		if( $('#frmregistrationForm-use_delivery_address-1').is(':checked') ){
+			$('#delivery-address-container').show();
+		}
+	});
+
+	</script>
+
+	
+
+
+</div>

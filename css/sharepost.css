@@ -1,0 +1,15 @@
+#sharepost {
+    background: none repeat scroll 0 0 #59585e;
+    -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	
+    float: left;
+    margin: 0 0 0 0;
+    padding: 5px;
+    position: absolute;
+    left: -100px;
+    width: -100px;
+}
+
+#sharepost .facebook-like{ height: 70px;}

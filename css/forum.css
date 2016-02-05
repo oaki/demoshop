@@ -1,0 +1,85 @@
+
+/* Forum Control */
+div#forumControl-expanded
+{
+  width: 648px;
+  margin-bottom: 20px;
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-bottom: 2px;
+}
+
+div#forumControl-topics-header
+{
+  width: 621px;
+  background-color: #F7F7F7;
+  margin-top: 20px;
+  padding: 5px;
+  border: 1px solid #D0D1D3;
+  font-weight: bold;
+}
+
+div#forumControl-topics
+{
+  width: 650px;
+  overflow-y: scroll;
+  height: 213px;
+  border-left: 1px solid #D0D1D3;
+}
+
+div#forumControl-topics table
+{
+  margin: 0px;
+  border-left: 1px solid #FFFFFF;
+}
+
+div#forumControl-topics-footer
+{
+  width: 621px;
+  height: 25px;
+  background-color: #F7F7F7;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: 1px solid #D0D1D3;
+  font-weight: bold;
+}
+
+div#forumControl-topics-footer div.left
+{
+  float: left;
+  padding-top: 2px;
+}
+
+div#forumControl-topics-footer div.right
+{
+  float: right;
+  margin-top: 4px;
+  margin-right: 5px;
+}
+
+div.forumControl-topic
+{
+  width: 485pt;
+  border: 1px solid #D0D1D3;
+  border-top: 3px solid #D0D1D3;
+  margin-bottom: 10px;
+}
+
+table.forumControl-reply
+{
+  width: 100%;
+  margin: 0px;
+}
+
+table.forumControl-reply td
+{
+  border: none;
+  padding: 3px;
+}
+
+a[href^="error:"]
+{
+  background: red;
+  color: white;
+  text-decoration: blink;
+}

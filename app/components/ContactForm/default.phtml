@@ -1,0 +1,83 @@
+<div class="c-contact">
+	
+	{!$c['text']}
+	
+
+	
+	<div class="gmap">
+		<div id="gmapHolder"></div>
+		
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.4&sensor=false"></script>
+		<script type="text/javascript" src="/jscripts/jquery/jquery.gmap.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var lat = {$c['latitude']};
+				var lon = {$c['longitude']};
+				$("#gmapHolder").gMap({
+
+					latitude: lat,
+					longitude: lon,
+					zoom: 14,
+					maptype: 'ROADMAP',
+					controls: ['GSmallMapControl'],
+					markers: [{
+						latitude: lat,
+						longitude: lon,
+						html: {$c['google_text']},
+						popup: true 
+					}]
+
+				});
+			});
+		</script>
+	</div>	
+	
+	<div class="clear"></div>
+	
+	<div class="contact-form">
+		
+		<h3>Napíšte nám</h3>
+		{form form}
+
+		<div class="form-pairs">
+			<div class="contact-input-holder">
+				{label name/}{input name}
+			</div>
+			
+			<div class="contact-input-holder">
+				{label surname/}{input surname}
+			</div>
+
+			<div class="contact-input-holder">
+				{label company/}{input company}
+			</div>
+		</div>
+		
+		<div class="form-pairs">
+			<div class="contact-input-holder">
+				{label email/}{input email}
+			</div>
+		
+		
+			<div class="contact-input-holder">
+				{label tel/}{input tel}
+			</div>
+		</div>
+		
+		<div class="clear"></div>
+		
+		<div class="contact-textarea-holder">
+			{label text/}{input text}
+		</div>
+		<div class="contact-submit-holder">
+			{input btn_form class=>'classic-btn2'}
+		</div>
+		{/form form}
+		
+	</div>
+
+	
+</div>
+
+
+

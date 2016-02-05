@@ -1,0 +1,74 @@
+
+
+<div id="c-login-dialog"> 
+	
+	
+	<div class="form">
+		{snippet login}
+		{form loginForm}
+			{*<div class="errors-holder">
+				<ul class="errors" style="position: relative;" n:if="$form->hasErrors()">
+					<li n:foreach="$form->errors as $error">{$error}</li>
+				</ul>
+			</div>*}
+			{if $form->hasErrors()}{foreach $form->errors as $flash}<div class="flash">{$flash}</div>{/foreach}{/if}
+		
+			<div class="label-input-holder">
+				{label login/}
+				{input login class=>text}
+			</div>
+		
+			<div class="label-input-holder">
+				{label password /}
+				{input password class=>text}
+			</div>
+			{input btn_submit class=>'classic-btn2'}
+		{/form}
+		
+		
+		<script type="text/javascript">
+			$("#c-login-dialog label").inFieldLabels();
+		</script>
+		
+		{/snippet login}	
+		
+		<div class="links">
+			<a href="{plink Profil:lostPassword}">{!_('Zabudli ste heslo?')}</a>
+			<a href="{plink Profil:registration}">{!_('Nie ste ešte registrovaný?')}</a>
+		</div>
+	</div>
+	
+	
+	
+	<div class="alternative-login">
+		<a class="facebook-login" href="{plink :Front:Authentification:facebookRedirectToLogin}">Prihlásiť facebookom</a>
+		<a class="google-login" href="{plink :Front:Authentification:googleRedirectToLogin}">Prihlásiť Googlom</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('#showLoginDialog').click(function(event){
+		
+		event.preventDefault();
+		
+		$( "#c-login-dialog" ).dialog({ 
+			dialogClass: 'login-dialog',
+			modal: true,
+			resizable: false,
+			title: 'Prihlásenie',
+			width:'240px',
+			
+			height: 'auto',		
+			open: function(event, ui) {
+				//$(".ui-dialog-titlebar").hide();
+				//$(".ui-widget-overlay").css({'background-image': 'url("http://www.mydomain.com/images/ftp-page-bg.gif")','opacity':'1'})
+			}
+
+		} );
+
+	});
+	
+	
+	
+
+</script>

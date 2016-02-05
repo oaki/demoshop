@@ -1,0 +1,111 @@
+{block #content}
+
+<div class="content bottom-padding">
+<h1>Sumarizácia</h1>
+
+
+
+
+	{include 'order-indicator.latte'}
+
+	{control cart controls=>false,delivery=>true, payment=>true}
+
+	
+
+	<div class="sumary-info">
+		<table class="sumary-info-table">
+			<tr>
+				<th class="title" colspan="4">Učtovné informácie</th>
+			</tr>
+			<tr>
+				<th>Meno</th>
+				<td>{$v['name']}</td>
+				<th>Priezvisko</th>
+				<td>{$v['surname']}</td>
+			</tr>
+			<tr>
+				<th>Adresa</th>
+				<td>{$v['address']}</td>
+				<th>Mesto</th>
+				<td>{$v['city']}</td>
+			</tr>
+			<tr>
+				<th>PSČ</th>
+				<td>{$v['zip']}</td>
+				<th>Štát</th>
+				<td>{$v['iso']}</td>
+			</tr>
+			<tr>
+				<th>Telefón</th>
+				<td>{$v['phone']}</td>
+				<th></th>
+				<td></td>
+			</tr>
+			
+
+
+			{if $v['type'] == 1}
+				<tr>
+					<th class="title" colspan="4">Firemné informácie</th>					
+				</tr>
+				<tr>
+					<th>Názov spoločnosti</th>
+					<td>{$v['company_name']}</td>
+					<th>Platca DPH</th>
+					<td>{if $v['paying_vat'] == 0}neplatca{else}platca{/if}</td>
+				</tr>
+				<tr>
+					<th>IČO</th>
+					<td>{$v['ico']}</td>
+					<th>DIČ</th>
+					<td>{$v['dic']}</td>
+				</tr>
+			{/if}
+
+			{if $v['use_delivery_address'] == 1}
+				<tr>
+					<th class="title" colspan="4">Dodacia adresa</th>
+				</tr>
+				<tr>
+					<th>Meno</th>
+					<td>{$v['delivery_name']}</td>
+					<th>Priezvisko</th>
+					<td>{$v['delivery_surname']}</td>
+				</tr>
+				<tr>
+					<th>Adresa</th>
+					<td>{$v['delivery_address']}</td>
+					<th>Mesto</th>
+					<td>{$v['delivery_city']}</td>
+				</tr>
+				<tr>
+					<th>PSČ</th>
+					<td>{$v['delivery_zip']}</td>
+					<th>Štát</th>
+					<td>{$v['delivery_iso']}</td>
+				</tr>
+				<tr>
+					<th>Telefón</th>
+					<td>{$v['delivery_phone']}</td>
+					<th></th>
+					<td></td>
+				</tr>
+			{/if}
+				
+			<tr>
+				<th>Poznámka</th>
+				<td colspan="3">{$v['text']}</td>
+			</tr>
+		</table>
+		<div class="clear"></div>
+		
+		<a class="classic-btn border-radius-2" href="{link step3}">Späť</a>
+		<form action="{link createOrder!}" method="post" id="order-form">
+			<input class="classic-btn border-radius-2 right" type="submit" name="btn_order" value="Objednať" />
+		</form>
+		
+		<div class="clear"></div>
+	</div>
+
+
+</div>

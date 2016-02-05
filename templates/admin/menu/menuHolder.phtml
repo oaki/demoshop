@@ -1,0 +1,37 @@
+<div id="adminTools">
+   <a id="menuDashboard" href="admin.php?section=cms" title="Obsah">
+   	{if $section == 'cms'}<span class="active"></span>{/if}
+   	Obsah
+   </a>
+   
+	
+	<a id="menuEshop" href="/admin/e-shop/" title="E-shop">E-shop</a>
+	<a id="menuOrder" href="/admin/order/" title="Objednávka">Objednávka</a>
+					<a id="menuNewsletter" href="/admin/newsletter/" title="Newsletter">Newsletter</a>
+	<a id="menuUsers" href="/admin/user/" title="Uživatelia">Uživatelia</a>
+
+	<a id="menuGroups" href="/admin/product-template-group/" title="Šablóna parametrov pre jednotlivé produkty">Parametre</a>
+	<a id="menuAdminLog" href="http://www.google.com/analytics/" target="_blank" title="Statistiky">Statistiky</a>
+
+	
+
+	<a id="menuLogoff" href="/admin/login/out/" title="Odhlásenie"></a>  
+    {if count($langs) > 1}
+	    <div id="langHolder">
+	    	
+	    	{foreach $langs as $l}
+	    		<a href="?lang={$l['iso']}" title="{$l['name']}">{? echo strtoupper($l['iso'])}</a>
+	    	{/foreach}
+	    
+    	</div>
+   	{/if}
+</div>
+<div id="submenu">
+	
+	{if $submenu}
+		{foreach $submenu as $menu}
+			<a class="menuBtn" href="{$menu['href']}">{$menu['name']}</a>
+		{/foreach}
+	{/if}
+	<div class="clear"></div>
+</div>

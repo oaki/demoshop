@@ -1,0 +1,9 @@
+<div class="menuHeader">
+ <a class="addMenuItem" href="?addMenuItem=1" title="Pridať novú stránku"></a>
+ <div id="menuTypeHolder">
+ 	{foreach $var as $k=>$m }
+ 		<a class="menuBtn" href="?id_menu={$k}"><span class="left"></span>{$m['name']} <span class="right"></span></a>
+ 	{/foreach} 
+ </div>
+</div>
+ 

@@ -1,0 +1,41 @@
+<div class="module-content"> 
+<form action="" method="post">
+		 
+		<h2>Produkt</h2>
+		
+		<label class="first">Malý nadpis</label> 
+		<input class="text long" type="text" name="title_small" value="{$l['title_small']}"/>
+		
+		<label class="">Nadpis</label> 
+		<input class="text long" type="text" name="title" value="{$l['title']}"/>
+		
+
+		<label>Text</label> 
+		<textarea name="text" class="text long">{$l['text']}</textarea>
+
+		<h2>Meta dáta</h2>
+		<label class="first">Meta nadpis</label>
+		<input class="text long" type="text" name="meta_title" value="{$l['meta_title']}"/>
+		
+		<label>Meta popis</label>
+		<input class="text long" type="text" name="meta_description" value="{$l['meta_description']}"/>
+
+		<input class="submit" type="submit" name="saveProduct" value="Ulož" />
+		<input type="hidden" name="id_node" value="{$l['id_node']}" />
+	</form>
+
+
+	<label>Nahrávanie súborov</label> 
+	<small>
+		Popis rozpoznávania obrázkov (ako má začínať názov obrázku):<br />
+		<ul>
+			<li>Náhľadový veľký: big-</li>
+			<li>Náhľadový veľký hover: bighover-</li>
+			<li>Náhľadový maľý hover: small-</li>
+			<li>Piktogram: pic-</li>			
+		</ul>
+	</small>
+	{$showMultiupload->render()}
+
+
+</div>

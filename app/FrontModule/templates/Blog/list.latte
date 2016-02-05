@@ -1,0 +1,24 @@
+{block #content}
+<h1>Blog</h1>
+{dump $blog_box}
+{foreach $blog_box as $box}
+<div class="blog-box">
+
+	<div class="blog-box-1">
+		<h2><a href="{$box->url}">{$box->title}</a></h2>
+		<div class="blog-box-1-1">
+			<a href="{$box->url}">
+			{if isset($box->image_url)}
+				<img src="{$box->image_url}">
+			{/if}
+			</a>
+		</div>
+		<div class="blog-box-1-2x">
+			<p>
+				<a href="{$box->url}">{$box->text|striptags|truncate:950}</a>
+			</p>
+		</div>
+	</div>
+	<div class="blog-box-3" style="">&nbsp;</div>
+</div>
+{/foreach}

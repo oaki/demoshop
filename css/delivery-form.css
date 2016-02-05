@@ -1,0 +1,11 @@
+.delivery-form{ padding-bottom:15px;}
+.delivery-form .sectionTitle{ font-size: 14px; font-weight: bold; padding:20px 0;}
+.delivery-form .item{ padding:15px;}
+.delivery-form .item .name{ font-weight: bold;}
+.delivery-form .item .name input{ margin-right: 15px;}
+
+.delivery-form .item .name .price{ color:#e20079;}
+.delivery-form .item .info{padding-left:33px;}
+.delivery-form .item.selected{ background-color: #fff9d7; border:1px solid #e2c822;}
+
+

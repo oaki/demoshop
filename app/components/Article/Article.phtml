@@ -1,0 +1,17 @@
+
+<div class="c-current-article">
+	<div class="article{if $article['url_identifier']=='akcie'}-sale{/if}">
+
+		<h1 n:if="$article['title']!=''">{$article['title']}</h1>
+
+		{!$article['text']}
+
+	</div><!-- article -->
+
+
+	{control attachment:images $article['files'] $article['id_node']}
+
+	{control attachment:files $article['files']}
+
+
+</div>

@@ -1,0 +1,46 @@
+{snippet newsletter}
+<div class="c-newsletter">
+	<div class="title">NOVINKY E-MAILOM</div>
+	
+	<div class="bg">
+		{form newsletterform}
+		
+			<div n:if="!empty($flashes)" class="flash-holder">
+				<div class="flash inline">
+				{foreach $flashes as $flash}				
+						{$flash->message}				
+				{/foreach}
+				</div>
+			</div>
+			
+			<div class="flash-holder" n:if="$form->hasErrors()">				
+				<div class="flash inline">
+					<div n:foreach="$form->errors as $error">
+						{$error}
+					</div>
+				</div>
+				
+				<script type="text/javascript">
+					$(document).ready(function(){					
+						$('.flash-holder').delay(3000).fadeOut(400);
+					});
+				</script>
+			</div>
+			{label email/}
+			{input email class=>email}
+			{input sendnewsletter class=>btn}
+		{/form newsletterform}
+	</div>
+</div><!-- newsletter -->
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $(".c-newsletter label").inFieldLabels();
+	  
+	});
+	
+	
+	
+</script>
+{/snippet}

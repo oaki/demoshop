@@ -1,0 +1,112 @@
+{*
+<div class="c-promo">
+
+	<div class="promo">
+		<div id="featured_{!$slideshow['id_node']}">			
+			{foreach $slideshow['files'] as $i}
+				<a href="{$i['link']}"><img src="{$i|img:740:250:5}" alt="{$i['title']}" data-caption="#htmlCaption{$i['id_file']}"/></a>
+			{/foreach}			
+		</div>		
+	</div>
+	
+
+	<!-- Captions for Orbit -->
+	{foreach $slideshow['files'] as $i}
+		<span class="orbit-caption" id="htmlCaption{$i['id_file']}">{$i['title']}</span>
+	{/foreach}	
+	
+		
+	
+	<script type="text/javascript">
+		// <![CDATA[
+		$(window).load(function() {
+			$('#featured_{!$slideshow['id_node']}').orbit({
+				bullets: false,
+				directionalNav: false,
+				captions: true,
+				advanceSpeed: 6000,
+				timer: true,
+				animationSpeed: 1000,
+				animation: 'fade'
+			});
+		});
+		// ]]>
+	</script>
+</div><!-- c promo -->
+*}
+
+{*
+<!-- nivo slider -->
+<div class="c-promo">
+<link rel="stylesheet" href="/jscripts/jquery/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/jscripts/jquery/nivo-slider/themes/light/light.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/jscripts/jquery/nivo-slider/themes/dark/dark.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/jscripts/jquery/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/jscripts/jquery/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+
+ <div class="slider-wrapper theme-light">
+            <div id="slider" class="nivoSlider">
+				{foreach $slideshow['files'] as $i}
+					<a href="{$i['link']}"><img title="#htmlcaption{$i['id_file']}" data-thumb="{$i|img:640:250:5}"  src="{$i|img:640:250:5}" alt="{$i['title']}" data-caption="#htmlCaption{$i['id_file']}"/></a>
+				{/foreach}                
+            </div>
+			{foreach $slideshow['files'] as $i}
+				<div n:if="$i['alt']!=''" id="htmlcaption{$i['id_file']}" class="nivo-html-caption">
+					{!$i['alt']}
+				</div>
+			{/foreach}	
+	 
+        </div>
+    
+    <script type="text/javascript" src="/jscripts/jquery/nivo-slider/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+			'effect':'fade'
+		});
+    });
+    </script>
+</div>
+*}
+
+
+
+    <script src="/jscripts/OneByOne/jquery.onebyone.min.js"></script>              
+	<script src="/jscripts/OneByOne/jquery.touchwipe.min.js"></script> 
+    <script type="text/javascript" charset="utf-8">	
+	 $(document).ready(function() { 
+		
+        $('#banner').oneByOne({
+			className: 'oneByOne1',	             
+			/* Please provide the width and height in the responsive 
+			version, for the slider will keep the ratio when resize 
+			depends on these size. */
+			width: 640,
+			height: 320,
+			easeType: 'random',
+			slideShow: true,
+			responsive: true,
+			minWidth: 480,
+			slideShowDelay: 5000
+		});  
+		
+		
+	 });
+   	
+	 
+    </script> 
+    <link href="/jscripts/OneByOne/jquery.onebyone.css" rel="stylesheet" type="text/css">
+    <link href="/jscripts/OneByOne/animate.min.css" rel="stylesheet" type="text/css">     
+    <link href="/jscripts/OneByOne/responsiveexample.css" rel="stylesheet" type="text/css">
+	
+	<div id="banner">  
+		{dump $slideshow}
+		{foreach $slideshow['files'] as $i}
+		<div class="oneByOne_item">                                 	
+			<img class="bigImage" src="{$i|img:640:320:5}" alt="" />
+			{!$i['title']}												
+		</div>	
+		{/foreach}  
+			
+
+	</div>    

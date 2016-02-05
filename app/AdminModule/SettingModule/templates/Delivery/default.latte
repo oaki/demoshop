@@ -1,0 +1,21 @@
+{block content}
+
+{include '../submenu.latte'}
+<div class="padding_10">
+	<a class="top-btn" id="top-btn_1" href="#">Pridať novú dopravu</a>
+	<div class="clear"></div>
+	<div id="addform">
+		<h1>Pridanie novej dopravy</h1>
+		{control form}
+	</div>	
+	<script> 
+		$('#addform').hide(); $('#top-btn_1').toggle( 
+			function(){ $('#addform').show(); },
+			function(){ $('#addform').hide(); }
+		);
+		 $("tr:nth-child(odd)").addClass("odd");
+		 $('table').highlight();
+	
+	</script>
+	{control deliveryTabella}
+</div>

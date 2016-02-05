@@ -1,0 +1,44 @@
+.c-paginator { width:740px; height:40px; padding:20px 0 20px 0; margin:0 auto; text-align:center; clear:both; } /* to je centrovanie */
+
+.paginator { 
+	margin: 1em 0;
+	font-size: 11px;
+}
+
+.paginator a, .paginator span {
+	margin-right: 0.2em;
+	padding:6px 11px;
+	color: #999999;
+	-webkit-border-radius: 02px;-moz-border-radius: 02px;border-radius: 02px;
+}
+
+.paginator a {
+	border: 1px solid #a1b0b7;
+	text-decoration: none;
+	color:#0284ea;
+	background:url(../images/paginator.png) top repeat-x #e5eaed;
+	box-shadow: 0 1px 3px 1px #dadada;
+	text-shadow: 0 1px 0 #fff;
+}
+.paginator a:hover { background:#FFF; box-shadow: 0 0 2px 2px #dadada; box-shadow:none;color: #a1b0b7;}
+
+.paginator span.button {}
+
+.paginator .current {
+	background:#dedede;
+	background:#fff;
+	border: 1px solid #cdcdcd;
+	color: #a1b0b7;
+
+}
+
+
+.loose-paginator .c-paginator{ float:right; width:auto;padding:24px 0 0 0;height:auto; position:absolute;right:0px;}
+
+/**/
+.paginator-first-active a { border:none; background:none; color:#0284ea; box-shadow:none;}
+.paginator-first-inactive a {color:#999; border:none; background:none; box-shadow:none;}
+
+.paginator-last-active a { border:none; background:none; color:#0284ea; box-shadow:none;}
+.paginator-last-inactive a {color:#999; border:none; background:none; box-shadow:none;}
+

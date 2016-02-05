@@ -1,0 +1,49 @@
+{block #content}
+
+
+{include '../default-top.latte' 
+	breadcrumb=>array( array('name'=>'Profil') ), 
+	name=>_('Môj profil')
+}
+
+
+
+	<div class="content">
+
+
+		<div class="profil-form-container">
+			{control profilForm}
+		</div>
+
+		<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#company-form-container').hide();
+
+			$('#frmprofilForm-type-0').click( function(){
+				$('#company-form-container').hide();
+			});
+
+			$('#frmprofilForm-type-1').click( function(){
+				$('#company-form-container').show();
+			});
+
+
+			$('#delivery-address-container').hide();
+
+			$('#frmprofilForm-use_delivery_address-0').click( function(){
+				$('#delivery-address-container').hide();
+			});
+
+			$('#frmprofilForm-use_delivery_address-1').click( function(){
+				$('#delivery-address-container').show();
+			});
+
+			if( $('#frmprofilForm-use_delivery_address-1').is(':checked') ){
+				$('#delivery-address-container').show();
+			}
+
+		});
+
+		</script>
+	</div>

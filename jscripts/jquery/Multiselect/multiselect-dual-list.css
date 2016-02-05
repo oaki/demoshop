@@ -1,0 +1,34 @@
+/* 
+    Document   : multiselect-dual-list
+    Created on : 4.3.2010, 21:49:54
+    Author     : Jan Smitka <jan@smitka.org>
+    Description:
+        Example stylesheet for the MultiSelectDualList component
+*/
+
+
+div.multiselect-dual-list {
+	width: 400px;
+	padding: 1ex;
+	height: 200px;
+}
+
+div.multiselect-dual-list .list {
+	float: left;
+	height: 100%;
+	width: 40%;
+	margin-right: 2em;
+	overflow: auto;
+	border: 1px solid #999;
+}
+
+div.multiselect-dual-list .item {
+	background: #FFF;
+	border-bottom: 1px solid #EEE;
+	padding: 0.3ex 1ex;
+	cursor: pointer;
+}
+
+div.multiselect-dual-list .selected .item {
+	background-color: #EFFBFF;
+}

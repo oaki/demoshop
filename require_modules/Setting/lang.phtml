@@ -1,0 +1,125 @@
+<div class="lang">
+<h1>Jazyky</h1><br />
+<table id="highlight" class="langtable">
+	<thead>
+	<tr>
+		<td>
+			<div class="addLangHolder">
+			{$lang_form->render('begin')}
+			<div class="error">{$lang_form->render('errors')}</div>
+			
+			{$lang_form['lang']->label}
+			{$lang_form['lang']->control}
+			
+			{$lang_form['iso']->label}
+			{$lang_form['iso']->control}
+			
+			{$lang_form['add_lang']->control}
+			
+			{$lang_form->render('end')}
+			</div>
+		</td>
+	</tr>
+	</thead>
+	<tbody>
+	{foreach $langs as $lang}
+		<tr>
+			<td>
+				<input class="lang_name" type="text" name="lang_name" value="{$lang['name']}" rel="{$lang['id_lang']}"/>
+
+				<input class="lang_currency" type="text" name="currency" value="{$lang['currency']}" rel="{$lang['id_lang']}"/>
+				<input class="lang_rate" type="text" name="rate" value="{$lang['rate']}" rel="{$lang['id_lang']}"/>
+				<a title="Zmazať jazyk"	href="javascript:confl('Naozaj chcete odstrániť jazyk. Zmazané budú všetky relácie s tým spojené.','?setting_action=lang&id_lang_delete={$lang['id_lang']}');" class="deleteIcon"></a>
+				
+				<a href="#"  rel="{$lang['id_lang']}" class="{if !$lang['active']}un{/if}activeIcon active"></a>
+				
+				
+			</td>
+		</tr>
+	{/foreach}
+</tbody>
+</table>
+
+<script type="text/javascript">	
+	var th = new tableHighlighter( 'highlight' );	
+
+	$$('.langtable a.active').addEvent('click', function(e){
+		e.stop();
+		var el = this;
+		var req = new Request.HTML({  
+            method: 'get',  
+            url: "admin.php?setting_action=lang&ajax_action=active_lang&id_lang=" + el.get('rel'),  
+            update: $('node_log'),
+            onComplete: function(){
+				if(el.hasClass('activeIcon')){
+					el.removeClass('activeIcon');
+					el.addClass('unactiveIcon');
+				}else{
+					el.removeClass('unactiveIcon');
+					el.addClass('activeIcon');
+				};
+            }
+        }).send(); 
+	});
+
+	$$('.langtable input.lang_name').addEvents({
+		'focus': function(){
+			this.addClass('active');
+		},
+
+		'blur': function(){
+			var el = this;
+			el.removeClass('active');
+			var req = new Request.HTML({  
+	            method: 'get',  
+	            url: "admin.php?setting_action=lang&ajax_action=edit_name&id_lang=" + el.get('rel') + "&name=" + el.get('value'),  
+	            update: $('node_log'),
+	            onComplete: function(){
+					
+	            }
+	        }).send(); 
+		}
+			
+	});
+
+	$$('.langtable input.lang_currency').addEvents({
+		'focus': function(){
+			this.addClass('active');
+		},
+
+		'blur': function(){
+			var el = this;
+			el.removeClass('active');
+			var req = new Request.HTML({
+	            method: 'get',
+	            url: "admin.php?setting_action=lang&ajax_action=edit_currency&id_lang=" + el.get('rel') + "&currency=" + el.get('value'),
+	            update: $('node_log'),
+	            onComplete: function(){
+
+	            }
+	        }).send();
+		}
+
+	});
+
+	$$('.langtable input.lang_rate').addEvents({
+		'focus': function(){
+			this.addClass('active');
+		},
+
+		'blur': function(){
+			var el = this;
+			el.removeClass('active');
+			var req = new Request.HTML({
+	            method: 'get',
+	            url: "admin.php?setting_action=lang&ajax_action=edit_rate&id_lang=" + el.get('rel') + "&rate=" + el.get('value'),
+	            update: $('node_log'),
+	            onComplete: function(){
+
+	            }
+	        }).send();
+		}
+
+	})
+</script>
+</div>

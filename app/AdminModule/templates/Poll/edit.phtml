@@ -1,0 +1,37 @@
+{block content}
+<style>
+	.addIcon{
+		float:left;
+		margin-left:10px;
+		margin-bottom:5px;
+}
+</style>
+<div class="submenu">
+     <a href="{plink Poll:}">spať</a>
+
+          <h2>Editácia ankety </h2>
+    <div class="clear"></div>
+</div>
+
+{control editPollForm}
+
+{control AnswerTabella}
+
+ <script type="text/javascript">
+  <!-- <![CDATA[
+    $(document).ready(function()
+    {
+      $('input.datetimepicker').datepicker(
+      {
+        duration: '',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '2007:2020',
+        showTime: true,
+        time24h: true,
+        currentText: 'Dnes',
+        closeText: 'OK'
+      });
+    });
+  //]]> -->
+  </script>

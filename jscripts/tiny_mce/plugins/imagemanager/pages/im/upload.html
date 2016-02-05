@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{#upload.title}</title>
+<script type="text/javascript" src="js/fixpng.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="css/imagemanager.css" />
+<script type="text/javascript" src="../../js/index.php"></script>
+<script type="text/javascript" src="../../language/index.php?type=im"></script>
+<script type="text/javascript" src="js/upload_dialog.js"></script>
+</head>
+<body>
+
+<div class="dialog">
+	<div class="top">
+		<div class="headline upload">
+			<h2>{#upload.title}</h2>
+			<p class="description">{#upload.description}</p>
+		</div>
+	</div>
+
+	<div id="facts" class="facts"></div>
+
+	<script id="facts_template" type="text/moxiecode-template"><![CDATA[
+		{#upload.valid_extensions} {$extensions}<br />
+		{#upload.max_upload_size} {$maxsize}<br />
+		{#upload.path} {$path}<br />
+	]]></script>
+
+	<div id="content">
+		<div id="uploadForms">
+			<form id="uploadForm_0" method="post" action="../../stream/index.php" enctype="multipart/form-data" target="uploadFrame" onsubmit="return UploadDialog.onUploadSubmit(this);">
+				<div id="uploadFormContents_0">
+					<input type="hidden" name="cmd" value="im.upload" />	
+					<input type="hidden" name="path" value="" />	
+
+					<table>
+						<tbody>
+							<tr>
+								<td><label for="file0">{#upload.file_to_upload}</label></td>
+								<td><input id="file0" name="file0" type="file" size="20" class="file required" onchange="UploadDialog.onUploadChangeFile(this);" /></td>
+							</tr>
+
+							<tr>
+								<td><label for="name0">{#upload.as_file_name}</label></td>
+								<td><input id="name0" name="name0" type="text" size="42" maxlength="255" class="text required" /></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<input type="submit" name="upload" value="{#upload.button_upload}" class="submit default" />
+					<input id="cancel" type="button" name="cancel" value="{#button.cancel}" class="button cancel" onclick="UploadDialog.close();" />
+				</div>
+			</form>
+		</div>
+
+		<div id="uploadQue">
+			<!-- Upload que items will be added here -->
+		</div>
+
+		<!-- File will be uploaded into this -->
+		<iframe id="uploadFrame" name="uploadFrame" src="about:blank" width="1" height="1" frameborder="0"></iframe>
+	</div>
+</div>
+
+<script type="text/javascript">translatePage();</script>
+</body>
+</html>

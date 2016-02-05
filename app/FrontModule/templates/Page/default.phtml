@@ -1,0 +1,29 @@
+{block content}
+<div class="c-content-top">
+    {control breadcrumb:page $id_menu_item }
+	
+	<div id="quickFilter">{control paginator:mini}</div>
+</div><!-- c content top -->
+
+<div class="category-title">
+	<h2>{$page['name']}</h2>
+</div>
+
+
+	<div class="content">
+		{if count($node_list) > 0}
+			{foreach $node_list as $l}
+				{if $l['visible'] == 1}
+					{if count($node_list)>1}
+						{control $l['dir'], $l['id_node'], $id_menu_item}
+					{else}
+						{control $l['dir'], $l['id_node'], $id_menu_item, true}
+					{/if}
+				{/if}
+			{/foreach}
+		{/if}
+	</div>
+
+{control paginator}
+
+{/block}

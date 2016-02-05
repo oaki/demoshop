@@ -1,0 +1,9 @@
+  /* IE ONLY */
+  .detail-kosika div.td {  float:left;height:20px; }
+  .detail-kosika div.th {  float:left; height:10px; }
+  .detail-kosika div.th.name,.detail-kosika div.td.name { width:506px; }
+  .detail-kosika div.th.price,.detail-kosika div.td.price { width:100px; }
+  .detail-kosika div.th.count,.detail-kosika div.td.count { width:30px; }
+  .detail-kosika div.th.icon,.detail-kosika div.td.icon { width:39px; }
+
+  .detail-kosika div.tr { clear:both;}

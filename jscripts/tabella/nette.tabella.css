@@ -1,0 +1,200 @@
+.tabella table {
+	border-spacing: 3px;
+	font: 11px 'Lucida Grande';
+	vertical-align: middle;
+}
+
+.tabella tr {
+	border: 0;
+}
+
+.tabella a {
+	color: #000;
+}
+
+/* col styles */
+.tabella .left {
+	text-align: left;
+}
+
+.tabella .right {
+	text-align: right;
+}
+
+.tabella .center {
+	text-align: center !important;
+}
+
+.tabella .vcenter {
+	vertical-align: middle !important;
+}
+
+.tabella .upper {
+	text-transform: uppercase;
+}
+
+/* content */
+
+.tabella th, .tabella td {
+	border-width: 0 2px 2px 0 !important;
+	border-color: #fff;
+	background-color: #efefef;
+	vertical-align: top;
+}
+
+.tabella th {
+	text-transform: uppercase;
+	padding: 0 6px 0 0;
+	font-size: 11px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+}
+
+.tabella .filter-enum {
+	width: 100%;
+	top: 14px;
+	border: 2px solid #efefef;
+	background-color: #fff;
+	display: block;
+}
+
+.tabella .filter-enum a {
+	display: block;
+}
+
+.tabella .filter-enum a:hover {
+	background-color: #efefef;
+}
+
+.tabella th>a {
+	background-position: 95% 8px;
+	background-repeat: no-repeat;
+	padding: 4px 0 4px 4px;
+	display: block;
+}
+
+.tabella th>span {
+	padding: 4px 0 4px 4px;
+	display: block;
+	font-weight: normal;
+}
+
+.tabella th>a.asc {
+	background-image: url('pics/asc.png');
+}
+
+.tabella th>a.desc {
+	background-image: url('pics/desc.png');
+}
+
+.tabella th>a.asc:hover {
+	background-image: url('pics/desc.png');
+}
+
+.tabella th>a:hover {
+	background-image: url('pics/asc.png');
+}
+
+.tabella .delete {
+	background-image: url('pics/cancel.png');
+}
+
+.tabella th input, .tabella th select {
+	border: 2px solid #efefef;
+	width: 100%;
+	margin: 0;
+}
+
+.tabella td {
+	padding: 4px 5px 4px 5px;
+}
+
+.tabella .nopadding {
+	padding: 0 3px 0 3px !important;
+}
+
+.tabella td a {
+	display: block;
+}
+
+.tabella td a:hover {
+	color: #666;
+}
+
+.tabella-footer {
+	font-size: 10px;
+}
+
+.tabella-footer a, .tabella-footer span {
+	float: left;
+	display: block;
+	margin-right: 2px;
+	padding: 2px;
+	background-color: #efefef;
+	text-decoration: none;
+	border: 1px solid #efefef;
+}
+
+.tabella-footer a {
+}
+
+.tabella-footer span {
+	color: #999;
+}
+
+.tabella-footer a:hover, .tabella-footer .selected {
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.tabella .unapproved {
+	background-color: #f99;
+}
+
+.tabella .hover:hover {
+	background-color: #fff;
+	cursor: pointer;
+}
+
+.tabella .add {
+	font-weight: bold;
+	font-size: 13px;
+}
+
+/* editable styles */
+.tabella .editable:hover {
+	background-color: #fff;
+	cursor: text;
+}
+
+.tabella .edited input {
+	height: 100%;
+	min-height: 15px;
+	border: 2px solid #efefef;
+	width:85%;
+}
+
+.tabella .edited .editable {
+	padding: 0;
+}
+
+.tabella .button, .tabella .delete {
+	cursor: pointer;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: #efefef;
+	width: 12px;
+}
+
+.tabella .button:hover, .tabella .delete:hover {
+	background-color: #fff;
+}
+
+.tabella .save {
+	background-image: url('pics/save.png');
+}
+
+.tabella .cancel {
+	background-image: url('pics/cancel.png');
+}

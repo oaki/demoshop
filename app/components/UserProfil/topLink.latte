@@ -1,0 +1,17 @@
+{if $user->isLoggedIn()}
+	<div class="user-log-reg logged">
+		<span id="user-name-top"> {$user->getIdentity()->data['login']}</span>
+		
+		<a id="showLoginForm" href="{plink Profil:default}">{!_('Profil')}</a> |
+		<a href="{plink Profil:orderList}">Objednávky</a> |
+		<a href="{plink Profil:logOut, backlink=>'/'}">{!_('Odhlásiť')}</a>
+
+		<div n:if="$user->getIdentity()->data['discount']>0" class="user-discount">{!_'zľava'} <div class="user-discount-percent">-{$user->getIdentity()->data['discount']}%</div></div>
+		
+	</div>
+{else}
+	<div class="user-log-reg">
+		<a id="showLoginDialog" href="#showLoginDialog" class="login border-radius-2"><img src="/images/login.png" />Prihlásenie</a>
+		<a href="{plink :Front:Profil:Registration}" class="registration">Registrácia</a>
+	</div><!-- user log reg -->
+{/if}

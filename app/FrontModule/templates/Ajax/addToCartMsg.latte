@@ -1,0 +1,26 @@
+
+<div class="c-modal-dialog">
+	<div class="modal-dialog">
+		<div class="modal-dialog-header"><a id="close" href="#">{!_'Zavrieť'}</a></div>			
+		<div class="modal-dialog-content modal-dialog-info">
+			<p><strong>{$msg}</strong></p>
+		</div>
+	</div>
+</div><!-- c modal dialog -->
+
+<script type="text/javascript">
+	var dialog = $('.c-modal-dialog');
+	$('.modal-dialog-header a#close').click( function(e){ dialog.hide(); e.preventDefault(); });
+
+	//dialog.center();
+	
+	dialog.position({
+		my: "left center",
+		at: "left center",
+		of: window
+	});
+	dialog.show();	
+	dialog.delay( 3000 ).fadeOut(300);
+</script>
+
+

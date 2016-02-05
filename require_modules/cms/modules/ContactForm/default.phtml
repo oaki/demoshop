@@ -1,0 +1,120 @@
+<div class="module-content">
+ <form action="" method="post">
+     <h2>Kontakt</h2>
+ 
+	 <label class="first">Text:</label>
+     <textarea name="text" class="text long">{$l['text']}</textarea>
+	
+	 
+	 <h2>Nastavenie Google maps</h2>
+	 <label>Adresa:</label> <input class="address long" type="text" name="address" value="{$l['address']}"/>
+	 <label>Latitude:</label><input class="latitude long" type="text" name="latitude" value="{$l['latitude']}"/>
+	 <label>Longitude:</label><input class="longitude long" type="text" name="longitude" value="{$l['longitude']}"/>
+	 <label>Mapa <span class="notice">(Ak neviete presnú adresu, môžete použiť interaktívnu mapu. Presunutím ukazovadla zadefinujete presnú pozíciu. )</span></label>
+	<div id="map_canvas" style="width:713px; height:500px"></div>
+	
+	<label>Text do google map <span class="notice">(Text sa zobrazí v tzv. bubline v mape)</span></label>
+	<textarea name="google_text" style="width:99%;" rows="1" cols="7">{$l['google_text']}</textarea>
+	
+
+ <script type="text/javascript">
+   (function($) {
+      
+     
+	var geocoder;
+	var map;
+	var marker;
+
+	function initialize(){
+	//MAP
+	  var latlng = new google.maps.LatLng({$l['latitude']},{$l['longitude']});
+	  var options = {
+		zoom: 16,
+		center: latlng,
+		mapTypeId: google.maps.MapTypeId.SATELLITE
+	  };
+
+	  map = new google.maps.Map(document.getElementById("map_canvas"), options);
+
+	  //GEOCODER
+	  geocoder = new google.maps.Geocoder();
+
+	  marker = new google.maps.Marker({
+		map: map,
+		draggable: true
+	  });
+
+
+	  //default 
+
+		marker.setPosition(latlng);
+		map.setCenter(latlng);
+
+	}
+
+	
+
+	  initialize();
+
+	  $(function() {
+		$(".address").autocomplete({
+		  //This bit uses the geocoder to fetch address values
+		  source: function(request, response) {
+			geocoder.geocode( {'address': request.term }, function(results, status) {
+			  response($.map(results, function(item) {
+				return {
+				  label:  item.formatted_address,
+				  value: item.formatted_address,
+				  latitude: item.geometry.location.lat(),
+				  longitude: item.geometry.location.lng()
+				}
+			  }));
+			})
+		  },
+		  //This bit is executed upon selection of an address
+		  select: function(event, ui) {
+			$(".latitude").val(ui.item.latitude);
+			$(".longitude").val(ui.item.longitude);
+			var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
+			marker.setPosition(location);
+			map.setCenter(location);
+		  }
+		});
+
+
+
+	  });
+
+	  //Add listener to marker for reverse geocoding
+	  google.maps.event.addListener(marker, 'drag', function() {
+		geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+		  if (status == google.maps.GeocoderStatus.OK) {
+			if (results[0]) {
+			  $('.address').val(results[0].formatted_address);
+			  $('.latitude').val(marker.getPosition().lat());
+			  $('.longitude').val(marker.getPosition().lng());
+			}
+		  }
+		});
+	  });
+    })(jQuery);
+	
+  </script>
+  
+	
+  <h2>Nastavenie formuláru</h2>
+       
+	  <label class="first">Predmety odosielanej správy</label>
+	  <input class="text" type="text" name="email_subject" value="{$l['email_subject']}" />
+	  
+	  <label>Poslať na email na</label>
+	  <input class="text" type="text" name="email" value="{$l['email']}" />
+	     
+	  
+	  <div class="c-submit">
+		<input class="submit" type="submit" name="save{$table}" value="Uložiť" />
+	  </div>
+	  
+      <input type="hidden" name="id_node" value="{$l['id_node']}" />
+    </form>
+</div>

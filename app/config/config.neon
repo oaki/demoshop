@@ -1,0 +1,132 @@
+common:
+	parameters:
+		QUIS_VERSION: "3.51"
+		baseUri: /
+		tempDir: %wwwDir%/app/temp
+		logDir: %appDir%/log
+		webloaderTempUri: %baseUri%webtemp
+		webloaderTempPath: %wwwDir%/webtemp
+
+		encoding: utf8
+		project_name: demoshop.sk
+		autor: Ing. Pavol Bincik
+		company_name: demoshop.sk
+
+		DEFAULT_LANG: sk
+
+		copyright: Quis
+		copyright_url: www.bincik.sk
+		error_email: pavolbincik@gmail.com
+		client_email: pavolbincik@gmail.com
+
+
+		ADMIN_DEFAULT_LANG: sk
+		DB_COOKIE_KEY: kliew09ouijlsdgfisdugfhlndzspg9spoildfg
+		ADMIN_DEFAULT_IDMENU: "0"
+		NODE_VISIBLE: true
+		ADMIN_POSITION:
+			- Ľavý
+
+		ADMIN_MODUL_VISIBLE:
+			1: Viditelné
+			0: Neviditelné
+
+		file:
+			dir: /uploaded/system_files
+			dir_abs: %wwwDir%/uploaded/system_files
+			allowed_extension:
+				- jpg
+				- jpeg
+				- gif
+				- png
+				- pdf
+				- doc
+				- xls
+
+
+		ADMINMENU:
+			-
+				name: Hlavné
+			-
+				name: Obchodné podmienky
+
+		acl:
+			resource: acl_permission
+			privilege: acl_access
+			cache: true
+			programmer_mode: true
+
+		database:
+			tables:
+				acl: gui_acl
+				acl_privileges: gui_acl_privileges
+				acl_resources: gui_acl_resources
+				acl_roles: gui_acl_roles
+				users: gui_user
+				users_info: gui_user_info
+				users_country: gui_user_country
+				users_roles: gui_user_roles
+
+		common.mailer:
+			host: smtp.websupport.sk
+			port: "25"
+			username: form@bincik.sk
+			password: 6xsyeL7WnKdoJe
+			timeout: "30"
+			secured: ssl
+			transport: tcp
+			from: form@bincik.sk
+
+	php:
+		date.timezone: Europe/Prague
+		
+	services:
+		IAuthenticator: UserModel
+
+		cacheStorage:
+			factory: SQLiteStorage
+		
+		translator:
+			factory: MyTranslator
+		
+		Page:
+			factory: PageModel::init
+			
+		Node:
+			factory: NodeModel::init
+
+		Article:
+			factory: ArticleModel::init
+
+		Setting:
+			factory: SettingModel::init
+		
+		ProductTemplateGroupModel:
+			factory: ProductTemplateGroupModel::init
+
+		Delivery:
+			factory: DeliveryModel::init
+		
+		Payment:
+			factory: PaymentModel::init
+
+		Vat:
+			factory: VatModel::init
+		
+		CompareProduct:
+			factory: CompareProductModel::init
+
+		dibi:
+			factory: DibiConnection
+			arguments: [%database%]
+
+		Widget:
+			factory: WidgetModel
+
+		WidgetParam:
+			factory: WidgetParamModel
+
+
+production < common:
+
+development < common:

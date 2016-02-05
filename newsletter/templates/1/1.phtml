@@ -1,0 +1,31 @@
+
+
+	    <style type="text/css">
+	 html, body {
+			background:#fff;
+			color:#000;
+			margin:0px;
+			padding:10px;
+			}
+	img { border:0;}
+	 </style>
+	 {var $background = '#e7fbf0'}
+    <table style="font: 11px/1.4em Arial,Helvetica,sans-serif;" width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr style="height: 80px; background-color:{!$background};">
+          <td>
+			  <img src="http://{? echo $_SERVER['HTTP_HOST']}/newsletter/templates/1/logo.png" alt="{? echo $_SERVER['HTTP_HOST']}" title="{? echo $_SERVER['HTTP_HOST']}" width="151px" height="50px">
+		  </td>
+        </tr>
+        <tr>
+          <td style="padding: 30px;">
+			  {!$text}
+          </td>
+        </tr>
+        <tr>
+          <td style="height: 50px; background-color:{!$background};">
+			  <a style="color: #83D743;padding-left:30px;" href="http://{? echo $_SERVER['HTTP_HOST']}/">{? echo $_SERVER['HTTP_HOST']}</a>
+		  </td>
+        </tr>
+      </tbody>
+    </table>

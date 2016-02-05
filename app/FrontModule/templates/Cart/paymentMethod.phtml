@@ -1,0 +1,15 @@
+{block content}
+<h1>{!_('Zvolte spôsob platby prosím.')}</h1>
+{control paymentForm}
+<a href="{link Cart:summary}" class="next">{!_('Ďalej')}</a>
+
+<script type="text/javascript">
+    $('#frmpaymentForm-payment_method-0').click(function(e){
+	location.href = {link cart:changePaymentMethod! 0};
+	
+    })
+
+    $('#frmpaymentForm-payment_method-1').click(function(e){
+	location.href = {link cart:changePaymentMethod! 1};
+    })
+</script>

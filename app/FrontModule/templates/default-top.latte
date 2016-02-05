@@ -1,0 +1,51 @@
+{*
+	subor riesi defaultne vykreslenie topky
+pouzite napr. kosik, objednavkovy proces...
+	vstupy
+	$breadcrumbs
+	$name
+	$backlink = array('link'=>'link', name=>'Nazov')
+	$messages = array('link'=>'link', text=>'Text')
+	 
+*}
+<div n:if="isset($breadcrumb) OR isset($messages)" class="c-content-top" >
+	{ifset $breadcrumb}
+		{control breadcrumb:custom $breadcrumb, $presenter->id_lang}
+	{/ifset}
+	
+	{ifset $messages}
+		<ul id="js-news" class="js-hidden">
+			<li n:foreach="$messages as $m" class="news-item"><a href="{$m['link']}">{$m['text']}</a></li>			
+		</ul>
+		<script type="text/javascript">
+			
+			$(function () {
+				$('#js-news').ticker({
+					speed: 0.10,           // The speed of the reveal
+					ajaxFeed: false,       // Populate jQuery News Ticker via a feed
+					feedUrl: false,        // The URL of the feed
+									// MUST BE ON THE SAME DOMAIN AS THE TICKER
+					feedType: 'xml',       // Currently only XML
+					htmlFeed: true,        // Populate jQuery News Ticker via HTML
+					debugMode: true,       // Show some helpful errors in the console or as alerts
+									// SHOULD BE SET TO FALSE FOR PRODUCTION SITES!
+					controls: false,        // Whether or not to show the jQuery News Ticker controls
+					titleText: 'Nápoveda',   // To remove the title set this to an empty String
+					displayType: 'reveal', // Animation type - current options are 'reveal' or 'fade'
+					direction: '___',       // Ticker direction - current options are 'ltr' or 'rtl'
+					pauseOnItems: 2000,    // The pause on a news item before being replaced
+					fadeInSpeed: 600,      // Speed of fade in animation
+					fadeOutSpeed: 300      // Speed of fade out animation
+				});
+			});	
+		</script>
+	{/ifset}
+	
+	<div id="quickFilter" n:if="!empty($backlink)">
+		<a id="quick-paginator-back" title="{$backlink['name']}" href="{$backlink['link']}"></a>
+	</div>
+</div><!-- c content top -->
+
+<div class="category-title">
+	<h2>{$name}</h2>
+</div>

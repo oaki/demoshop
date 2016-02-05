@@ -1,0 +1,24 @@
+{block content}
+<script type="text/javascript" src="/jscripts/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="/jscripts/setting_eshop_product_tiny_mce.js"></script>
+{include '../submenu.latte'}
+
+<div class="submenu">
+     <a href="{link default}">spať</a>
+
+     <h2>Editácia položky</h2>
+    <div class="clear"></div>
+</div>
+
+
+<div class="padding_10">
+	
+	{control form}
+
+</div>
+<script type="text/javascript">
+	$(function(){
+		$("tr:nth-child(odd)").addClass("odd");
+		$('table').highlight(); 
+	});
+</script>

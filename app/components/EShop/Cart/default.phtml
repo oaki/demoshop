@@ -1,0 +1,102 @@
+{snippet defaultcart}
+
+
+<div class="detail-kosika">
+	<form action="{plink cart:calculate!}" method="post" id="cartForm" class="ajax">
+		{if isset($cart_info['products']) AND count($cart_info['products']) > 0}
+			<div class="table">
+
+
+			  <div class="tr">
+				{*<div class="th img"></div>*}
+				<div class="th name">Názov</div>
+				
+				<div class="th code">Kód</div>
+				<div class="th price">Cena/MJ</div>
+				<div class="th count">Počet</div>
+				<div class="th price">Cena spolu</div>
+				{if $controls}<div class="th icon">Zmaž</div>{/if}
+			  </div>
+
+
+			{foreach $cart_info['products'] as $p}
+			  <div class="tr {if $iterator->isOdd()}neparne{/if}">
+				  
+				{*<div class="td img">					
+					<a rel="prettyPhoto" href="{$p['first_file']|img:600:480:1}"><img src="{$p['first_file']|img:40:40:5}" alt="{$p['name']}" /></a>				
+				</div>*}
+				<div class="td name">					
+					{$p['name']}					
+				</div>
+				<div class="td code">{$p['code']}</div>
+				<div class="td price" title="Cena bez DPH ({$p['price_array']['price']|money:$presenter->id_lang}) / s DPH {$p['price_array']['price_with_tax']|money:$presenter->id_lang} / DPH {$p['price_array']['tax']}%">{$p['price_array']['price']|money:$presenter->id_lang}</div>
+				<div class="td count">{if $controls}<input maxlength="3" type="text" value="{$p['count']}" name="product_count_{$p['id_product_param']}" class="detail-kosika-pocet-kusov" />{else}{$p['count']}{/if}</div>
+				<div class="td price">{$p['sum_price']|money:$presenter->id_lang}</div>
+				{if $controls}<div class="td icon"><div class="ico-kos"><a href="{plink cart:unsetProduct! $p['id_product_param']}" class="ajax" title="zmazat"></a></div></div>{/if}
+			  </div>
+			{/foreach}
+
+			
+			<div n:if="$delivery" class="delivery tr neparne">
+				{*<div class="td img"></div>*}
+				<div class="td name">Doprava</div>
+				<div class="td code"></div>
+				<div class="td price"></div>
+				<div class="td count"></div>
+				<div class="td price">{$cart_info['delivery_price']['price']|money:$presenter->id_lang}</div>
+				{if $controls}<div class="td icon"></div>{/if}
+			</div>
+			
+			<div n:if="$payment" class="delivery tr">
+				{*<div class="td img"></div>*}
+				<div class="td name">Platba</div>
+				<div class="td code"></div>
+				<div class="td price"></div>
+				<div class="td count"></div>
+				<div class="td price">{if $cart_info['payment_price']['price']>0}{$cart_info['payment_price']['price']|money:$presenter->id_lang}{/if}</div>
+				
+				{if $controls}<div class="td icon"></div>{/if}
+			</div>
+			
+
+			</div><!-- end table -->
+		
+
+
+			{if $controls}
+				<div class="c-btn-calculate">
+					<input  style="float:right;" type="submit" name="btn_recalculate" value="{!_'Prepočítať'}"/>
+				</div>
+			{/if}
+			<div class="suma-price">
+				
+			{*{if $discount}
+			<p>Zľava: {$discount|money:$presenter->id_lang}</p>
+			{/if}*}
+			<p>Suma bez DPH: {$cart_info['total_sum']|money:$presenter->id_lang}</p>
+			
+			{foreach $cart_info['taxies'] as $tax=>$tax_price}
+				<p n:if="$tax_price>0">DPH {$tax}%: {$tax_price|money:$presenter->id_lang}</p>
+			{/foreach}
+			
+			<p class="price-dph"><strong>Celkom s DPH: {$cart_info['total_sum_with_tax']|money:$presenter->id_lang}</strong></p>
+
+			</div>
+		{else}
+
+			{*<div style="padding-bottom: 20px; color: red;">{!_('Košík je prázdny.')}</div>*}
+			{control msg 'Košík je prázdny.','','error'}
+
+		{/if}
+	</form>
+
+
+	</div><!-- detail kosika -->
+
+<script type="text/javascript">
+
+</script>
+
+{/snippet}
+
+

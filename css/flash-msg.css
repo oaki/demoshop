@@ -1,0 +1,39 @@
+		
+div.flash {
+	color: black;
+	background: #FFF9D7;
+	border: 1px solid #E2C822;
+	padding: 1em;
+	margin: 0px 0px 10px 0px;
+}
+
+div.flash.error{
+	color: red;
+	background: #fce5f0;
+	border: 1px solid #f86c80;
+}
+
+ul.error{
+    margin: 5px 0px 10px !important;
+}
+
+ul.error li {
+	color: red;
+	background: #fce5f0;
+	padding: 1em;
+	border: 1px solid #f86c80;
+	text-align: center;
+}
+
+
+/*
+*	Inline messages - pouziva sa pre ajaxove vypisanie spravy
+*/
+.flash-holder{position: relative;}
+div.flash.inline {
+	position: absolute; bottom:0px; padding: 15px; 
+	background: url('/images/error-alert.png') no-repeat;
+	width:200px;
+	height:40px;
+	border:0px none;
+}

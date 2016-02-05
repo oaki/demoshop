@@ -1,0 +1,30 @@
+{block content}
+
+<h1>{!_('Pokladňa')}</h1>
+
+{control cart:default false}
+
+
+<h1 style="padding-top:30px;">{!_('Prosím skontrolujte všetky údaje a potvrďte objednávku.')}</h1>
+
+<table class="standard">
+    <tr>
+	<th>{!_('Dodacia adresa')}: </th>
+	<td>{$s['delivery_address']['name']} {$s['delivery_address']['surname']} {$s['delivery_address']['address']} {$s['delivery_address']['city']} </td>
+    </tr>
+<tr>
+	<th>{!_('Spôsob dopravy')}:</th>
+	<td>Preprava v cene; 0,00 €</td>
+    </tr>
+    <tr>
+	<th>{!_('Spôsob platby')}:</th>
+	<td>{$presenter->payment_method[$s['payment_method']]}
+	</td>
+    </tr>
+    
+</table>
+
+<h3 style="padding-top:20px;">{!_('Ak máte pripomienky k objednávke, napíšte nám ich')}</h3>
+<textarea name="text" class="big"></textarea>
+
+<a style="padding-top:20px;padding-right: 20px;" href="{plink Order:default}" class="next">Objednať</a>

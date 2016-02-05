@@ -1,0 +1,18 @@
+{snippet smallcart}
+	<div class="basket-price">
+		{if $cart_info['total_sum_with_tax']>0}
+			{$cart_info['total_sum_with_tax']|money:$presenter->id_lang}
+		{else}
+			{!_'Košík je prázdny'}
+		{/if}
+	</div>
+
+	<div class="basket-btn">
+		<a href="{plink :Front:Cart:default}" class="border-radius-2">KOŠÍK</a>
+	</div>
+
+	
+	<div n:if="$cart_info['product_count']>0" class="holder-count-product border-radius-10">
+		{$cart_info['product_count']}
+	</div>
+{/snippet}

@@ -1,0 +1,48 @@
+<div class="pictogram-container">
+{snippet status}
+	<div style="text-align:right;padding-right:38px;">Počet: {? echo count($files)}</div>
+{/snippet}
+
+	<div class="multiselect-dual-list" style="width:500px;height:427px;">
+		<div id="sortable1" class="list">
+			{foreach $files as $f}
+				<div class="item" rel="{$f['id_file']}">
+					<img style="float:left;" src="{? echo Files::gURL($f['src'], $f['ext'], 50, 50);}" alt="{$f['alt']}" />
+					<p style="padding:5px;">{$f['alt']}</p>
+					<div class="clear"></div>
+				</div>
+			{/foreach}
+		</div>
+
+		<div id="sortable2" class="list">
+			{foreach $all_files as $f}
+				{if !isset($files[$f['id_file']])}
+				<div class="item" rel="{$f['id_file']}">
+					<img style="float:left;"src="{? echo Files::gURL($f['src'], $f['ext'], 50, 50);}" alt="{$f['alt']}" />
+					<p style="padding:5px">{$f['alt']}</p>
+					<div class="clear"></div>					
+				</div>
+				{/if}
+			{/foreach}
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$( "#sortable1, #sortable2" ).sortable({
+			connectWith: ".list",
+			stop: function(event, ui) {
+				var r = [];
+				$('#sortable1 .item').each( function(el){
+					
+					r.push($(this).attr('rel'));
+				});
+
+				$.post({link addPictogram!} + '&items=' + r );
+			}
+
+		}).disableSelection();
+
+</script>
+	
+
+</div>

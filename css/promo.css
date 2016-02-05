@@ -1,0 +1,93 @@
+
+.qq-uploader { position:relative; width: 300px;}
+
+.qq-upload-button {
+    display:block; /* or inline-block */
+    width: 105px; padding: 7px 0; text-align:center;
+    background:#880000; border-bottom:1px solid #ddd;color:#fff;
+}
+.qq-upload-button-hover {background:#cc0000;}
+.qq-upload-button-focus {outline:1px dotted black;}
+
+.qq-upload-drop-area {
+    position:absolute; top:0; left:0; width:100%; height:100%; min-height: 40px; z-index:2;
+    background:#FF9797; text-align:center;
+}
+.qq-upload-drop-area span {
+    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
+}
+.qq-upload-drop-area-active {background:#FF7171;}
+
+.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
+.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
+.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+    margin-right: 7px;
+}
+
+.qq-upload-file {}
+.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
+.qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+.qq-upload-failed-text {display:none;}
+.qq-upload-fail .qq-upload-failed-text {display:inline;}
+
+.deleteAllMultiuploadButton{
+	 display:block; /* or inline-block */
+    width: 145px; padding: 7px 0; text-align:center;
+    background:#880000; border-bottom:1px solid #ddd;color:#fff;
+    text-decoration: none;
+    float:right;
+}
+
+.multiupload{
+	padding-top: 20px;
+	float:left;
+}
+
+.upload_button_holder{
+	width:100px;
+}
+#formGallery{
+	width:250px;
+}
+.galleryImagesHolder table, #galleryAtributesHolder table{
+	border:0px none;
+}
+#galleryAtributesHolder{
+  float:right;
+  width:250px;
+}
+
+.galleryImagesHolder{
+  width: 715px;
+  float: left;
+}
+
+.galleryImagesHolder ul{
+  border:1px solid silver;
+}
+.galleryImagesHolder li{
+	text-align:left;
+	border-top:0px;
+	text-decoration:none;
+	display:block;
+	padding: 2px 5px 2px 5px;
+	margin:2px 0px;
+	background-color: #efefef;
+}
+.galleryImagesHolder .image{
+  float:left;
+  padding:2px;
+  border:1px solid silver;
+}
+
+.galleryImagesHolder .holder{
+  float:left;
+  padding: 5px 15px 0px 15px;
+}
+
+.galleryImagesHolder .saveDescriptionButton{
+	width:70px !important;
+}
+
+.galleryImagesHolder span{cursor: move;}

@@ -1,0 +1,34 @@
+
+{block content}
+<div style="padding:10px;">
+	<p style="padding-bottom:10px;"><a href="#" id="addFormHolderHref">Pridať anketu</a></p>
+
+<div id="addFormHolder">
+	{control addForm}
+</div>
+<script type="text/javascript">
+	$('#addFormHolder').hide();
+	$('#addFormHolderHref').toggle( function(){ $('#addFormHolder').show(); },function(){ $('#addFormHolder').hide(); }  );
+</script>
+
+ <script type="text/javascript">
+  <!-- <![CDATA[
+    $(document).ready(function()
+    {
+      $('input.datetimepicker').datepicker(
+      {
+        duration: '',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '2007:2020',
+        showTime: true,
+        time24h: true,
+        currentText: 'Dnes',
+        closeText: 'OK'
+      });
+    });
+  //]]> -->
+  </script>
+
+{control PollTabella}
+</div>

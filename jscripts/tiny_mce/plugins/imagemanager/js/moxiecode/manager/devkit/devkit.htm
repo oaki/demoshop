@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DevKit</title>
+	<script language="javascript" type="text/javascript" src="js/mctabs.js"></script>
+	<script language="javascript" type="text/javascript" src="js/dialog.js"></script>
+	<link href="css/dialog.css" rel="stylesheet" type="text/css" />
+	<base target="_self" />
+</head>
+<body id="devkit" onload="init();">
+    <form action="#">
+		<h1>DevKit</h1>
+
+		<div class="tabs">
+			<ul>
+				<li id="log_tab" class="current"><span><a href="javascript:mcTabs.displayTab('log_tab','log_panel');" onmousedown="return false;">JS Log</a></span></li>
+				<li id="settings_tab"><span><a href="javascript:mcTabs.displayTab('settings_tab','settings_panel');" onmousedown="return false;">Global configs</a></span></li>
+				<li id="localconfig_tab"><span><a href="javascript:mcTabs.displayTab('localconfig_tab','localconfig_panel');" onmousedown="return false;">Local config</a></span></li>
+				<li id="env_tab"><span><a href="javascript:mcTabs.displayTab('env_tab','env_panel');" onmousedown="return false;">Server info</a></span></li>
+				<li id="debuglog_tab"><span><a href="javascript:mcTabs.displayTab('debuglog_tab','debuglog_panel');" onmousedown="return false;">Debug log</a></span></li>
+				<li id="errorlog_tab"><span><a href="javascript:mcTabs.displayTab('errorlog_tab','errorlog_panel');" onmousedown="return false;">Error log</a></span></li>
+			</ul>
+		</div>
+
+		<div class="panel_wrapper">
+			<div id="log_panel" class="panel current">
+				<fieldset>
+					<legend>Log</legend>
+
+					<div style="float: left">
+						<label>Filter: </label><input type="text" id="logfilter" name="logfilter" value=".*" />
+					</div>
+
+					<div style="float: left">
+						<input type="checkbox" id="logenabled" name="logenabled" value="true" checked="checked" onclick="toggleLog(this.checked);" />
+					</div>
+
+					<div style="float: right">
+						<a href="javascript:clearLog();">[Clear]</a>
+					</div>
+
+					<br style="clear: both" />
+
+					<textarea id="log" wrap="off"></textarea>
+				</fieldset>
+			</div>
+
+			<div id="settings_panel" class="panel">
+				<fieldset>
+					<legend>Global configs</legend>
+
+					<span><a href="javascript:renderSettings();">[Refresh]</a></span>
+
+					<div id="settings" class="data">
+						<p>Global configs will be displayed here.</p>
+					</div>
+				</fieldset>
+			</div>
+
+			<div id="localconfig_panel" class="panel">
+				<fieldset>
+					<legend>Local config</legend>
+
+					<span><label for="localconfig_path">Path: </label><input id="localconfig_path" name="localconfig_path" type="text" size="70" value="" /> <a href="javascript:renderLocalSettings(document.forms[0].localconfig_path.value);">[Refresh]</a></span>
+
+					<div id="localsettings" class="data">
+						<p>Local config will be displayed here.</p>
+					</div>
+				</fieldset>
+			</div>
+
+			<div id="env_panel" class="panel">
+				<fieldset>
+					<legend>Server info</legend>
+
+					<iframe id="envframe" src="about:blank"></iframe>
+				</fieldset>
+	
+				<a id="envnewwin" href="#" target="_blank">[Open in new window]</a>
+				<a id="envdownload" href="#" target="_blank">[Download server info]</a>
+			</div>
+
+			<div id="errorlog_panel" class="panel">
+				<fieldset>
+					<legend>Error log</legend>
+
+					<iframe id="log_view_error" name="log_view_error" src="about:blank"></iframe>
+				</fieldset>
+
+				<a id="errorlognewwin" href="#" target="_blank">[Open in new window]</a>
+				<a id="errorlogclear" href="#" target="log_view_error">[Clear]</a>
+				<a id="errorlogrefresh" href="#">[Refresh]</a>
+			</div>
+
+			<div id="debuglog_panel" class="panel">
+				<fieldset>
+					<legend>Debug log</legend>
+
+					<iframe id="log_view_debug" name="log_view_debug" src="about:blank"></iframe>
+				</fieldset>
+
+				<a id="debuglognewwin" href="#">[Open in new window]</a>
+				<a id="debuglogclear" href="#" target="log_view_debug">[Clear]</a>
+				<a id="debuglogrefresh" href="#">[Refresh]</a>
+			</div>
+		</div>
+    </form>
+
+	<div id="flip"><a href="javascript:toggleFlip();" onmousedown="return false;"><img id="flipbtn" src="images/flip.gif" border="0" /></a></div>
+</body>
+</html>

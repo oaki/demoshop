@@ -1,0 +1,12 @@
+<div class="annotation-article">
+	<div class="annotation-article-pic">
+		<a href="{$link}">{dump $article}
+			<img src="{$article['first_img']|img:150:120:5}" title="{$article['title']}" alt="{$article['title']}" />
+		</a>
+	</div>
+	<div class="annotation-article-content">
+		<h3><a href="{$link}">{$article['title']}</a></h3>
+		<a href="{$link}">{$article['text']|striptags|truncate:200}</a><br />
+		<a class="more" href="{$link}">čítaj viac</a>
+	</div>
+</div><!-- article -->

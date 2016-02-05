@@ -1,0 +1,5 @@
+<div n:if="count($files)>0" class="c-gallery">
+	<div n:foreach="$files as $f" class="gallery">
+		<a href="{$f|img:$dimension['big']['width']:$dimension['big']['height']:$dimension['big']['flag']}" rel="prettyPhoto[{$id}]"><img src="{$f|img:$dimension['thumb']['width']:$dimension['thumb']['height']:$dimension['thumb']['flag']}" title="{$f['alt']}" alt="{$f['alt']}" /></a>
+	</div>
+</div><!--  c gallery -->

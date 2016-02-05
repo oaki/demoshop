@@ -1,0 +1,20 @@
+	
+		<div class="classicLoginForm">
+			{snippet login}
+				{control classicLoginForm}
+			{/snippet}
+		</div>
+	
+
+{*
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".classicLoginForm label").inFieldLabels();
+		});
+	</script>
+*}
+<div id="login-classic-link">
+	<a href="{plink Profil:registration, backlink=>$presenter->application->storeRequest()}">{!_('Registrácia')}</a> |
+	<a href="{plink Profil:lostPassword}">{!_('Zabudli ste heslo?')}</a>
+</div>
+

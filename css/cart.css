@@ -1,0 +1,281 @@
+/* basket */
+	.basket { height:34px; float:right; font-weight:bold; position:relative;}
+		.basket-price {
+	float:left;
+	padding:9px 20px 0 0;
+	color:#666;
+}
+		.basket-btn { float: left;}
+			.basket-btn a {
+	width: 85px;
+	height: 25px;
+	padding:9px 0 0 15px;
+	background: url(../images/gradient-color-01.png) top repeat-x #b42a4a;
+	float: left;
+	display: block;
+	color :#666;
+}
+				.holder-count-product { background-color: #fff; color: #e00078; font-size: 10px; padding: 3px 7px; position: absolute; right: -8px; text-align: center; top: 7px;box-shadow: 0px 0px 2px 0px #000000; }
+						/* v detaile */
+					.product-detail-r .basket { padding-top:17px;}
+					.product-detail-r .basket-btn a { height:32px; padding-top:17px;}
+					.product-detail-r .holder-count-product { top:31px;}
+					
+					
+
+
+
+
+
+
+
+/* tabulka detailu kosika */
+.detail-kosika { padding:30px 0 30px 0;}
+.detail-kosika div.table{ clear:both; width:100%; display:table; border-left:1px solid #ccc; }
+
+	.detail-kosika div.th{ display: table-cell; padding:10px; border:1px solid #69a109; border-right:1px solid #69a109; border-left:1px solid #8ad40c;border-top:1px solid #8ad40c; vertical-align:middle;background: #79b90c; color:#fff;}
+	.detail-kosika div.td{ display: table-cell;padding:10px; border-bottom:1px solid #ccc; border-right:1px solid #ccc;vertical-align:middle;}
+
+		.detail-kosika div.tr{ display: table-row; background:#e7e7e7; height: 100%;}
+		.detail-kosika div.tr.neparne { border:1px solid #d9e1e6; background:#fff;}
+		
+	/* doplnky pre polozky */
+		.detail-kosika div.td.img { width:40px;}
+			.detail-kosika div.td.icon { width:45px; padding:0 0 0 25px;}
+		.detail-kosika-pocet-kusov { padding: 5px 10px; width:40px;}
+			.detail-kosika-pocet-kusov { width:25px; }
+		.ico-kos { width:19px; height:20px;}
+			.ico-kos a { width:19px; height:20px; display:block; background:url('/images/cart/ico-kos.png') top;}
+			.ico-kos a:hover { background:url('/images/cart/ico-kos.png') bottom;}
+			
+		
+	/* prepocet pod tabulkou */
+	.c-btn-calculate { width:100%; padding:15px 0 0 0; clear:both;}
+		.c-btn-calculate input { width:109px; height:39px; cursor:pointer; color:#0281e5; border:1px solid #0281e5;border-radius: 30px;}
+			.c-btn-calculate input:hover { background:#FFF;}
+
+
+	/* cena pod tabulkou */	
+	.suma-price { width:100%; clear:both; padding:20px 0px 20px 0; margin-top:10px; text-align:right;}
+		.suma-price p { padding:0 0 0 20px; display:inline;}
+		.price-dph {}
+
+
+
+/* step 3 */
+
+
+.sumary-info-table { width:100%; margin:0 0 30px 0;}
+	.sumary-info-table .title { font-weight:bold; color:#333; font-size:1.3em; margin:15px 0 0 0; padding:15px 30px; background:#fff9d7; border:1px solid #ddd8ba;} /* nadpis */
+.sumary-info-table td, .sumary-info-table th  { padding:10px 30px;background: url("/images/hr-gray.png") bottom repeat-x;}
+		.sumary-info-table td { font-weight:bold; }
+		.sumary-info-table th { color:#999;}
+		
+		
+		#order-form { float:right;}
+
+
+
+
+
+
+
+
+.cart-login-holder{ margin-bottom: 30px;}
+
+.cart-login-holder .registered{
+	width:370px; background: url('/images/cart-registered-bg.png') repeat-x #f1f1f1; min-height: 220px;_height:220px; border:1px solid #c8d2d7;
+	padding:30px;
+	float: left;
+}
+
+.cart-login-holder input.text, .cart-login-holder input.submit{
+    background: url("/images/login/login-input.png") repeat scroll 0 0 transparent;
+    border: 1px solid #CAD4D8;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 120px;
+
+}
+.cart-login-holder h2{ font-size: 20px; padding-bottom: 15px;}
+.cart-login-holder .form{ width: 170px; float:left;}
+.cart-login-holder .classic-btn2{ width:140px;}
+.cart-login-holder a.classic-btn2{ width:140px; display: block; height: 20px;padding-top:8px;}
+.cart-login-holder .form .label-input-holder{position: relative; padding-bottom:10px;}
+.cart-login-holder .form .label-input-holder label{position: absolute;top:10px; left:13px;}
+.cart-login-holder .form .links a{ }
+
+.cart-login-holder .alternative-login{
+	width: 195px;float:left;
+	
+}
+.cart-login-holder .alternative-login a.facebook-login{
+	display: block;
+	background: url('/images/login/login-fb.png') no-repeat;
+	padding:9px 0 0 35px;
+	width:170px;
+	color: white;
+	height: 21px;
+	margin-bottom: 15px;
+}
+.cart-login-holder .alternative-login a.google-login{
+	display: block;
+	background: url('/images/login/login-google.png') no-repeat;
+	padding:9px 0 0 35px;
+	width:170px;
+	color: #343434;
+	height: 21px;
+}
+
+.cart-login-holder .no-registered{ width: 195px; padding:30px;float: left; height: 220px;
+	background: url('/images/cart-no-registered.png') repeat-y #dbe0e3;
+}
+/*
+
+
+.cart-login-holder { width:100%; float:left; padding:30px 0 0 0;}
+
+.cart-login-holder .registered {border: 1px solid silver;float: left;margin: 0 30px 0 0;padding: 20px 20px 20px 20px;width: 300px;height: 200px;background:url('/images/cart/silver-gradient.png') top repeat-x #e4e4e4;}
+
+.cart-login-holder .registered h2, .cart-login-holder .no-registered h2{ font-size: 22px; color: #333; padding:10 0 10px 0; font-weight:bold;}
+	.no-registered h2 { padding-bottom:16px;}
+
+.cart-login-holder .no-registered {
+    border: 1px solid silver;
+    cursor: pointer;
+    float: left;
+    height: 200px;
+    padding: 20px 20px 20px 20px;
+    width: 270px;
+	box-shadow: 0 0 3px 3px #dbe0e3;
+	background:#dbe0e3;
+
+}
+
+
+
+.classicLoginForm div.required{ float:left; width:150px;}
+.classicLoginForm div.required label{ display:block; float:left; width: 120px; padding:6px 10px 10px 0}
+.classicLoginForm div.required input {display: block;float: left;padding: 5px;width: 130px;}
+
+.classicLoginForm input.button, .cart-login-holder .no-registered .next {
+    display: block;
+    text-align: center;
+	margin:15px 10px 0 0;
+	float: right;
+}
+
+.cart-login-holder .no-registered .next{ float: right; padding: 5px 7px; margin-top:34px;  border: 1px solid #DEDEDE;}
+*/
+/* 2 step */
+
+
+	
+.profil-form-container { }
+	.profil-form-container fieldset { padding:15px 0 15px 0;}
+	.profil-form-container input { margin-bottom:10px;}
+
+		
+.profil-form-container input.text{ width: 200px; padding: 5px 15px;}
+.profil-form-container input[type="radio"]{width:30px}
+.profil-form-container th{ padding:10px 20px 10px 0px; width: 123px;}
+.profil-form-container fieldset{ padding-bottom: 20px;}
+
+
+.button_send {height:30px; padding:0 20px 0 10px; border-left:1px solid #60ce1a; border-right:1px solid #60ce1a; display:block; background:url(../images/cart/btn-green.png) top right repeat-x;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px; color:#333;text-shadow: #d4e78b 0px 1px 0px; border:none; margin-top:20px; cursor:pointer;}
+
+
+	
+
+.order-table td, .order-table th {}
+.order-table th { color:#FFF;padding:15px 10px 10px 20px; font-weight: bold; background:#09F;}
+.order-table tr td{
+   background: url("/images/cart/tr.png") repeat-x scroll center top transparent
+}
+
+
+#loginFormContainer { z-index: 999999; width:167px; margin-top:5px; padding:30px 15px 15px 15px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px; color:#FFF;  background: #FFF ;-moz-box-shadow: 0 5px 5px #333;-webkit-box-shadow: 0 5px 5px#333;box-shadow: 0px 5px 5px #333;}
+#loginFormContainer label { z-index: 999999;color:#FFF; padding:7px 0 10px 10px; display:block;text-align: left;}
+	#loginFormContainer a { color:#FFF;}
+	
+#loginFormContainer input { z-index: 999999;color:#9bb0b6; 
+	border:1px solid #9bb0b6;
+	padding: 5px 10px;
+	width:145px;
+-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;
+}
+
+#loginFormContainer input.button{color:#fff;}
+#loginFormContainer div.required{ position:relative;margin: 10px 0px 10px 0;}
+#loginFormContainer .required label{color:#9bb0b6; position:absolute; top:0px; left:2px;}
+
+
+
+
+
+
+
+.lostPasswordHolder a { padding:15px 0 0 0; display:block; text-decoration:underline; color:#333 !important; clear:both;}
+
+
+/* detail produktu */
+.seletions-big-pic { width:318px; height:318px; float:left; border:1px solid #ccc;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+.c-detail-content { width:330px; padding:0 30px 0 40px; float:left;}
+.c-selections { float:left; width:720px;}
+
+.detail-table { width:720px; clear:both; padding:30px 0 0 0;}
+
+/* table */
+
+.detail-table table { width:720px; padding:30px 0 0 0;border-left:1px solid #d6d6d6;}	
+	.detail-table .parne { background:#dfdfdf;}
+	.detail-table tr { border-bottom:1px solid #d6d6d6;}
+	.detail-table td {padding:10px 0 10px 20px; background:url(../images/cart/td.png) top repeat-x #f1f1f1; border-right:1px solid #d6d6d6;}
+
+	.detail-table th { background: url(../images/cart/th.png) top repeat-x #41ad00;padding:10px 0 10px 20px; color:#FFF; font-weight:bold; border-right:1px solid #090;}
+	
+
+		
+	
+
+.addToCart { font-weight:bold;}
+
+
+	
+	
+
+/* order indicator */
+#order-indicator { width:100%; height:60px; margin-top:20px; padding:0 0 25px 0; clear:both; background:url('/images/cart/order-info-bg.gif') top repeat-x;}
+	#order-indicator li { list-style-type:none; float:left;padding:0px; margin:0; background:none; width:25%;}
+	#order-indicator a { width:100%; height:60px; float:left;    display:block; text-align:center; color:#666; background:url('/images/cart/order-info-a.png') center 28px no-repeat;}
+		#order-indicator a:hover, #order-indicator .active { background:url('/images/cart/order-info-active.png') center 28px no-repeat; text-decoration:none; color:#47b902;}
+		
+		
+#snippet-LoginForm-minilogin input.button { margin-bottom:0px;}		
+
+#frmclassicLoginForm-btn_submit.button { background: url("/images/gradient-color-03.png") repeat-x scroll 0 0 transparent;border: 1px solid #A6C0C9;box-shadow: 0 1px 2px 0 #BEC4C6;color: #335767;cursor: pointer;height: 30px;margin-bottom: 20px;text-align: center; float:right}
+
+
+
+
+#login-classic-link { padding:17px 0 0 15px; float:left;}
+
+
+.next { padding:7px 5px; margin-bottom:30px; float:left;  display:block; -webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px; color:#fff; background:#a70909; border:1px solid #4c8c09;}
+
+#top-user-info-holder {
+    height: 20px;
+    position: absolute;
+    right: -218px;
+    top: -30px;
+    width: 387px;
+	font-size:10px;
+}
+
+
+
+
+
+/* */
+#frmsearchform-btn, #frmnewsletterform-sendnewsletter { cursor:pointer;}

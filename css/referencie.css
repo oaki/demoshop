@@ -1,0 +1,9 @@
+/* referencie modul */
+
+.c-referencie { width:960px;}
+	.referencia { width:320px; height:56px; padding-top:16px; float:left; background:url(../images/hr.png) top repeat-x;}
+
+	.referencia span { width:150px; padding:5px 15px 0 15px; display:block; float:left;}
+	.referencia div { width:120px; height:30px; float:left;}
+
+

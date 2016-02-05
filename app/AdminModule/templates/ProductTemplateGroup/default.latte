@@ -1,0 +1,45 @@
+
+{block content}
+
+<div id="leftHolder">
+  
+<div class="menuHeader">
+	 <a title="Pridať novú skupinu" href="{link default id=>0}" class="addMenuItem"></a>
+	 <div class="clear"></div>
+</div>
+	
+<ul class="menu">
+	<li n:foreach="$groups as $m">
+		<div class="menuIconHolder">
+			<a class="deleteIcon" href="{link delete, id=>$m['id_product_template_group']}" title="Naozaj chcete zmazať položku?"></a>
+			
+		</div>
+
+		<a class="menuNameHolder" href="{plink default id=>$m['id_product_template_group']}" title="{$m['name']}">{$m['name']}</a>
+	</li>
+</ul>
+
+</div>
+
+<div id="contentHolder">
+	{snippet groupParam}
+	{*<h1>Ůprava skupiny</h1>
+	<table>
+		{dump $group_params}
+		{dump $rows}
+		<tr>
+			<td>Názov skupiny</td>
+			<td><input type="text" name="group_name" value="{$group['name']}" /></td>
+		</tr>
+		{foreach $rows as $p}
+		<tr>
+			<td>{!_$p}</td>
+			<td><input type="checkbox" value="1" name="group[]" {if isset($group_param[$p])}checked="checked"{/if}/></td>
+		</tr>
+		{/foreach}
+	</table>
+	<input type="submit" name=""*}
+	
+	{control form}
+	{/snippet}
+</div>

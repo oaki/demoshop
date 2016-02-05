@@ -1,0 +1,72 @@
+/* dialog popups */
+/* ########################################################## */
+
+body {
+	overflow: auto;
+}
+
+.dialog { 
+	position:relative;
+	text-align:left;
+	width:100%;
+}
+
+.dialog .top { 
+	padding:10px 12px;
+	background:#f3f2f0 url('../img/dialog-top.png') no-repeat bottom left;
+	behavior:expression(PNG.fix(this));
+}
+
+.dialog .close { 
+	position:absolute;
+	top:4px;
+	right:4px;
+}
+
+.dialog h2 {
+	font:bold 115% tahoma, arial, sans-serif;
+	margin:0px;
+}
+
+.dialog .description {
+	margin:0px;
+}
+
+.dialog .headline	{ 
+	padding:8px 0px 12px 40px; 
+}
+
+.dialog .upload { 
+	background: url('../img/dialog-icon-upload.png') no-repeat left; 
+	behavior:expression(PNG.fix(this)); 
+}
+
+.dialog .facts { 
+	background:#f3f2f0;
+	padding:8px 16px 12px 20px;
+	font:90% tahoma, arial, sans-serif;
+}
+
+.dialog .body	{ 
+	padding:8px 16px 12px 20px;
+}
+
+#content { display: none; }
+
+/* Upload */
+
+.uploadbrowse, .uploadque { display: block; float: left; margin-right: 5px; }
+#SWFUploadQue { display: none; clear: both; width: 380px; height: 140px; overflow: auto; margin: 0; margin-left: 15px; }
+#SWFUploadQue .file { width: auto; height: 16px; background: #f9f9f9; padding: 3px; margin-top: 5px; }
+#SWFUploadQue .name { float: left; height: 16px; overflow: hidden; }
+#SWFUploadQue .status { float: right; height: 16px; text-align: right; }
+#SWFUploadQue .failed { color: #FF0000; }
+#SWFUploadTarget { display: none; margin: 5px 0 0 5px; }
+
+#uploadQue { width: 380px; height: 100px; overflow: auto; margin: 0; margin-left: 15px; }
+#uploadQue .row { width: auto; height: 16px; background: #f9f9f9; padding: 3px; margin-top: 5px; }
+#uploadQue .name { float: left; height: 16px; overflow: hidden; }
+#uploadQue .status { float: right; height: 16px; text-align: right; }
+#uploadQue .uploading { background: url('../img/loading.gif') no-repeat; padding-left: 20px; line-height: 18px; }
+#uploadQue .failed { color: #FF0000; }
+/*#uploadQue .remove { padding-left: 20px; padding-bottom: 5px; background: url('../img/icons/cancel.gif') no-repeat; text-decoration: none; line-height: 18px; }*/

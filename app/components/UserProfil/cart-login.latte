@@ -1,0 +1,69 @@
+<div class="cart-login-holder">
+	<div class="registered">
+		<div class="cart-login">
+		<h2>{!_('Ste už zaregistrovaný?')}<br /> {!_('Prosím, prihláste sa.')}</h2>
+			
+		{snippet cartlogin}
+			{form cartLoginForm}
+			{if $form->hasErrors()}{foreach $form->errors as $flash}<div class="flash">{$flash}</div>{/foreach}{/if}
+			<div class="form">
+				
+					{*<div class="errors-holder">
+						<ul class="errors" style="position: relative;" n:if="$form->hasErrors()">
+							<li n:foreach="$form->errors as $error">{$error}</li>
+						</ul>
+					</div>*}
+					
+
+					<div class="label-input-holder">
+						{label login/}
+						{input login class=>text}
+					</div>
+
+					<div class="label-input-holder">
+						{label password /}
+						{input password class=>text}
+					</div>
+					{input btn_submit class=>'classic-btn2'}
+				{/form}
+
+
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$(".cart-login-holder label").inFieldLabels();
+					});
+
+				</script>
+
+				
+
+				
+			</div>
+
+			{/snippet cartlogin}	
+
+			<div class="alternative-login">
+				<a class="facebook-login" href="{plink :Front:Authentification:facebookRedirectToLogin}">Prihlásiť facebookom</a>
+				<a class="google-login" href="{plink :Front:Authentification:googleRedirectToLogin}">Prihlásiť Googlom</a>
+			</div>
+		
+			<div class="clear"></div>
+			
+			<div class="links">
+				<a href="{plink Profil:lostPassword}">{!_('Zabudli ste heslo?')}</a> |
+				<a href="{plink Profil:registration}">{!_('Nie ste ešte registrovaný?')}</a>
+			</div>
+		</div>
+
+	</div>
+	<div class="no-registered">
+		<h2>{!_('Nákup <br />bez registrácie')}</h2>
+		<p>{!_('V našom internetovom obchode môžte nakupovať aj bez registrácie.')}</p>
+		<p> {!_'V prípade, že nemáte záujem o výhody poskytované registrovaných používateľov kliknite na tlačítko Pokračovat.'}</p>
+
+		<a class="classic-btn2"  href="{plink Cart:step2}">{!_('Pokračovať')}</a>
+	</div>
+	
+	<div class="clear"></div>
+</div>
+

@@ -1,0 +1,7 @@
+input.datetimepicker {
+    background: url("calendar.png") no-repeat scroll right center transparent;
+    border: 1px solid #C0C0C0;
+    font-family: 'Tahoma','Verdana','Arial';
+    font-size: 100%;
+    padding: 1.5pt 6pt 1.5pt 1.5pt;
+}

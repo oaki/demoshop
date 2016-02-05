@@ -1,0 +1,38 @@
+.c-modal-dialog { width:960px; height:620px; background:url(../images-system/modal-dialog/c-modal-dialog.png) top no-repeat; _background:none; position:absolute; top:0; left:auto; z-index:9999;
+display: none;}
+
+.modal-dialog { width:390px; position:absolute; top:170px; left:280px;}
+.modal-dialog-header { width:388px; height:33px; border-left:1px solid #FFF; border-right:1px solid #FFF; border-top:1px solid #FFF; background:url(../images-system/modal-dialog/modal-dialog-header.png);
+
+
+
+-webkit-border-top-left-radius: 3px;
+-webkit-border-top-right-radius: 3px;
+-moz-border-radius-topleft: 3px;
+-moz-border-radius-topright: 3px;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;}
+
+.modal-dialog-header a { width:29px; height:29px; display:block; float:right; background:url(../images-system/modal-dialog/x.png) top; text-indent:-9999px;}
+	.modal-dialog-header a:hover { background:url(../images-system/modal-dialog/x.png) bottom;}
+
+
+
+
+
+
+
+
+.modal-dialog-content { width:288px; padding:27px 15px 15px 85px; border-left:1px solid #FFF; border-right:1px solid #FFF; border-bottom:1px solid #FFF; background:#fff9d7;
+
+-webkit-border-bottom-right-radius: 3px;
+-webkit-border-bottom-left-radius: 3px;
+-moz-border-radius-bottomright: 3px;
+-moz-border-radius-bottomleft: 3px;
+border-bottom-right-radius: 3px;
+border-bottom-left-radius: 3px;}
+
+.modal-dialog-info {background: url(../images-system/modal-dialog/modal-dialog-ok.png) 20px 13px no-repeat #fff9d7;}
+.modal-dialog-error {background: url(../images-system/modal-dialog/modal-dialog-error.png) 20px 13px no-repeat #fff9d7;}
+
+.c-modal-dialog strong {   color: #333 !important; display: block; font-size: 15px !important; padding-bottom: 4px;}

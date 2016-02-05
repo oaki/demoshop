@@ -1,0 +1,45 @@
+<a  style="float: left;display:block; padding:2px 10px; border: 1px solid silver;margin:5px 10px 0px 0px;" href="?delete_all=1">Vymazať log</a>
+{$paginator->render()}
+<div class="clear"></div>
+<form action=""  method="get">
+	<table id="highlight">
+		<thead>
+			<tr>
+				<th><a href="?section=log&amp;order_by=date">Dátum</a></th>
+				<th><a href="?section=log&amp;order_by=id_user">Užívateľ</a></th>
+				<th><a href="?section=log&amp;order_by=description">Popis</a></th>
+				<th><a href="?section=log&amp;order_by=value">Hodnoty</a></th>
+				<th><a href="?section=log&amp;order_by=id_type_modul">Modul</a></th>
+				<th><a href="?section=log&amp;order_by=ip">IP</a></th>
+				<th></th>
+			</tr>
+			
+			<tr>
+				<th><input type="text" name="input_date" value="{? echo @$_GET['input_date']}" /></th>
+				<th><input type="text" name="input_id_user" value="{? echo @$_GET['input_id_user']}" /></th>
+				<th><input type="text" name="input_description" value="{? echo @$_GET['input_description']}" /></th>
+				<th><input type="text" name="input_value" value="{? echo @$_GET['input_value']}" /></th>
+				<th><input type="text" name="input_id_type_modul" value="{? echo @$_GET['input_id_type_modul']}" /></th>
+				<th><input type="text" name="input_ip" value="{? echo @$_GET['input_ip']}" /></th>
+				<th><input type="submit" value="Filter" name="log_filter" /></th>
+			</tr>
+			
+		</thead>
+		<tbody>
+		{foreach $list as $l}
+			<tr>
+				<td>{$l ['date']}</td>
+				<td>{$l ['login']}</td>
+				<td>{$l ['description']}</td>
+				<td>{$l ['value']}</td>
+				<td>{$l ['name_modul']}</td>
+				<td>{$l ['ip']}</td>
+			</tr>
+		{/foreach}
+	    </tbody>
+	</table>
+</form>
+<script type="text/javascript">	
+	var th = new tableHighlighter( 'highlight' );	
+</script>
+{$paginator->render()}

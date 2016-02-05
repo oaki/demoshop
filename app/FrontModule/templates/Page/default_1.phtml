@@ -1,0 +1,62 @@
+{block content}
+
+<h1>{$menu_info['name']}</h1>
+
+
+{if count($node_list) > 0}
+	{foreach $node_list as $l}
+		{if count($node_list)>1}
+			{control $l['dir'], $l['id_node']}
+		{else}
+			{control $l['dir'], $l['id_node'], true}
+		{/if}
+
+	{/foreach}
+{/if}
+
+{control paginator}
+
+
+
+
+
+{ifset $news_products}
+	{if count($node_list) > 0}
+		{foreach $node_list as $l}
+			{if count($node_list)>1}
+				{control $l['dir'], $l['id_node']}
+			{else}
+				{control $l['dir'], $l['id_node'], true}
+			{/if}
+
+		{/foreach}
+	{/if}
+
+	{foreach $news_products as $p}
+		{control EshopProduct $p['id_product'], false}
+	{/foreach}
+{else}
+<div class="content-dark">
+
+	<div class="c-article">
+
+		{if count($node_list) > 0}
+			{foreach $node_list as $l}
+				{if count($node_list)>1}
+					{control $l['dir'], $l['id_node']}
+				{else}
+					{control $l['dir'], $l['id_node'], true}
+				{/if}
+
+			{/foreach}
+		{/if}
+
+
+
+		{control paginator}
+	</div>
+</div><!-- content dark -->
+{/ifset}
+
+
+{/block}

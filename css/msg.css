@@ -1,0 +1,33 @@
+
+/* content-msg */
+.content-msg{
+	background:#FFF9D7;
+	min-height: 60px;
+	border: 1px solid #E2C822;
+	color:black !important;
+}
+
+.content-msg p{ padding-top:20px;}
+.content-msg p strong{ font-size: 16px !important;padding-bottom: 3px;display:block;color:black !important; }
+.content-msg-btn{
+	background: url('/images/msg/confirm_btn.png') no-repeat 0 0;
+	width: 86px;
+	height:83px;
+	float: left;
+	margin-right:20px;
+	margin-left:5px;
+	
+}
+
+.content-msg-btn.error{
+	background: url('/images/msg/confirm_btn.png') no-repeat 0 -87px;
+}
+
+a.btn-back{
+	display: block;
+	background: url('/images/msg/back_btn.png') no-repeat 0 0 ;
+	width:53px;
+	height:23px;
+	float:right;
+	margin: 36px 0 0 0;
+}

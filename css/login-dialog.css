@@ -1,0 +1,83 @@
+/*<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable">
+   <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+      <span id="ui-dialog-title-dialog" class="ui-dialog-title">Dialog title</span>
+      <a class="ui-dialog-titlebar-close ui-corner-all" href="#"><span class="ui-icon ui-icon-closethick">close</span></a>
+   </div>
+   <div style="height: 200px; min-height: 109px; width: auto;" class="ui-dialog-content ui-widget-content" id="dialog">
+      <p>Dialog content goes here.</p>
+   </div>
+</div>
+*/
+.login-dialog.ui-dialog{ padding:0px;}
+.login-dialog .ui-widget-header{ 
+	background: url('/images/login/login-top.png') 0 0;
+	text-align: center;
+	color:#333335;
+	height:33px;
+	border:0px none;
+	padding-top:8px;
+}
+.login-dialog .ui-dialog-title{  float:none; margin:0px;}
+.login-dialog .ui-dialog-titlebar-close{  top:8px; width: 20px;margin:0px;height:12px; background-color: none !important;}
+.login-dialog .ui-dialog-titlebar-close.ui-state-hover{  background: url("") no-repeat fixed center top transparent !important;border:0px none;}
+
+.login-dialog .ui-state-hover .ui-icon-closethick{  background: url('') none !important;}
+
+.login-dialog .ui-widget-header .ui-icon{ background: url('/images/login/login-close.png') no-repeat;}
+.login-dialog.ui-dialog .ui-dialog-content{ padding:0px;}
+#c-login-dialog{ display: none; width: 240px}
+
+.login-dialog .form{ background-color: #dbe0e3; padding:0px 20px 0 20px;}
+.login-dialog .ui-corner-all{
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+
+.login-dialog form input.text,.login-dialog form input.submit{ 
+	width:180px; 
+	padding:5px 10px; 
+	background: url('/images/login/login-input.png');
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;  
+	height: 20px;
+	border:1px solid #cad5d7;
+	
+}
+
+.login-dialog form input.submit{
+	background: url('/images/login/login-btn.png') 0 0 repeat-x !important; 
+	color: #335767 !important;
+	text-align: center;
+	border:1px solid #9dbbc5;
+	width:200px;
+	height: 30px;
+	margin-bottom:20px;
+	
+}
+.login-dialog .form .label-input-holder{position: relative; padding-bottom:10px;}
+.login-dialog .form .label-input-holder label{position: absolute;top:10px; left:13px;}
+.login-dialog .form .links a{ color:#355a6a; display: block;padding-bottom:10px;}
+
+.login-dialog .alternative-login{
+	background: url('/images/login/login-bottom.png') 0 0 repeat-x;
+	padding: 20px 0 15px 20px;
+}
+.login-dialog .alternative-login a.facebook-login{
+	display: block;
+	background: url('/images/login/login-fb.png') no-repeat;
+	padding:9px 0 0 35px;
+	width:170px;
+	color: white;
+	height: 21px;
+	margin-bottom: 15px;
+}
+.login-dialog .alternative-login a.google-login{
+	display: block;
+	background: url('/images/login/login-google.png') no-repeat;
+	padding:9px 0 0 35px;
+	width:170px;
+	color: #343434;
+	height: 21px;
+}

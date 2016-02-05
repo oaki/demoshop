@@ -1,0 +1,25 @@
+/* article modul */
+
+.c-article { clear:both; padding:0 0 0 0; width:700px; float:left;}
+	.c-article a:hover { text-decoration:underline;}
+
+
+
+	.annotation-article { width:700px;float:left; height:155px; margin-bottom:35px; background:url(../images/hr.png) bottom left no-repeat; border-bottom:1px solid #c8d2d7;}
+	
+	.annotation-article:last-child { border:none; margin-bottom:0px;}
+
+		
+	
+		.annotation-article-pic { width:150px; height:120px; padding:0; float:left; float:left;border-radius: 3px; border:1px solid #c8d2d7;}
+			.annotation-article-pic img {border-radius: 3px;}
+				.annotation-article-pic a {}
+
+		.annotation-article-content { width:380px; height:120px; padding:10px 40px 0 40px; float:left; font-size:12px;}
+				.annotation-article-content a { color:#333;}
+					.annotation-article-content h3 { padding:0 0 12px 0;}
+					
+					
+		.annotation-article-btn a {color:#017ee0; padding:10px 0 0 0; display:block;}
+
+a.more{ padding-top:10px; display: block; color: #017EE0;}

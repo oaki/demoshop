@@ -1,0 +1,84 @@
+  {*
+			<form id="LoginForm" name="LoginForm" action="https://auth.me.com/authenticate" method="post">
+		 			<input name="returnURL" value="aHR0cHM6Ly9zZWN1cmUubWUuY29tL2FjY291bnQv" type="hidden">
+	  			<input name="service" value="account" type="hidden">
+	  			<input name="ssoNamespace" value="primary-me" type="hidden">
+	  			<input name="anchor" value="account" type="hidden">
+	  			<input name="cancelURL" value="http://www.me.com/mail" type="hidden">
+	    	  <input name="formID" value="loginForm" type="hidden">
+
+						  
+    	  <fieldset>
+    	    <div class="row username">
+      	    <label id="usernameLabel" for="username" class="placeholder focus "><span>Member Name</span></label>
+    	      <input id="username" name="username" class="text" maxlength="128" value="" type="text">
+          </div>
+	    
+    	    <div class="row password">
+      	    <label id="passwordLabel" for="password" class="placeholder"><strong id="error" style="display: none;">Incorrect member name or password.</strong><span>Password</span></label>
+
+    	      <input id="password" name="password" class="text" maxlength="128" value="" type="password">
+          </div>
+      
+          <div class="row keeploggedin">
+            <input id="keepLoggedIn" name="keepLoggedIn" class="checkbox" value="true" type="checkbox">
+            <label id="keepLoggedInLabel" for="keepLoggedIn" class="checkboxlabel"><span></span>Keep me logged in for two weeks</label>
+          </div>
+	    
+    	    <div id="row-continue">
+    	     	<a href="javascript:void(0);" id="submit" class="button submit" onclick="return Login._handleSubmit();" role="button"><strong>Log In</strong></a>
+
+						<em id="loading" style="visibility: hidden;">&nbsp;</em>
+    	    </div>
+          <p id="iforgot"><a href="https://iforgot.apple.com/cgi-bin/WebObjects/DSiForgot.woa/wa/iforgot?language=US-EN&amp;app_id=2999&amp;returnURL=http://www.me.com/" target="_BLANK">Forgot password?</a></p>
+    	  </fieldset>
+    	</form>
+
+
+<table id="holder">
+	<tr>
+		<td>
+		<div id="title">Správa systému - {$var['project_name']}</div>
+		</td>
+		<td style="width: 250px;">
+		<div id="login_holder">
+		<form action="{$_SERVER['PHP_SELF']}" method="post">
+		<table id="login">
+			<tr>
+				<td style="width: 30px;">Login</td>
+				<td colspan="2"><input type="text" name="login"
+					value="{ifset $_POST['login']}{$_POST['login']}{/if}" /></td>
+			</tr>
+			<tr>
+				<td>Heslo</td>
+				<td colspan="2"><input type="password" name="password" value="" /></td>
+			</tr>
+
+			{if $var['ADMIN_LOGIN_CAPTCHA'] == 1}
+				<tr>
+					<td>Kód</td>
+					<td><input style="width: 55px;" type="text" name="security_code"
+						value="" /></td>
+					<td><img src="?captcha" alt="" /></td>
+				</tr>
+			{/if}
+
+			<tr>
+				<td colspan="3" style="color: red; height: 20px;"> {$error_msg}</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="text-align: center;"><input class="login"
+					type="submit" value="Prihlásiť" name="submit_login" /><input
+					type="hidden" value="ok" name="submit_login_hidden" /></td>
+			</tr>
+		</table>
+		</form>
+		</div>
+		</td>
+		<td>
+		<div id="copyright">Quis - copyrights <a href="" title=""
+			style="color: orange;">Pavol Bincik</a></div>
+		</td>
+	</tr>
+</table>
+*}

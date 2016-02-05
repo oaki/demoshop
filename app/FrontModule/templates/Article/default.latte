@@ -1,0 +1,24 @@
+{block content}
+
+<div class="c-content-top">
+    {control breadcrumb:page $id_menu_item}
+	
+	<div id="quickFilter">
+		<a id="quick-paginator-back" title="Späť" href="{plink :Front:Page:default $id_menu_item}"></a>
+	</div>
+</div><!-- c content top -->
+
+<div class="category-title">
+	<h2>{$article['title']}</h2>
+</div>
+
+<div class="c-product">
+	<div class="content">
+		{!$article['text']}
+
+
+		{control attachment:images $article['files'],$article['id_node']}
+
+		{control attachment:files $article['files']}
+	</div>
+</div>

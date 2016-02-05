@@ -1,0 +1,83 @@
+<a id="export" style="padding:5px;font-size:14px;display:block;font-weight:bold;" href="?section=newsletter&amp;export=1">Export</a>
+{ifset $_GET['export']}
+	<textarea style="width:980px;height:100px;">{foreach $export as $e}{$e['email']}, {/foreach}</textarea>
+{/ifset}
+<table id="highlight" style="width:980px;">
+    <thead>
+    <tr>
+      <th style="width:200px;"><a href="?section=newsletter&amp;order_by=email">E-mail</a></th>
+      <th><a href="?section=newsletter&amp;order_by=date">Dátum registrácie</a></th>
+      <th>Aktívny</th>
+      <th>Popis</th>
+            <th></th>
+                  <th><input type="checkbox" name="checker" id="checker"/></th>
+    </tr>
+    </thead>
+    <tbody>
+    	{foreach $emails as $email}
+    <tr>
+        <td>{$email['email']}</td>
+        <td>{$email['adddate']}</td>
+        <td>{if $email['active']}ano{else}nie{/if}</td>
+		<td>       
+		
+		<form class="save_description_form" name=""> 
+			<input style="width:200px;" type="text" name="description" value="{$email['description']}"/>	
+			<input type="submit" name="btn_save_description" value="uložiť" />
+						<input type="hidden" name="id_newsletter_emails" value="{$email['id_newsletter_emails']}" />
+		</form>
+		</td>
+
+        <td>
+        	<a href="{$_SERVER['REQUEST_URI']}&id_newsletter_delete={$email['id_newsletter_emails']}">Zmazať</a>
+			
+        	</td>
+
+        <td>
+	        <input type="checkbox" class="emails" name="email[]" value="{$email['id_newsletter_emails']}" {if isset($_GET['id']) AND in_array($email['id_newsletter_emails'],$_GET['id'])}checked="checked"{/if} />
+        </td>
+      </tr>
+     {/foreach}
+    </tbody>
+</table>
+{*{$vp->render()}*}
+<script type="text/javascript">	
+	var th = new tableHighlighter( 'highlight' );	
+	window.addEvent('domready', function(){
+	$('checker').addEvent('click', function(){
+	  if ($('checker').get('checked') == true)
+	  {
+	   $$('.emails').set('checked', true);
+	  }
+	  else
+	  {
+	   $$('.emails').set('checked', false);  
+	  }
+	 });
+	 
+	 $$('.save_description_form').addEvent('submit', function(e) {
+		
+		new Event(e).stop();
+		var req = new Request.HTML({  
+                 method: 'post',  
+                 url: "/admin.php?section=newsletter&ajax_action_section=save_description",  
+                 data: this
+               
+             }).send();  
+
+	});
+	
+	$('export').addEvent('click', function(e){
+		e.stop();
+		var pom = '';
+
+		$$('.emails:checked').each( function(el){
+			pom = pom+'&id[]=' + el.get('value');
+		})
+		
+		this.set('href', this.get('href') + pom);
+		location.href =  this.get('href');
+	})
+	});
+
+</script>

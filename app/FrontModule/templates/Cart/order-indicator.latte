@@ -1,0 +1,10 @@
+<div id="order-indicator">
+	<ul>
+
+		<li><a {ifCurrent cart:default}class='active'{/ifCurrent} href="{plink cart:default}">Obsah košíka</a></li>
+		<li><a {ifCurrent cart:step2}class='active'{/ifCurrent} href="{plink cart:step2}" >Informácie o dodaní</a></li>
+		<li><a {ifCurrent cart:step3}class='active'{/ifCurrent} href="{plink cart:step3}">Platba a doručenie</a></li>
+		<li><a {ifCurrent cart:step4}class='active'{/ifCurrent} href="{plink cart:step4}">Potvrdenie objednávky</a></li>
+
+	</ul>
+</div><!-- order idicator -->

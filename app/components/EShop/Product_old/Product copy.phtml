@@ -1,0 +1,293 @@
+
+<div class="c-detail-produktu">
+
+<div class="detail-produktu-l">
+
+	{if !isset($images) OR count($images) == 0}
+		<div class="detail-produktu-pic"><img src="/images/box-pic-big.png" title="{$l['name']}" alt="{$l['name']}" /></div>
+		
+	{else}
+		{foreach $images as $k=>$i}
+			
+			{if $iterator->isFirst()}
+				
+				<div class="detail-produktu-pic"><a href="{$i['big']}" rel="prettyPhoto[{$l['id_product']}]"><img src="{$i['medium']}" title="{$l['name']}" alt="{$l['name']}" /></a></div>
+			{/if}
+			
+			<div class="detail-produktu-pic-small"><a href="{$i['big']}" rel="prettyPhoto[{$l['id_product']}]" ><img rel="{$i['medium']}" src="{$i['thumb']}" title="{$i['alt']}" alt="{$i['alt']}" /></a></div>
+
+
+		{/foreach}
+
+		<script type="text/javascript">
+
+			$(function () {
+				var a_href = $('.detail-produktu-pic a');
+				var big_img = a_href.find('img');
+				$('.detail-produktu-pic-small a').mouseenter( function(){
+					var medium = $(this).find('img').attr('rel');
+					a_href.attr('href', $(this).attr('href'));
+					big_img.attr('src', medium);
+				})
+			});
+
+
+		$(document).ready(function(){
+			
+				$('.detail-produktu-pic-small a img').each( function(){
+					var el = $(this);
+					var alt = el.attr('alt');
+					if(alt!=''){
+						el.CreateBubblePopup({
+							position : 'top',
+							align	 : 'center',
+							innerHtml: el.attr('alt'),
+							innerHtmlStyle: { color:'#FFFFFF', 'text-align':'center' },
+							themeName: 	'all-black',
+							themePath: 	'/jscripts/jquery/bubblepopup/jquerybubblepopup-theme'
+						});
+					}
+				});
+			
+		});
+		//-->
+
+		</script>
+	{/if}
+
+		
+		
+	<div n:if="count($files)>0" class="c-atachment">
+		<div n:foreach="$files as $f" class="atachment"><img src="/images/template/atachment/ico-{$f['ext']}.gif" /><a href="/uploaded/system_files/original/{$f['src']}.{$f['ext']}">{if $f['alt']!=''}{$f['alt']}{else}{$f['src']}.{$f['ext']}{/if}</a></div>
+	</div>
+		
+	<div class="clear"></div>
+	{*
+	<a href="#" id="showReferenceForm">Zašlite nám referenciu</a>	
+	<div id="c-reference-form">
+		{control referenceForm}
+	</div>
+	
+	<div n:if="$l->referencies!=''" class="c-referencies">
+		{!$l->referencies}
+	</div>	
+	
+	<script>
+		$('#showReferenceForm').toggle( 
+		function(event){
+			event.preventDefault();
+			$('#c-reference-form').show();
+		},
+		function(event){
+			event.preventDefault();
+			$('#c-reference-form').hide();
+		}
+		);
+</script>
+*}
+</div><!-- detail l -->
+
+
+<div class="detail-produktu-r">
+	<div n:if="count($pictograms)>0" class="pictogram">
+		
+		{foreach $pictograms as $p}
+			<img id="pic_{$p['id_file']}" src="{? echo Files::gURL($p['src'], $p['ext'], 50, 40);}" alt="{$p['alt']}" />
+		{/foreach}
+		<script type="text/javascript">
+		<!--
+		$(document).ready(function(){
+			{foreach $pictograms as $p}
+				$('#pic_{!$p['id_file']}').each( function(){
+					var el = $(this);
+					el.CreateBubblePopup({
+						position : 'right',
+						align	 : 'center',
+						innerHtml: {$p['alt']},
+						innerHtmlStyle: { color:'#FFFFFF', 'text-align':'center' },
+						themeName: 	'all-black',
+						themePath: 	'/jscripts/jquery/bubblepopup/jquerybubblepopup-theme'
+				});
+				});
+			{/foreach}
+		});
+		//-->
+		</script>
+
+	</div>
+
+
+    <div class="detail-produktu-r-content">
+
+		<h2>{$l['name']}</h2>
+		{!$l['description']}
+
+		{ifset $show_link_potahove_latky}
+		<p class="cloth">
+			<a href="/caste-otazky/potahove-latky.html" target="_blank">
+				<img id="link_cloth" src="/images/info-icon.png" alt="Link na poťahové látky" />
+			Poťahové látky</a>
+			
+		</p>{/ifset}
+	</div><!-- detail produktu r content -->
+
+
+<div class="detail-produktu-r-vypocet">
+
+	{snippet product}
+	
+	<form class="ajax" action="{link updatePrice!}" method="get" id="combinationForm">
+		<div class="vypocet-l">
+		<h4>Výpočet ceny:</h4>
+
+
+		{if !empty($param['material'])}
+			<span>
+				<div class="vypocet-l-l">
+					<strong>Materiál:</strong>
+				</div>
+				<div class="vypocet-l-r">
+					<select name="material" id="material">
+						{foreach $param['material'] as $m}
+							<option value="{$m}"{if $m == $control->material} selected="selected"{/if}>{$m}</option>
+						{/foreach}
+					</select>
+				</div>
+			</span>
+		{/if}
+
+		{if !empty( $param['size'])}
+			<span>
+				<div class="vypocet-l-l">
+					<strong>Veľkosť *: </strong>
+				</div>
+				<div class="vypocet-l-r">
+					<select name="size" id="size">
+						{foreach $param['size'] as $m}
+							<option value="{$m}"{if $m == $control->size} selected="selected"{/if}>{$m}</option>
+						{/foreach}
+					</select>
+				</div>
+			</span>
+		 
+		{/if}
+
+
+		{if !empty( $param['color'])}
+			<span>
+				<div class="vypocet-l-l">
+					<strong>Farba:</strong>
+				</div>
+				<div class="vypocet-l-r">
+					<select name="color" id="color">
+						{foreach $param['color'] as $m}
+							<option value="{$m}"{if $m == $control->color} selected="selected"{/if}>{$m}</option>
+						{/foreach}
+					</select>
+				</div>
+			</span>
+		{/if}
+
+		<span><div class="vypocet-l-l"><strong>Kusov:</strong></div>
+			<div class="vypocet-l-r"><input id="count" name="count" type="text" value="{$control->count}" class="numeric"/></div></span>
+
+		<span><div class="vypocet-l-l">&nbsp;</div><div class="vypocet-l-r"><div><a href="#" id="add_to_cart">OBJEDNAŤ</a></div></div></span>
+
+
+		
+
+	</div><!-- vypocet l -->
+
+
+		
+<div class="vypocet-r">
+{if $price['sale'] == 1}<div class="sale">Pôvodne: <span class="price">{$price['original_price']|money:$presenter->id_lang}</span></div>{/if}
+<div><strong><h2>{$price['price']*$control->count|money:$presenter->id_lang}</h2></strong></span></div>
+<div><small>( s DPH)</small></div>
+
+<div style="padding-top:6px;"><strong>{$price['price']/(1 + NEnvironment::getVariable('vat')/100)|money:$presenter->id_lang}</strong></div>
+<div><small>(bez DPH)</small></div>
+<div class="product-loader"></div>
+
+	</div><!-- vypocet r -->
+
+
+<input type="hidden" name="id_product" value="{$id_product}" />
+
+<input type="hidden" name="id_product_param" value="{$id_product_param}" />
+</form>
+
+<script type="text/javascript">
+	var form = $('#combinationForm');
+	$('#size').change( function(){
+		$('.product-loader').css({'display':'block'});
+		$.post( {link updatePrice!} + '&' +  form.serialize(), $.nette.success);
+	});
+
+	$('#material').change( function(){
+		$('.product-loader').css({'display':'block'});
+		$.post( {link updatePrice!} + '&' + form.serialize(), $.nette.success);
+	});
+
+
+	$('#color').change( function(){
+		$('.product-loader').css({'display':'block'});
+		$.post( {link updatePrice!} + '&' + form.serialize(), $.nette.success);
+	});
+
+	$('input.numeric').keyup(function(){
+		var value=$(this).val();
+
+		
+		var orignalValue=value;
+		value=value.replace(/[0-9]*/g, "");
+
+
+		if (value!=''){
+			orignalValue=orignalValue.replace(/([^0-9].*)/g, "");
+
+			$(this).val(orignalValue);
+			
+		}else{
+			/* var pom = parseInt($(this).val());
+			
+			if(pom > 1000){ $(this).val('1000'); };
+			*/
+			$('.product-loader').css({'display':'block'});
+			$.post( {link updatePrice!} + '&' + form.serialize(), $.nette.success);
+		}
+	});
+
+$(document).ready(function(){
+
+	$('#add_to_cart').click( function(event){
+		event.preventDefault();
+		 $('html').animate({ scrollTop : 0},'slow');
+		
+		$.post( {plink cart:add! $id_product_param} + '&' + form.serialize() + '&cart-count=' + $('#count').val(), $.nette.success);		
+
+	});
+});
+
+</script>
+<div class="clear"></div>
+	{if !empty( $param['size'])}<div class="product-size-msg">* V prípade požiadavky atypických rozmerov <a href="/kontakt/" target="_blank">nás kontaktujte</a>.</div>{/if}
+	{/snippet}
+	
+	</div><!-- detail p r vypocet -->
+
+
+
+	</div><!-- detail p r -->
+
+
+
+
+
+
+
+
+
+		</div><!-- c detail produktu -->
+
+
