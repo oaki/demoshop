@@ -1,1 +1,6 @@
 E-shop based on Nette framework. It's old but it is still working.
+
+@todo
+- replace filemanager to SqlLiteManage for chaching
+- move to PHP 7
+- activate composer and grunt
